@@ -718,7 +718,6 @@ mvn test surefire-report:report
 | `PdcDecItemErpServiceTest` | ERP商品同步服务测试 |
 | `RequiredAnnotationTest` | @Required注解测试 |
 
-> **详细文档**: [WOP API SDK 测试指南](skills/wop-api-sdk-test.md)
 
 
 ## 错误处理
@@ -821,17 +820,11 @@ popJavaSdk/
 │   ├── WopBigOrderService.md
 │   ├── WopOuterOrderService.md
 │   └── ...
-├── skills/                            # 技能文档
-│   ├── required-annotation.md         # @Required 注解指南
-│   └── wop-api-sdk-test.md           # 测试指南
 ├── jar/                               # 编译后的 JAR 包
 │   ├── pop-java-sdk-1.0-SNAPSHOT.jar
 │   ├── pop-java-sdk-1.0-SNAPSHOT-javadoc.jar
 │   └── pop-java-sdk-1.0-SNAPSHOT-sources.jar
 ├── pom.xml                            # Maven 配置文件
-├── compile.bat                        # Windows 编译脚本
-├── build.ps1                          # PowerShell 编译脚本
-├── run_build.bat                      # Windows 运行构建脚本
 └── README.md                          # 项目说明文档
 ```
 
@@ -845,12 +838,6 @@ popJavaSdk/
 | `base/model` | 基础模型类,如 `PopBaseRsp`、`PopAppKeyConfig` |
 | `factory` | 工厂类,统一管理服务实例 (如 `PopServiceFactory`) |
 | `utils` | 工具类,提供 JSON 序列化、日期处理等通用功能 |
-
----
-
-## 参考文档
-
-- [WOP API SDK 测试指南](skills/wop-api-sdk-test.md) - 测试框架和测试用例编写
 
 ---
 
