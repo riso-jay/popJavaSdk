@@ -1,146 +1,159 @@
 # WopJitxOrderPopService API 文档
 
+> 云仓JITX订单服务 - 提供JITX订单查询和明细查询功能
+>
+> API文档来源: https://56.pjbest.com/app/wx/doc/openService?defCode=5161&serviceName=WopJitxOrderPopService
+
 ## 概述
 
-云仓JITX订单服务，提供JITX订单查询和明细查询功能。
+| 属性 | 值 |
+|------|----|
+| 服务名 | `com.vip.wop.app.jit.service.WopJitxOrderPopService` |
+| 版本号 | 1.0.0 |
+| 生成时间 | 2026-02-25 |
 
-- **服务名称**: `com.vip.wop.app.jit.service.WopJitxOrderPopService`
-- **服务类**: `com.vip.pop.service.WopJitxOrderPopService`
+## 快速开始
+
+### 获取服务实例
+
+```java
+WopJitxOrderPopService service = PopServiceFactory.getWopJitxOrderPopService();
+```
 
 ## 方法列表
 
-| 方法名 | 描述 | 必填参数 |
-|--------|------|----------|
-| `healthCheck` | 健康检查 | 无 |
-| `queryJitxOrder` | 云仓JITX订单查询 | request |
-| `queryJitxOrderDetail` | 云仓JITX订单明细查询 | crmCustCode, platformOrderSn |
+| 方法名 | 描述 | 参数类型 | 返回类型 |
+|--------|------|---------|--------|
+| `healthCheck` | 健康检查 | 无 | String |
+| `queryJitxOrder` | 云仓JITX订单查询 | JitxOrderQueryRequest, Integer, Integer | JitxOrderQueryResponse |
+| `queryJitxOrderDetail` | 云仓JITX订单明细查询 | String, String | JitxOrderDetailQueryResponse |
 
 ---
 
 ## 方法详情
 
-### 1. healthCheck - 健康检查
+### queryJitxOrder
 
-**方法签名**:
-```java
-public String healthCheck() throws Exception
-```
+> 云仓JITX订单查询接口
 
-**功能描述**: 检查服务健康状态
-
-**返回值**: `String` - 健康检查结果JSON
-
-**示例代码**:
-```java
-WopJitxOrderPopService service = PopServiceFactory.getWopJitxOrderPopService();
-String result = service.healthCheck();
-```
-
----
-
-### 2. queryJitxOrder - 云仓JITX订单查询
-
-**方法签名**:
+**方法签名:**
 ```java
 public JitxOrderQueryResponse queryJitxOrder(JitxOrderQueryRequest request, Integer pageNum, Integer pageSize) throws Exception
 ```
 
-**功能描述**: 查询云仓JITX订单列表
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | request | JitxOrderQueryRequest | 是 | 查询条件对象 |
 | pageNum | Integer | 否 | 页码，默认为1 |
 | pageSize | Integer | 否 | 页大小，默认为10，最大50 |
 
-**返回值**: `JitxOrderQueryResponse` - 查询响应对象
-
-**异常情况**:
-- `IllegalArgumentException` - 查询条件不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopJitxOrderPopService service = PopServiceFactory.getWopJitxOrderPopService();
 
 JitxOrderQueryRequest request = new JitxOrderQueryRequest();
-// 设置查询条件
+request.setCrmCustCode("17002437");
+request.setWarehouseCode("WH001");
 
 JitxOrderQueryResponse response = service.queryJitxOrder(request, 1, 10);
+System.out.println("查询到 " + response.getTotalCount() + " 条订单");
 ```
 
 ---
 
-### 3. queryJitxOrderDetail - 云仓JITX订单明细查询
+### queryJitxOrderDetail
 
-**方法签名**:
+> 云仓JITX订单明细查询接口
+
+**方法签名:**
 ```java
 public JitxOrderDetailQueryResponse queryJitxOrderDetail(String crmCustCode, String platformOrderSn) throws Exception
 ```
 
-**功能描述**: 查询云仓JITX订单明细信息
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | crmCustCode | String | 是 | 供应商编码 |
 | platformOrderSn | String | 是 | 唯品订单号 |
 
-**返回值**: `JitxOrderDetailQueryResponse` - 明细查询响应对象
-
-**异常情况**:
-- `IllegalArgumentException` - 供应商编码不能为空
-- `IllegalArgumentException` - 唯品订单号不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopJitxOrderPopService service = PopServiceFactory.getWopJitxOrderPopService();
 
 JitxOrderDetailQueryResponse response = service.queryJitxOrderDetail(
-    "VENDOR001",       // 供应商编码
-    "JITX202602250001" // 唯品订单号
+    "17002437",        // 供应商编码
+    "JITX202603010001" // 唯品订单号
 );
+System.out.println("订单明细: " + response);
+```
+
+---
+
+### healthCheck
+
+> 健康检查接口
+
+**方法签名:**
+```java
+public String healthCheck() throws Exception
+```
+
+**示例代码:**
+```java
+WopJitxOrderPopService service = PopServiceFactory.getWopJitxOrderPopService();
+String result = service.healthCheck();
+System.out.println("健康检查结果: " + result);
 ```
 
 ---
 
 ## 模型类
 
-### JitxOrderQueryRequest - JITX订单查询请求
+### JitxOrderQueryRequest
 
-JITX订单查询条件对象，支持链式调用设置参数。
+> JITX订单查询请求
 
-### JitxOrderQueryResponse - JITX订单查询响应
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| crmCustCode | String | 供应商编码 |
+| warehouseCode | String | 仓库编码 |
+| platformOrderSn | String | 唯品订单号 |
+| orderStatus | String | 订单状态 |
 
-JITX订单查询返回结果对象。
+### JitxOrderQueryResponse
 
-### JitxOrderDetailQueryResponse - JITX订单明细查询响应
+> JITX订单查询响应
 
-JITX订单明细查询返回结果对象。
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| orderList | List\<JitxOrderInfo\> | 订单列表 |
+| totalCount | Integer | 总数 |
+
+### JitxOrderDetailQueryResponse
+
+> JITX订单明细查询响应
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| detailList | List\<JitxOrderDetailInfo\> | 明细列表 |
+| totalCount | Integer | 总数 |
 
 ---
 
 ## 错误处理
 
-所有方法都可能抛出以下异常：
-
-| 异常类型 | 描述 |
-|----------|------|
-| `IllegalArgumentException` | 参数校验失败 |
-| `Exception` | API调用异常 |
-
-建议使用 try-catch 进行异常处理：
-
 ```java
 try {
+    WopJitxOrderPopService service = PopServiceFactory.getWopJitxOrderPopService();
     JitxOrderQueryResponse response = service.queryJitxOrder(request, 1, 10);
 } catch (IllegalArgumentException e) {
-    // 处理参数校验异常
+    // 参数验证错误
     System.err.println("参数错误: " + e.getMessage());
 } catch (Exception e) {
-    // 处理API调用异常
+    // API调用异常
     System.err.println("API调用失败: " + e.getMessage());
 }
 ```

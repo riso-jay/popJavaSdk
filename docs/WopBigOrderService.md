@@ -62,11 +62,11 @@ public BigOrderResponse createHeader(CreateBigOrderHeaderRequest request) throws
 ```java
 WopBigOrderService service = PopServiceFactory.getWopBigOrderService();
 
-CreateBigOrderHeaderRequest request = new CreateBigOrderHeaderRequest()
-        .setCustomerCode("17002437")
-        .setErpOrderSn("BIGORDER001")
-        .setWarehouseCode("WH001")
-        .setOrderType((byte) 1);
+CreateBigOrderHeaderRequest request = new CreateBigOrderHeaderRequest();
+request.setCustomerCode("17002437");
+request.setErpOrderSn("BIGORDER001");
+request.setWarehouseCode("WH001");
+request.setOrderType((byte) 1);
 
 BigOrderResponse response = service.createHeader(request);
 ```
@@ -87,13 +87,19 @@ public BigOrderResponse importDetails(ImportBigOrderDetailsRequest request) thro
 WopBigOrderService service = PopServiceFactory.getWopBigOrderService();
 
 List<BigOrderDetailItem> items = new ArrayList<>();
-items.add(new BigOrderDetailItem().setItemCode("SKU001").setQty(100));
-items.add(new BigOrderDetailItem().setItemCode("SKU002").setQty(200));
+BigOrderDetailItem item1 = new BigOrderDetailItem();
+item1.setItemCode("SKU001");
+item1.setQty(100);
+items.add(item1);
+BigOrderDetailItem item2 = new BigOrderDetailItem();
+item2.setItemCode("SKU002");
+item2.setQty(200);
+items.add(item2);
 
-ImportBigOrderDetailsRequest request = new ImportBigOrderDetailsRequest()
-        .setCustomerCode("17002437")
-        .setErpOrderSn("BIGORDER001")
-        .setDetailItems(items);
+ImportBigOrderDetailsRequest request = new ImportBigOrderDetailsRequest();
+request.setCustomerCode("17002437");
+request.setErpOrderSn("BIGORDER001");
+request.setDetailItems(items);
 
 BigOrderResponse response = service.importDetails(request);
 ```

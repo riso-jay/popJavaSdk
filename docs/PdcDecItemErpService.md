@@ -51,15 +51,15 @@ public ErpDecPdcItemResult syncPdcItem(String crmCustCode, ErpDecPdcItem item) t
 ```java
 PdcDecItemErpService service = PopServiceFactory.getPdcDecItemErpService();
 
-ErpDecPdcItem item = new ErpDecPdcItem()
-        .setTransactionId("TXN001")
-        .setItemCode("SKU001")
-        .setItemName("测试商品")
-        .setGoodsCode("GOODS001")
-        .setSize("M")
-        .setColor("红色")
-        .setStockUnit("件")
-        .setActionType("add");
+ErpDecPdcItem item = new ErpDecPdcItem();
+item.setTransactionId("TXN001");
+item.setItemCode("SKU001");
+item.setItemName("测试商品");
+item.setGoodsCode("GOODS001");
+item.setSize("M");
+item.setColor("红色");
+item.setStockUnit("件");
+item.setActionType("add");
 
 ErpDecPdcItemResult result = service.syncPdcItem("17002437", item);
 ```

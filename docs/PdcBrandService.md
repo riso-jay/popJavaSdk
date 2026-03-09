@@ -76,9 +76,9 @@ public BrandSyncResponse syncPdcBrand(String crmCustCode, BrandSyncReq syncBrand
 ```java
 PdcBrandService service = PopServiceFactory.getPdcBrandService();
 
-BrandSyncReq syncBrand = new BrandSyncReq()
-        .setCustBrandCode("BRAND001")
-        .setCustbrandName("测试品牌");
+BrandSyncReq syncBrand = new BrandSyncReq();
+syncBrand.setCustBrandCode("BRAND001");
+syncBrand.setCustbrandName("测试品牌");
 
 BrandSyncResponse response = service.syncPdcBrand("17002437", syncBrand);
 System.out.println("品牌同步结果: " + response);

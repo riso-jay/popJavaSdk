@@ -166,8 +166,14 @@ public List<InvChannelSum> selectInvChannelSumByMultiRequests(List<InventoryQuer
 CisInvChannelQueryAPI service = PopServiceFactory.getCisInvChannelQueryAPI();
 
 List<InventoryQueryReq> reqList = new ArrayList<>();
-reqList.add(new InventoryQueryReq().setVendorCode("17002437").setWarehouseCode("WH001"));
-reqList.add(new InventoryQueryReq().setVendorCode("17002437").setWarehouseCode("WH002"));
+InventoryQueryReq req1 = new InventoryQueryReq();
+req1.setVendorCode("17002437");
+req1.setWarehouseCode("WH001");
+reqList.add(req1);
+InventoryQueryReq req2 = new InventoryQueryReq();
+req2.setVendorCode("17002437");
+req2.setWarehouseCode("WH002");
+reqList.add(req2);
 
 List<InvChannelSum> results = service.selectInvChannelSumByMultiRequests(reqList);
 ```

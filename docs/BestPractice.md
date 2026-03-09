@@ -134,16 +134,16 @@ public class ProductSyncExample {
         PdcDecItemErpService service = PopServiceFactory.getPdcDecItemErpService();
         
         // 1. 构建商品信息
-        ErpDecPdcItem item = new ErpDecPdcItem()
-                .setTransactionId("TXN" + System.currentTimeMillis())  // 交易ID，用于幂等
-                .setItemCode("SKU001")                                  // 商品编码（唯一）
-                .setItemName("2026春季新款连衣裙")
-                .setGoodsCode("GOODS001")                               // 货品编码
-                .setSize("M")
-                .setColor("粉色")
-                .setStockUnit("件")
-                .setActionType("add")                                   // add=新增, update=更新
-                .setIsShelfLifeMgmt("N");                              // 是否保质期管理
+        ErpDecPdcItem item = new ErpDecPdcItem();
+        item.setTransactionId("TXN" + System.currentTimeMillis());  // 交易ID，用于幂等
+        item.setItemCode("SKU001");                                  // 商品编码（唯一）
+        item.setItemName("2026春季新款连衣裙");
+        item.setGoodsCode("GOODS001");                               // 货品编码
+        item.setSize("M");
+        item.setColor("粉色");
+        item.setStockUnit("件");
+        item.setActionType("add");                                   // add=新增, update=更新
+        item.setIsShelfLifeMgmt("N");                              // 是否保质期管理
         
         try {
             // 2. 调用同步接口
@@ -210,26 +210,28 @@ public class CreatePoExample {
         WopOuterPoService service = PopServiceFactory.getWopOuterPoService();
         
         // 1. 构建PO表头
-        CreatePoInfo poInfo = new CreatePoInfo()
-                .setClientPoNo("CLIENT-PO-" + System.currentTimeMillis())  // 客户PO号（唯一）
-                .setWarehouseCode("WH001")                                  // 目标仓库
-                .setVendorCode("V001")
-                .setVendorName("测试供应商")
-                .setExpectedArrivalTime("2026-03-15")                       // 预计到货时间
-                .setRemark("2026春季新品入库");
+        CreatePoInfo poInfo = new CreatePoInfo();
+        poInfo.setClientPoNo("CLIENT-PO-" + System.currentTimeMillis());  // 客户PO号（唯一）
+        poInfo.setWarehouseCode("WH001");                                  // 目标仓库
+        poInfo.setVendorCode("V001");
+        poInfo.setVendorName("测试供应商");
+        poInfo.setExpectedArrivalTime("2026-03-15");                       // 预计到货时间
+        poInfo.setRemark("2026春季新品入库");
         
         // 2. 构建PO明细
         List<ImpPoDetail> details = new ArrayList<>();
-        details.add(new ImpPoDetail()
-                .setSkuCode("SKU001")
-                .setExpectedQty(100)
-                .setProductName("2026春季新款连衣裙-M码")
-                .setBarcode("6901234567890"));
-        details.add(new ImpPoDetail()
-                .setSkuCode("SKU002")
-                .setExpectedQty(150)
-                .setProductName("2026春季新款连衣裙-L码")
-                .setBarcode("6901234567891"));
+        ImpPoDetail detail1 = new ImpPoDetail();
+        detail1.setSkuCode("SKU001");
+        detail1.setExpectedQty(100);
+        detail1.setProductName("2026春季新款连衣裙-M码");
+        detail1.setBarcode("6901234567890");
+        details.add(detail1);
+        ImpPoDetail detail2 = new ImpPoDetail();
+        detail2.setSkuCode("SKU002");
+        detail2.setExpectedQty(150);
+        detail2.setProductName("2026春季新款连衣裙-L码");
+        detail2.setBarcode("6901234567891");
+        details.add(detail2);
         
         try {
             // 3. 一步创建并提交
@@ -264,9 +266,9 @@ public void createPoStepByStep() {
     
     try {
         // 第一步：创建PO表头
-        CreatePoInfo poInfo = new CreatePoInfo()
-                .setClientPoNo("CLIENT-PO-001")
-                .setWarehouseCode("WH001");
+        CreatePoInfo poInfo = new CreatePoInfo();
+        poInfo.setClientPoNo("CLIENT-PO-001");
+        poInfo.setWarehouseCode("WH001");
         CreatePoResult createResult = service.createPo(CUSTOMER_CODE, poInfo, "ERP");
         
         if (!createResult.getSuccess()) {
@@ -277,7 +279,10 @@ public void createPoStepByStep() {
         
         // 第二步：导入明细（可多次调用追加）
         List<ImpPoDetail> details = new ArrayList<>();
-        details.add(new ImpPoDetail().setSkuCode("SKU001").setExpectedQty(100));
+        ImpPoDetail detail = new ImpPoDetail();
+        detail.setSkuCode("SKU001");
+        detail.setExpectedQty(100);
+        details.add(detail);
         OperationResult importResult = service.importPoDetail(
                 CUSTOMER_CODE, poNo, details, "ERP");
         
@@ -372,7 +377,9 @@ public class PoLifecycleExample {
 	 * 业务场景：修改供应商信息、备注等
 	 */
 	public void editPoInfo(String poNo) throws Exception {
-		CreatePoInfo updateInfo = new CreatePoInfo().setVendorName("修改后的供应商名称").setRemark("备注信息更新");
+		CreatePoInfo updateInfo = new CreatePoInfo();
+		updateInfo.setVendorName("修改后的供应商名称");
+		updateInfo.setRemark("备注信息更新");
 
 		OperationResult result = service.editPo(CUSTOMER_CODE, poNo, updateInfo);
 		System.out.println("修改PO单结果: " + result);
@@ -384,8 +391,14 @@ public class PoLifecycleExample {
 	 */
 	public void appendPoDetail(String poNo) throws Exception {
 		List<ImpPoDetail> newDetails = new ArrayList<>();
-		newDetails.add(new ImpPoDetail().setItemCode("SKU003").setExpectedQty(50));
-		newDetails.add(new ImpPoDetail().setItemCode("SKU004").setExpectedQty(80));
+		ImpPoDetail detail1 = new ImpPoDetail();
+		detail1.setItemCode("SKU003");
+		detail1.setExpectedQty(50);
+		newDetails.add(detail1);
+		ImpPoDetail detail2 = new ImpPoDetail();
+		detail2.setItemCode("SKU004");
+		detail2.setExpectedQty(80);
+		newDetails.add(detail2);
 
 		OperationResult result = service.importPoDetail(CUSTOMER_CODE, poNo, newDetails, "ERP");
 		System.out.println("导入PO明细结果: " + result);
@@ -423,8 +436,9 @@ public class PoLifecycleExample {
 	 * 业务场景：批量关闭已完成的PO单
 	 */
 	public void closePoList() throws Exception {
-		ClosePoRequest request = new ClosePoRequest().setCustomerCode(CUSTOMER_CODE)
-				.setPoNoList(Arrays.asList("PO001", "PO002", "PO003"));
+		ClosePoRequest request = new ClosePoRequest();
+		request.setCustomerCode(CUSTOMER_CODE);
+		request.setPoNoList(Arrays.asList("PO001", "PO002", "PO003"));
 
 		ClosePoResponse response = service.closePo(request);
 		System.out.println("关闭PO单结果: " + response);
@@ -435,8 +449,10 @@ public class PoLifecycleExample {
 	 * 业务场景：报表导出、PO列表展示
 	 */
 	public void searchPoList() throws Exception {
-		PoQueryCondition condition = new PoQueryCondition().setPoStatus("SUBMITTED").setCreatedDtmLocFrom("2026-01-01")
-				.setCreatedDtmLocTo("2026-03-01");
+		PoQueryCondition condition = new PoQueryCondition();
+		condition.setPoStatus("SUBMITTED");
+		condition.setCreatedDtmLocFrom("2026-01-01");
+		condition.setCreatedDtmLocTo("2026-03-01");
 
 		SearchPoResult result = service.searchPoList(CUSTOMER_CODE, condition, 1, 20, "ERP");
 		System.out.println("查询到 " + result.getTotalCount() + " 条PO单");
@@ -465,8 +481,9 @@ public class PoLifecycleExample {
 	 * 根据系统PO号查询
 	 */
 	public void queryPoBySystemPoNo() throws Exception {
-		QueryPoBySystemPoNoRequest request = new QueryPoBySystemPoNoRequest().setCustomerCode(CUSTOMER_CODE)
-				.setSystemPoNo("PO202603010001");
+		QueryPoBySystemPoNoRequest request = new QueryPoBySystemPoNoRequest();
+		request.setCustomerCode(CUSTOMER_CODE);
+		request.setSystemPoNo("PO202603010001");
 
 		QueryPoBySystemPoNoResponse response = service.queryPoBySystemPoNo(request);
 		System.out.println("查询结果: " + response);
@@ -496,8 +513,9 @@ public class PoLifecycleExample {
 	 * 业务场景：需要获取错误码和详细错误信息
 	 */
 	public void createPoWithFullResponse() throws Exception {
-		CreatePoInfo poInfo = new CreatePoInfo().setClientPoNo("CLIENT-RESP-" + System.currentTimeMillis())
-				.setWarehouseCode("WH001");
+		CreatePoInfo poInfo = new CreatePoInfo();
+		poInfo.setClientPoNo("CLIENT-RESP-" + System.currentTimeMillis());
+		poInfo.setWarehouseCode("WH001");
 
 		// 使用 WithResponse 后缀方法获取完整响应
 		ApiResponse<CreatePoResult> response = service.createPoWithResponse(CUSTOMER_CODE, poInfo, null);
@@ -577,15 +595,18 @@ public class OrderStatusExample {
         
         try {
             OrderStatusQueryRequest[] requests = new OrderStatusQueryRequest[3];
-            requests[0] = new OrderStatusQueryRequest()
-                    .setCustomerCode(CUSTOMER_CODE)
-                    .setWopErpOrderSn("ERP001");
-            requests[1] = new OrderStatusQueryRequest()
-                    .setCustomerCode(CUSTOMER_CODE)
-                    .setWopErpOrderSn("ERP002");
-            requests[2] = new OrderStatusQueryRequest()
-                    .setCustomerCode(CUSTOMER_CODE)
-                    .setWopErpOrderSn("ERP003");
+            OrderStatusQueryRequest request0 = new OrderStatusQueryRequest();
+            request0.setCustomerCode(CUSTOMER_CODE);
+            request0.setWopErpOrderSn("ERP001");
+            requests[0] = request0;
+            OrderStatusQueryRequest request1 = new OrderStatusQueryRequest();
+            request1.setCustomerCode(CUSTOMER_CODE);
+            request1.setWopErpOrderSn("ERP002");
+            requests[1] = request1;
+            OrderStatusQueryRequest request2 = new OrderStatusQueryRequest();
+            request2.setCustomerCode(CUSTOMER_CODE);
+            request2.setWopErpOrderSn("ERP003");
+            requests[2] = request2;
             
             String[] results = service.batchGetOrderStatus(requests);
             for (int i = 0; i < results.length; i++) {
@@ -693,25 +714,27 @@ public class OrderBackExample {
         try {
             // 1. 构建客退单明细列表
             List<OrderDetailInfo> details = new ArrayList<>();
-            details.add(new OrderDetailInfo()
-                    .setItemCode("SKU001")
-                    .setItemName("测试商品A")
-                    .setReqQty(1)
-                    .setReturnReasonName("质量问题"));
-            details.add(new OrderDetailInfo()
-                    .setItemCode("SKU002")
-                    .setItemName("测试商品B")
-                    .setReqQty(2)
-                    .setReturnReasonName("尺码不合适"));
+            OrderDetailInfo detail1 = new OrderDetailInfo();
+            detail1.setItemCode("SKU001");
+            detail1.setItemName("测试商品A");
+            detail1.setReqQty(1);
+            detail1.setReturnReasonName("质量问题");
+            details.add(detail1);
+            OrderDetailInfo detail2 = new OrderDetailInfo();
+            detail2.setItemCode("SKU002");
+            detail2.setItemName("测试商品B");
+            detail2.setReqQty(2);
+            detail2.setReturnReasonName("尺码不合适");
+            details.add(detail2);
             
             // 2. 构建客退单信息
-            OrderBackInfo orderBackInfo = new OrderBackInfo()
-                    .setErpOrderBackSn("OB" + System.currentTimeMillis())  // 客退单号（唯一）
-                    .setErpOrderSn("ORDER001")                              // 原订单号
-                    .setRevcWarehouse("WH001")                              // 退货仓库
-                    .setReturnReason("质量问题")                             // 退货原因
-                    .setOrderBackType((byte) 1)                             // 退货类型: 1=普通退货
-                    .setOrderDetailInfos(details);                          // 退货明细
+            OrderBackInfo orderBackInfo = new OrderBackInfo();
+            orderBackInfo.setErpOrderBackSn("OB" + System.currentTimeMillis());  // 客退单号（唯一）
+            orderBackInfo.setErpOrderSn("ORDER001");                              // 原订单号
+            orderBackInfo.setRevcWarehouse("WH001");                              // 退货仓库
+            orderBackInfo.setReturnReason("质量问题");                             // 退货原因
+            orderBackInfo.setOrderBackType((byte) 1);                             // 退货类型: 1=普通退货
+            orderBackInfo.setOrderDetailInfos(details);                          // 退货明细
             
             // 3. 创建客退单
             ObCreateResult result = service.createOrder(CUSTOMER_CODE, orderBackInfo);
@@ -777,9 +800,9 @@ public class OrderBackExample {
         WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
         
         try {
-            QueryByErpOrderSnReq req = new QueryByErpOrderSnReq()
-                    .setErpOrderSn("ORDER001")
-                    .setOrderBackType((byte) 1);
+            QueryByErpOrderSnReq req = new QueryByErpOrderSnReq();
+            req.setErpOrderSn("ORDER001");
+            req.setOrderBackType((byte) 1);
             
             List<WopOrderBackInfo> results = service.queryOrderBackByErpOrderSn(
                     CUSTOMER_CODE, req);
@@ -801,11 +824,11 @@ public class OrderBackExample {
         WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
         
         try {
-            SearchOrderBackRequest req = new SearchOrderBackRequest()
-                    .setCustomerCode(CUSTOMER_CODE)
-                    .setPageNum(1)
-                    .setPageSize(20)
-                    .setSystemSource("WOP");
+            SearchOrderBackRequest req = new SearchOrderBackRequest();
+            req.setCustomerCode(CUSTOMER_CODE);
+            req.setPageNum(1);
+            req.setPageSize(20);
+            req.setSystemSource("WOP");
             
             SearchOrderBackResponse response = service.searchOrderList(req);
             System.out.println("查询到 " + response.getTotalCount() + " 条客退单");
@@ -840,11 +863,11 @@ public class OrderBackExample {
         WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
         
         try {
-            ModifyCarrierRequest req = new ModifyCarrierRequest()
-                    .setCustomerCode(CUSTOMER_CODE)
-                    .setErpOrderBackSn("OB202303210001")
-                    .setTransportNo("SF123456789")   // 新的运单号
-                    .setCarrierCode("SF");           // 承运商编码
+            ModifyCarrierRequest req = new ModifyCarrierRequest();
+            req.setCustomerCode(CUSTOMER_CODE);
+            req.setErpOrderBackSn("OB202303210001");
+            req.setTransportNo("SF123456789");   // 新的运单号
+            req.setCarrierCode("SF");           // 承运商编码
             
             ModifyCarrierResponse response = service.modifyCarrier(req);
             System.out.println("修改承运商结果: " + response);
@@ -880,9 +903,9 @@ public class InvReturnExample {
         
         try {
             // 1. 创建退供单表头
-            CreateInvReturnOrderReq request = new CreateInvReturnOrderReq()
-                    .setCustomerCode(CUSTOMER_CODE)
-                    .setClientReturnSn("RETURN-" + System.currentTimeMillis());
+            CreateInvReturnOrderReq request = new CreateInvReturnOrderReq();
+            request.setCustomerCode(CUSTOMER_CODE);
+            request.setClientReturnSn("RETURN-" + System.currentTimeMillis());
             
             OperationResult createResult = service.createInvReturnOrder(request);
             if (!createResult.getSuccess()) {
@@ -959,14 +982,14 @@ public class InventoryQueryExample {
         
         try {
             // 构建查询条件
-            QueryChannelReq queryReq = new QueryChannelReq()
-                    .setVendorCode(VENDOR_CODE)
-                    .setWarehouseCode("WH001");
+            QueryChannelReq queryReq = new QueryChannelReq();
+            queryReq.setVendorCode(VENDOR_CODE);
+            queryReq.setWarehouseCode("WH001");
             
             // 分页参数
-            PaginationModel pagination = new PaginationModel()
-                    .setPageNumber(1)
-                    .setPageSize(50);
+            PaginationModel pagination = new PaginationModel();
+            pagination.setPageNumber(1);
+            pagination.setPageSize(50);
             
             // 执行查询
             List<QueryChannelResult> results = service.invChannelQueryByPage(queryReq, pagination);
@@ -1012,15 +1035,18 @@ public class InventoryQueryExample {
             List<InventoryQueryReq> reqList = new ArrayList<>();
             
             // 查询多个仓库
-            reqList.add(new InventoryQueryReq()
-                    .setVendorCode(VENDOR_CODE)
-                    .setWarehouseCode("WH001"));
-            reqList.add(new InventoryQueryReq()
-                    .setVendorCode(VENDOR_CODE)
-                    .setWarehouseCode("WH002"));
-            reqList.add(new InventoryQueryReq()
-                    .setVendorCode(VENDOR_CODE)
-                    .setWarehouseCode("WH003"));
+            InventoryQueryReq req1 = new InventoryQueryReq();
+            req1.setVendorCode(VENDOR_CODE);
+            req1.setWarehouseCode("WH001");
+            reqList.add(req1);
+            InventoryQueryReq req2 = new InventoryQueryReq();
+            req2.setVendorCode(VENDOR_CODE);
+            req2.setWarehouseCode("WH002");
+            reqList.add(req2);
+            InventoryQueryReq req3 = new InventoryQueryReq();
+            req3.setVendorCode(VENDOR_CODE);
+            req3.setWarehouseCode("WH003");
+            reqList.add(req3);
             
             // 汇总查询
             List<InvChannelSum> results = service.selectInvChannelSumByMultiRequests(reqList);
@@ -1059,8 +1085,8 @@ public class InventoryQueryExample {
         CisInvChannelQueryAPI service = PopServiceFactory.getCisInvChannelQueryAPI();
         
         try {
-            QueryChannelReq queryReq = new QueryChannelReq()
-                    .setVendorCode(VENDOR_CODE);
+            QueryChannelReq queryReq = new QueryChannelReq();
+            queryReq.setVendorCode(VENDOR_CODE);
             
             List<QueryChannelResult> results = service.selectInvChannelQuerySum(queryReq);
             System.out.println("汇总查询结果: " + results.size() + " 条");
@@ -1374,17 +1400,18 @@ public void createVipChannelPo() {
     WopOuterPoService service = PopServiceFactory.getWopOuterPoService();
     
     try {
-        CreatePoInfo poInfo = new CreatePoInfo()
-                .setClientPoNo("PO-VIP-" + System.currentTimeMillis())
-                .setWarehouseCode("V1_80001001")   // 唯品会虚拟仓编码
-                .setVendorCode("8000100101")
-                .setVendorName("示例供应商")
-                .setRemark("唯品渠道采购入库");
+        CreatePoInfo poInfo = new CreatePoInfo();
+        poInfo.setClientPoNo("PO-VIP-" + System.currentTimeMillis());
+        poInfo.setWarehouseCode("V1_80001001");   // 唯品会虚拟仓编码
+        poInfo.setVendorCode("8000100101");
+        poInfo.setVendorName("示例供应商");
+        poInfo.setRemark("唯品渠道采购入库");
         
         List<ImpPoDetail> details = new ArrayList<>();
-        details.add(new ImpPoDetail()
-                .setItemCode("ITEM20260001")
-                .setExpectedQty(100));
+        ImpPoDetail detail = new ImpPoDetail();
+        detail.setItemCode("ITEM20260001");
+        detail.setExpectedQty(100);
+        details.add(detail);
         
         CreatePoResult result = service.createPoWithDetail(
                 "80001001V2", poInfo, details);
@@ -1412,17 +1439,18 @@ public void createNonVipChannelPo() {
     WopOuterPoService service = PopServiceFactory.getWopOuterPoService();
     
     try {
-        CreatePoInfo poInfo = new CreatePoInfo()
-                .setClientPoNo("PO-NV-" + System.currentTimeMillis())
-                .setWarehouseCode("NV1_80001001")  // 非唯品虚拟仓编码
-                .setVendorCode("8000100101")
-                .setVendorName("示例供应商")
-                .setRemark("非唯品渠道采购入库");
+        CreatePoInfo poInfo = new CreatePoInfo();
+        poInfo.setClientPoNo("PO-NV-" + System.currentTimeMillis());
+        poInfo.setWarehouseCode("NV1_80001001");  // 非唯品虚拟仓编码
+        poInfo.setVendorCode("8000100101");
+        poInfo.setVendorName("示例供应商");
+        poInfo.setRemark("非唯品渠道采购入库");
         
         List<ImpPoDetail> details = new ArrayList<>();
-        details.add(new ImpPoDetail()
-                .setItemCode("ITEM20260001")
-                .setExpectedQty(50));
+        ImpPoDetail detail = new ImpPoDetail();
+        detail.setItemCode("ITEM20260001");
+        detail.setExpectedQty(50);
+        details.add(detail);
         
         CreatePoResult result = service.createPoWithDetail(
                 "80001001V2", poInfo, details);
@@ -1821,8 +1849,8 @@ public <T> T executeWithRetry(ApiCallback<T> callback, int maxRetries) {
 
 ```java
 // ✅ 推荐：使用业务单号作为唯一标识
-CreatePoInfo poInfo = new CreatePoInfo()
-        .setClientPoNo("CLIENT-PO-" + businessId);  // 业务唯一ID
+CreatePoInfo poInfo = new CreatePoInfo();
+poInfo.setClientPoNo("CLIENT-PO-" + businessId);  // 业务唯一ID
 
 // 重复调用相同clientPoNo不会创建重复记录
 ```
@@ -1837,9 +1865,9 @@ int pageSize = 50;  // 建议50-100
 int pageSize = 1000;  // 不推荐
 
 // ✅ 推荐：使用时间范围缩小查询范围
-PoQueryCondition condition = new PoQueryCondition()
-        .setStartTime("2026-03-01")
-        .setEndTime("2026-03-15");  // 限制时间范围
+PoQueryCondition condition = new PoQueryCondition();
+condition.setStartTime("2026-03-01");
+condition.setEndTime("2026-03-15");  // 限制时间范围
 ```
 
 ---
@@ -1881,9 +1909,9 @@ poService.createPoWithDetail(customerCode, poInfo, details);
 **解决：**
 ```java
 // 1. 放宽查询条件
-PoQueryCondition condition = new PoQueryCondition()
-        .setStartTime("2026-01-01")  // 扩大时间范围
-        .setEndTime("2026-12-31");
+PoQueryCondition condition = new PoQueryCondition();
+condition.setStartTime("2026-01-01");  // 扩大时间范围
+condition.setEndTime("2026-12-31");
 
 // 2. 确认客户编码正确
 String customerCode = "17002437";  // 确保与申请的一致

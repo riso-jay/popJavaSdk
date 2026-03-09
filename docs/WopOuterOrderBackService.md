@@ -1,262 +1,245 @@
 # WopOuterOrderBackService API 文档
 
+> 客退单接口服务 - 提供客退单的创建、取消、查询、状态批量查询、修改承运商等功能
+>
+> API文档来源: https://56.pjbest.com/app/wx/doc/openService?defCode=4108&serviceName=WopOuterOrderBackService
+
 ## 概述
 
-客退单接口服务，提供客退单的创建、取消、查询、状态批量查询、修改承运商等功能。
+| 属性 | 值 |
+|------|----|
+| 服务名 | `com.pjbest.wop.wm.service.WopOuterOrderBackService` |
+| 版本号 | 1.0.0 |
+| 生成时间 | 2026-02-25 |
 
-- **服务名称**: `com.pjbest.wop.wm.service.WopOuterOrderBackService`
-- **服务类**: `com.vip.pop.service.WopOuterOrderBackService`
+## 快速开始
+
+### 获取服务实例
+
+```java
+WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
+```
 
 ## 方法列表
 
-| 方法名 | 描述 | 必填参数 |
-|--------|------|----------|
-| `healthCheck` | 健康检查 | 无 |
-| `createOrder` | 创建客退单 | customerCode, orderBackInfo |
-| `cancelOrder` | 取消客退单 | customerCode, orderBackSn |
-| `queryOrderDetail` | 查询客退单详情 | customerCode, orderBackSn |
-| `queryOrderStatusBatch` | 批量查询客退单状态 | customerCode, orderBackSns |
-| `queryOrderBackByErpOrderSn` | 通过ERP订单号查询客退单列表 | customerCode, req |
-| `searchOrderList` | 查询客退单列表 | req |
-| `modifyCarrier` | 修改客退单承运商信息 | req |
+| 方法名 | 描述 | 参数类型 | 返回类型 |
+|--------|------|---------|--------|
+| `createOrder` | 创建客退单 | String, OrderBackInfo | ObCreateResult |
+| `cancelOrder` | 取消客退单 | String, String | ObCancelResult |
+| `queryOrderDetail` | 查询客退单详情 | String, String | WopOrderBackInfo |
+| `queryOrderStatusBatch` | 批量查询客退单状态 | String, List\<String\> | List\<ObStatusResult\> |
+| `queryOrderBackByErpOrderSn` | 通过ERP订单号查询客退单列表 | String, QueryByErpOrderSnReq | List\<WopOrderBackInfo\> |
+| `searchOrderList` | 查询客退单列表 | SearchOrderBackRequest | SearchOrderBackResponse |
+| `modifyCarrier` | 修改客退单承运商信息 | ModifyCarrierRequest | ModifyCarrierResponse |
 
 ---
 
 ## 方法详情
 
-### 1. healthCheck - 健康检查
+### createOrder
 
-**方法签名**:
-```java
-public String healthCheck() throws Exception
-```
+> 创建客退单接口
 
-**功能描述**: 检查服务健康状态
-
-**返回值**: `String` - 健康检查结果JSON
-
-**示例代码**:
-```java
-WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
-String result = service.healthCheck();
-```
-
----
-
-### 2. createOrder - 创建客退单
-
-**方法签名**:
+**方法签名:**
 ```java
 public ObCreateResult createOrder(String customerCode, OrderBackInfo orderBackInfo) throws Exception
 ```
 
-**功能描述**: 创建客退单
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | customerCode | String | 是 | 客户编码 |
 | orderBackInfo | OrderBackInfo | 是 | 客退单信息对象 |
 
-**返回值**: `ObCreateResult` - 创建结果
-
-**异常情况**:
-- `IllegalArgumentException` - 客户编码不能为空
-- `IllegalArgumentException` - 客退单信息不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
 
-OrderBackInfo orderBackInfo = new OrderBackInfo();
-// 设置客退单信息
+List<OrderDetailInfo> details = new ArrayList<>();
+OrderDetailInfo detail = new OrderDetailInfo();
+detail.setItemCode("SKU001");
+detail.setItemName("测试商品A");
+detail.setReqQty(1);
+detail.setReturnReasonName("质量问题");
+details.add(detail);
 
-ObCreateResult result = service.createOrder("CUST001", orderBackInfo);
+OrderBackInfo orderBackInfo = new OrderBackInfo();
+orderBackInfo.setErpOrderBackSn("OB" + System.currentTimeMillis());
+orderBackInfo.setErpOrderSn("ORDER001");
+orderBackInfo.setRevcWarehouse("WH001");
+orderBackInfo.setReturnReason("质量问题");
+orderBackInfo.setOrderBackType((byte) 1);
+orderBackInfo.setOrderDetailInfos(details);
+
+ObCreateResult result = service.createOrder("17002437", orderBackInfo);
 ```
 
 ---
 
-### 3. cancelOrder - 取消客退单
+### cancelOrder
 
-**方法签名**:
+> 取消客退单接口
+
+**方法签名:**
 ```java
 public ObCancelResult cancelOrder(String customerCode, String orderBackSn) throws Exception
 ```
 
-**功能描述**: 取消客退单
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | customerCode | String | 是 | 客户编码 |
 | orderBackSn | String | 是 | 客退单号 |
 
-**返回值**: `ObCancelResult` - 取消结果
-
-**异常情况**:
-- `IllegalArgumentException` - 客户编码不能为空
-- `IllegalArgumentException` - 客退单号不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
-ObCancelResult result = service.cancelOrder("CUST001", "OB202602250001");
+ObCancelResult result = service.cancelOrder("17002437", "OB202303210001");
 ```
 
 ---
 
-### 4. queryOrderDetail - 查询客退单详情
+### queryOrderDetail
 
-**方法签名**:
+> 查询客退单详情接口
+
+**方法签名:**
 ```java
 public WopOrderBackInfo queryOrderDetail(String customerCode, String orderBackSn) throws Exception
 ```
 
-**功能描述**: 查询客退单详情
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | customerCode | String | 是 | 客户编码 |
 | orderBackSn | String | 是 | 客退单号 |
 
-**返回值**: `WopOrderBackInfo` - 客退单详情
-
-**异常情况**:
-- `IllegalArgumentException` - 客户编码不能为空
-- `IllegalArgumentException` - 客退单号不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
-WopOrderBackInfo detail = service.queryOrderDetail("CUST001", "OB202602250001");
+WopOrderBackInfo detail = service.queryOrderDetail("17002437", "OB202303210001");
 ```
 
 ---
 
-### 5. queryOrderStatusBatch - 批量查询客退单状态
+### queryOrderStatusBatch
 
-**方法签名**:
+> 批量查询客退单状态接口
+
+**方法签名:**
 ```java
 public List<ObStatusResult> queryOrderStatusBatch(String customerCode, List<String> orderBackSns) throws Exception
 ```
 
-**功能描述**: 批量查询客退单状态
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | customerCode | String | 是 | 客户编码 |
-| orderBackSns | List<String> | 是 | 客退单号列表 |
+| orderBackSns | List\<String\> | 是 | 客退单号列表 |
 
-**返回值**: `List<ObStatusResult>` - 状态查询结果列表
-
-**异常情况**:
-- `IllegalArgumentException` - 客户编码不能为空
-- `IllegalArgumentException` - 客退单号列表不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
 
-List<String> orderBackSns = Arrays.asList("OB001", "OB002", "OB003");
-List<ObStatusResult> results = service.queryOrderStatusBatch("CUST001", orderBackSns);
+List<String> orderBackSns = Arrays.asList(
+    "OB202303210001", 
+    "OB202303210002", 
+    "OB202303210003"
+);
+
+List<ObStatusResult> results = service.queryOrderStatusBatch("17002437", orderBackSns);
 ```
 
 ---
 
-### 6. queryOrderBackByErpOrderSn - 通过ERP订单号查询客退单列表
+### queryOrderBackByErpOrderSn
 
-**方法签名**:
+> 通过ERP订单号查询客退单列表接口
+
+**方法签名:**
 ```java
 public List<WopOrderBackInfo> queryOrderBackByErpOrderSn(String customerCode, QueryByErpOrderSnReq req) throws Exception
 ```
 
-**功能描述**: 通过ERP订单号查询关联的客退单列表
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | customerCode | String | 是 | 客户编码 |
 | req | QueryByErpOrderSnReq | 是 | 查询请求 |
 
-**返回值**: `List<WopOrderBackInfo>` - 客退单列表
-
-**示例代码**:
+**示例代码:**
 ```java
 WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
 
 QueryByErpOrderSnReq req = new QueryByErpOrderSnReq();
-// 设置ERP订单号等查询条件
+req.setErpOrderSn("ORDER001");
+req.setOrderBackType((byte) 1);
 
-List<WopOrderBackInfo> results = service.queryOrderBackByErpOrderSn("CUST001", req);
+List<WopOrderBackInfo> results = service.queryOrderBackByErpOrderSn("17002437", req);
 ```
 
 ---
 
-### 7. searchOrderList - 查询客退单列表
+### searchOrderList
 
-**方法签名**:
+> 查询客退单列表接口（分页）
+
+**方法签名:**
 ```java
 public SearchOrderBackResponse searchOrderList(SearchOrderBackRequest req) throws Exception
 ```
 
-**功能描述**: 分页查询客退单列表
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | req | SearchOrderBackRequest | 是 | 查询请求 |
 
-**返回值**: `SearchOrderBackResponse` - 查询响应
-
-**异常情况**:
-- `IllegalArgumentException` - 查询请求不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
 
 SearchOrderBackRequest req = new SearchOrderBackRequest();
-// 设置查询条件
+req.setCustomerCode("17002437");
+req.setPageNum(1);
+req.setPageSize(20);
+req.setSystemSource("WOP");
 
 SearchOrderBackResponse response = service.searchOrderList(req);
+System.out.println("查询到 " + response.getTotalCount() + " 条客退单");
 ```
 
 ---
 
-### 8. modifyCarrier - 修改客退单承运商信息
+### modifyCarrier
 
-**方法签名**:
+> 修改客退单承运商信息接口
+
+**方法签名:**
 ```java
 public ModifyCarrierResponse modifyCarrier(ModifyCarrierRequest req) throws Exception
 ```
 
-**功能描述**: 修改客退单的承运商信息
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | req | ModifyCarrierRequest | 是 | 修改请求 |
 
-**返回值**: `ModifyCarrierResponse` - 修改响应
-
-**异常情况**:
-- `IllegalArgumentException` - 修改请求不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
 
 ModifyCarrierRequest req = new ModifyCarrierRequest();
-// 设置承运商信息
+req.setCustomerCode("17002437");
+req.setErpOrderBackSn("OB202303210001");
+req.setTransportNo("SF123456789");
+req.setCarrierCode("SF");
 
 ModifyCarrierResponse response = service.modifyCarrier(req);
 ```
@@ -265,53 +248,125 @@ ModifyCarrierResponse response = service.modifyCarrier(req);
 
 ## 模型类
 
-### OrderBackInfo - 客退单信息
+### 请求模型
 
-客退单创建时的信息对象，支持链式调用设置参数。
+#### OrderBackInfo
 
-### ObCreateResult - 创建结果
+> 客退单信息
 
-客退单创建返回结果。
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| erpOrderBackSn | String | 客退单号 |
+| erpOrderSn | String | 原订单号 |
+| revcWarehouse | String | 退货仓库 |
+| returnReason | String | 退货原因 |
+| orderBackType | Byte | 退货类型: 1=普通退货 |
+| orderDetailInfos | List\<OrderDetailInfo\> | 退货明细 |
 
-### ObCancelResult - 取消结果
+#### OrderDetailInfo
 
-客退单取消返回结果。
+> 客退单明细
 
-### WopOrderBackInfo - 客退单详情
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| itemCode | String | 商品编码 |
+| itemName | String | 商品名称 |
+| reqQty | Integer | 退货数量 |
+| returnReasonName | String | 退货原因名称 |
 
-客退单详细信息对象。
+#### QueryByErpOrderSnReq
 
-### ObStatusResult - 状态结果
+> 通过ERP订单查询客退单请求
 
-客退单状态查询结果。
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| erpOrderSn | String | ERP订单号 |
+| orderBackType | Byte | 退货类型 |
 
-### SearchOrderBackRequest / SearchOrderBackResponse - 查询请求/响应
+#### SearchOrderBackRequest
 
-客退单列表查询的请求和响应对象。
+> 客退单列表查询请求
 
-### ModifyCarrierRequest / ModifyCarrierResponse - 修改承运商请求/响应
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| customerCode | String | 客户编码 |
+| pageNum | Integer | 页码 |
+| pageSize | Integer | 每页大小 |
+| systemSource | String | 来源系统 |
 
-修改承运商的请求和响应对象。
+#### ModifyCarrierRequest
+
+> 修改承运商请求
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| customerCode | String | 客户编码 |
+| erpOrderBackSn | String | 客退单号 |
+| transportNo | String | 运单号 |
+| carrierCode | String | 承运商编码 |
+
+### 响应模型
+
+#### ObCreateResult
+
+> 创建客退单结果
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| success | Boolean | 是否成功 |
+| message | String | 返回消息 |
+| erpOrderBackSn | String | 客退单号 |
+
+#### ObCancelResult
+
+> 取消客退单结果
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| success | Boolean | 是否成功 |
+| message | String | 返回消息 |
+
+#### ObStatusResult
+
+> 客退单状态结果
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| erpOrderBackSn | String | 客退单号 |
+| status | String | 状态 |
+| statusName | String | 状态名称 |
+
+#### SearchOrderBackResponse
+
+> 客退单列表查询响应
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| orderList | List\<WopOrderBackInfo\> | 客退单列表 |
+| totalCount | Integer | 总数 |
+
+#### ModifyCarrierResponse
+
+> 修改承运商响应
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| success | Boolean | 是否成功 |
+| message | String | 返回消息 |
 
 ---
 
 ## 错误处理
 
-所有方法都可能抛出以下异常：
-
-| 异常类型 | 描述 |
-|----------|------|
-| `IllegalArgumentException` | 参数校验失败 |
-| `Exception` | API调用异常 |
-
-建议使用 try-catch 进行异常处理：
-
 ```java
 try {
-    ObCreateResult result = service.createOrder("CUST001", orderBackInfo);
+    WopOuterOrderBackService service = PopServiceFactory.getWopOuterOrderBackService();
+    ObCreateResult result = service.createOrder("17002437", orderBackInfo);
 } catch (IllegalArgumentException e) {
+    // 参数验证错误
     System.err.println("参数错误: " + e.getMessage());
 } catch (Exception e) {
+    // API调用异常
     System.err.println("API调用失败: " + e.getMessage());
 }
 ```

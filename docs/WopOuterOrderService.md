@@ -54,9 +54,9 @@ public String getOrderStatus(OrderStatusQueryRequest request) throws Exception
 ```java
 WopOuterOrderService service = PopServiceFactory.getWopOuterOrderService();
 
-OrderStatusQueryRequest request = new OrderStatusQueryRequest()
-        .setCustomerCode("17002437")
-        .setWopErpOrderSn("ERP202303210001");
+OrderStatusQueryRequest request = new OrderStatusQueryRequest();
+request.setCustomerCode("17002437");
+request.setWopErpOrderSn("ERP202303210001");
 
 String result = service.getOrderStatus(request);
 ```

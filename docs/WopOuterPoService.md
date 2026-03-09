@@ -94,12 +94,12 @@ public CreatePoResult createPo(String customerCode, CreatePoInfo poInfo, String 
 ```java
 WopOuterPoService service = PopServiceFactory.getWopOuterPoService();
 
-CreatePoInfo poInfo = new CreatePoInfo()
-        .setClientPoNo("CLIENT-PO-001")
-        .setWarehouseCode("WH001")
-        .setVendorCode("V001")
-        .setVendorName("测试供应商")
-        .setExpectedArrivalTime("2026-03-01");
+CreatePoInfo poInfo = new CreatePoInfo();
+poInfo.setClientPoNo("CLIENT-PO-001");
+poInfo.setWarehouseCode("WH001");
+poInfo.setVendorCode("V001");
+poInfo.setVendorName("测试供应商");
+poInfo.setExpectedArrivalTime("2026-03-01");
 
 CreatePoResult result = service.createPo("17002437", poInfo, "ERP");
 System.out.println("创建结果: " + result);
@@ -128,17 +128,19 @@ public CreatePoResult createPoWithDetail(String customerCode, CreatePoInfo poInf
 ```java
 WopOuterPoService service = PopServiceFactory.getWopOuterPoService();
 
-CreatePoInfo poInfo = new CreatePoInfo()
-        .setClientPoNo("CLIENT-PO-002")
-        .setWarehouseCode("WH001");
+CreatePoInfo poInfo = new CreatePoInfo();
+poInfo.setClientPoNo("CLIENT-PO-002");
+poInfo.setWarehouseCode("WH001");
 
 List<ImpPoDetail> details = new ArrayList<>();
-details.add(new ImpPoDetail()
-        .setSkuCode("SKU001")
-        .setExpectedQty(100));
-details.add(new ImpPoDetail()
-        .setSkuCode("SKU002")
-        .setExpectedQty(200));
+ImpPoDetail detail1 = new ImpPoDetail();
+detail1.setSkuCode("SKU001");
+detail1.setExpectedQty(100);
+details.add(detail1);
+ImpPoDetail detail2 = new ImpPoDetail();
+detail2.setSkuCode("SKU002");
+detail2.setExpectedQty(200);
+details.add(detail2);
 
 CreatePoResult result = service.createPoWithDetail("17002437", poInfo, details);
 ```
@@ -197,10 +199,10 @@ public SearchPoResult searchPoList(String customerCode, PoQueryCondition conditi
 ```java
 WopOuterPoService service = PopServiceFactory.getWopOuterPoService();
 
-PoQueryCondition condition = new PoQueryCondition()
-        .setPoStatus("SUBMITTED")
-        .setStartTime("2026-01-01")
-        .setEndTime("2026-03-01");
+PoQueryCondition condition = new PoQueryCondition();
+condition.setPoStatus("SUBMITTED");
+condition.setStartTime("2026-01-01");
+condition.setEndTime("2026-03-01");
 
 SearchPoResult result = service.searchPoList("17002437", condition, 1, 20, null);
 System.out.println("查询到 " + result.getTotalCount() + " 条记录");
@@ -227,10 +229,10 @@ public ClosePoResponse closePo(ClosePoRequest request) throws Exception
 ```java
 WopOuterPoService service = PopServiceFactory.getWopOuterPoService();
 
-ClosePoRequest request = new ClosePoRequest()
-        .setCustomerCode("17002437")
-        .setPoNo("PO202603010001")
-        .setCloseReason("业务完成");
+ClosePoRequest request = new ClosePoRequest();
+request.setCustomerCode("17002437");
+request.setPoNo("PO202603010001");
+request.setCloseReason("业务完成");
 
 ClosePoResponse response = service.closePo(request);
 ```

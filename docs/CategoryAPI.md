@@ -153,8 +153,14 @@ public List<CategorySpecialAttributes> getCategorySpecialAttributeList(List<Cate
 CategoryAPI service = PopServiceFactory.getCategoryAPI();
 
 List<CategorySpecialParam> params = new ArrayList<>();
-params.add(new CategorySpecialParam().setCategoryId(1001).setAttributeId(1));
-params.add(new CategorySpecialParam().setCategoryId(1002).setAttributeId(2));
+CategorySpecialParam param1 = new CategorySpecialParam();
+param1.setCategoryId(1001);
+param1.setAttributeId(1);
+params.add(param1);
+CategorySpecialParam param2 = new CategorySpecialParam();
+param2.setCategoryId(1002);
+param2.setAttributeId(2);
+params.add(param2);
 
 List<CategorySpecialAttributes> result = service.getCategorySpecialAttributeList(params);
 ```

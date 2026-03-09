@@ -1,151 +1,163 @@
 # WopJitOrderPopService API 文档
 
+> 云仓JIT订单服务 - 提供JIT订单查询和明细查询功能
+>
+> API文档来源: https://56.pjbest.com/app/wx/doc/openService?defCode=4109&serviceName=WopJitOrderPopService
+
 ## 概述
 
-云仓JIT订单服务，提供JIT订单查询和明细查询功能。
+| 属性 | 值 |
+|------|----|
+| 服务名 | `com.vip.wop.app.jit.service.WopJitOrderPopService` |
+| 版本号 | 1.0.0 |
+| 生成时间 | 2026-02-25 |
 
-- **服务名称**: `com.vip.wop.app.jit.service.WopJitOrderPopService`
-- **服务类**: `com.vip.pop.service.WopJitOrderPopService`
+## 快速开始
+
+### 获取服务实例
+
+```java
+WopJitOrderPopService service = PopServiceFactory.getWopJitOrderPopService();
+```
 
 ## 方法列表
 
-| 方法名 | 描述 | 必填参数 |
-|--------|------|----------|
-| `healthCheck` | 健康检查 | 无 |
-| `queryJitOrder` | 云仓JIT订单查询 | request |
-| `queryJitOrderDetail` | 云仓JIT订单明细查询 | crmCustCode, platformOrderSn |
+| 方法名 | 描述 | 参数类型 | 返回类型 |
+|--------|------|---------|--------|
+| `healthCheck` | 健康检查 | 无 | String |
+| `queryJitOrder` | 云仓JIT订单查询 | JitOrderQueryRequest, Integer, Integer | JitOrderQueryResponse |
+| `queryJitOrderDetail` | 云仓JIT订单明细查询 | String, String, Integer, Integer | JitOrderDetailQueryResponse |
 
 ---
 
 ## 方法详情
 
-### 1. healthCheck - 健康检查
+### queryJitOrder
 
-**方法签名**:
-```java
-public String healthCheck() throws Exception
-```
+> 云仓JIT订单查询接口
 
-**功能描述**: 检查服务健康状态
-
-**返回值**: `String` - 健康检查结果JSON
-
-**示例代码**:
-```java
-WopJitOrderPopService service = PopServiceFactory.getWopJitOrderPopService();
-String result = service.healthCheck();
-```
-
----
-
-### 2. queryJitOrder - 云仓JIT订单查询
-
-**方法签名**:
+**方法签名:**
 ```java
 public JitOrderQueryResponse queryJitOrder(JitOrderQueryRequest request, Integer pageNum, Integer pageSize) throws Exception
 ```
 
-**功能描述**: 查询云仓JIT订单列表
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | request | JitOrderQueryRequest | 是 | 查询条件对象 |
 | pageNum | Integer | 否 | 页码，默认为1 |
 | pageSize | Integer | 否 | 页大小，默认为10，最大50 |
 
-**返回值**: `JitOrderQueryResponse` - 查询响应对象
-
-**异常情况**:
-- `IllegalArgumentException` - 查询条件不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopJitOrderPopService service = PopServiceFactory.getWopJitOrderPopService();
 
 JitOrderQueryRequest request = new JitOrderQueryRequest();
-// 设置查询条件
+request.setCrmCustCode("17002437");
+request.setWarehouseCode("WH001");
 
 JitOrderQueryResponse response = service.queryJitOrder(request, 1, 10);
+System.out.println("查询到 " + response.getTotalCount() + " 条订单");
 ```
 
 ---
 
-### 3. queryJitOrderDetail - 云仓JIT订单明细查询
+### queryJitOrderDetail
 
-**方法签名**:
+> 云仓JIT订单明细查询接口
+
+**方法签名:**
 ```java
-public JitOrderDetailQueryResponse queryJitOrderDetail(String crmCustCode, String platformOrderSn, 
-        Integer pageNum, Integer pageSize) throws Exception
+public JitOrderDetailQueryResponse queryJitOrderDetail(String crmCustCode, String platformOrderSn, Integer pageNum, Integer pageSize) throws Exception
 ```
 
-**功能描述**: 查询云仓JIT订单明细信息
+**参数说明:**
 
-**参数说明**:
-
-| 参数 | 类型 | 必填 | 描述 |
-|------|------|------|------|
+| 参数名 | 类型 | 必填 | 描述 |
+|--------|------|------|------|
 | crmCustCode | String | 是 | 供应商编码 |
 | platformOrderSn | String | 是 | JIT送货单号 |
 | pageNum | Integer | 否 | 页码，默认为1 |
 | pageSize | Integer | 否 | 页大小，默认为10，最大50 |
 
-**返回值**: `JitOrderDetailQueryResponse` - 明细查询响应对象
-
-**异常情况**:
-- `IllegalArgumentException` - 供应商编码不能为空
-- `IllegalArgumentException` - JIT送货单号不能为空
-
-**示例代码**:
+**示例代码:**
 ```java
 WopJitOrderPopService service = PopServiceFactory.getWopJitOrderPopService();
 
 JitOrderDetailQueryResponse response = service.queryJitOrderDetail(
-    "VENDOR001",      // 供应商编码
-    "JIT202602250001", // JIT送货单号
-    1,                 // 页码
-    10                 // 页大小
+    "17002437",        // 供应商编码
+    "JIT202603010001", // JIT送货单号
+    1,                  // 页码
+    10                  // 页大小
 );
+System.out.println("订单明细: " + response);
+```
+
+---
+
+### healthCheck
+
+> 健康检查接口
+
+**方法签名:**
+```java
+public String healthCheck() throws Exception
+```
+
+**示例代码:**
+```java
+WopJitOrderPopService service = PopServiceFactory.getWopJitOrderPopService();
+String result = service.healthCheck();
+System.out.println("健康检查结果: " + result);
 ```
 
 ---
 
 ## 模型类
 
-### JitOrderQueryRequest - JIT订单查询请求
+### JitOrderQueryRequest
 
-JIT订单查询条件对象，支持链式调用设置参数。
+> JIT订单查询请求
 
-### JitOrderQueryResponse - JIT订单查询响应
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| crmCustCode | String | 供应商编码 |
+| warehouseCode | String | 仓库编码 |
+| platformOrderSn | String | 唯品订单号 |
+| orderStatus | String | 订单状态 |
 
-JIT订单查询返回结果对象。
+### JitOrderQueryResponse
 
-### JitOrderDetailQueryResponse - JIT订单明细查询响应
+> JIT订单查询响应
 
-JIT订单明细查询返回结果对象。
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| orderList | List\<JitOrderInfo\> | 订单列表 |
+| totalCount | Integer | 总数 |
+
+### JitOrderDetailQueryResponse
+
+> JIT订单明细查询响应
+
+| 字段名 | 类型 | 描述 |
+|--------|------|------|
+| detailList | List\<JitOrderDetailInfo\> | 明细列表 |
+| totalCount | Integer | 总数 |
 
 ---
 
 ## 错误处理
 
-所有方法都可能抛出以下异常：
-
-| 异常类型 | 描述 |
-|----------|------|
-| `IllegalArgumentException` | 参数校验失败 |
-| `Exception` | API调用异常 |
-
-建议使用 try-catch 进行异常处理：
-
 ```java
 try {
+    WopJitOrderPopService service = PopServiceFactory.getWopJitOrderPopService();
     JitOrderQueryResponse response = service.queryJitOrder(request, 1, 10);
 } catch (IllegalArgumentException e) {
-    // 处理参数校验异常
+    // 参数验证错误
     System.err.println("参数错误: " + e.getMessage());
 } catch (Exception e) {
-    // 处理API调用异常
+    // API调用异常
     System.err.println("API调用失败: " + e.getMessage());
 }
 ```
