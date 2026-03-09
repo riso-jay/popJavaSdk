@@ -1,0 +1,575 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WopOutterHtOrderService</div>
+<div class="xwdiv">标题:WOP海淘订单服务</div>
+<div id="4079aa7ddb548ff4930f37f66ed97159" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOutterHtOrderService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#064c190dfc36f409ceba1fbf6cea7a26">cancel</a></td><td>取消海淘订单</td><td>cancel(STRUCT  cancelReq)</td></tr>
+<tr><td><a href="#b8c8877ddd819082281d9fe781a693b7">createHtOrder</a></td><td>创建海淘订单</td><td>createHtOrder(STRUCT  createHtOrderReq)</td></tr>
+<tr><td><a href="#d173d724f4859a48ecfc4ef31b549df7">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#d4833fd6a5882a8fda87d8f7b1b393e8">queryHtOrder</a></td><td>查询海淘订单</td><td>queryHtOrder(STRUCT  queryReq)</td></tr>
+<tr><td><a href="#6b6bb8767d53275eedadd7b26b79a48b">queryStatus</a></td><td>查询海淘订单状态</td><td>queryStatus(STRUCT  queryStatusReq)</td></tr>
+<tr><td><a href="#ab6affc9dc8a82b7719c5678d2fee26f">reSend</a></td><td>重推海淘订单</td><td>reSend(STRUCT  reSendReq)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#f95828c02721e71b314caf23dc6e09cf">com.pjbest.wop.wm.service.HtOrderStatus</a></td><td>导入海淘订单明细记录号</td></tr>
+<tr><td><a href="#48dffdbef7fbaf2bf7ce235f6f93b535">com.pjbest.wop.wm.service.QueryStatusRsp</a></td><td>查询海淘订单状态响应号</td></tr>
+<tr><td><a href="#1d7c57fedf82c9783d6d0749ec7e73a7">com.pjbest.wop.wm.service.QueryStatusReq</a></td><td>查询海淘订单状态请求号</td></tr>
+<tr><td><a href="#ab1b0f60fefbe0a79a4871ec503e58e3">com.pjbest.wop.wm.service.QueryHtOrderDetail</a></td><td>查询海淘订单明细记录号</td></tr>
+<tr><td><a href="#bacc4fdce9a11317853debb3afd13dae">com.pjbest.wop.wm.service.QueryHtOrderRsp</a></td><td>获取订海淘单响应号</td></tr>
+<tr><td><a href="#26797709a205a3181621a0634ef6373c">com.pjbest.wop.wm.service.QueryHtOrderReq</a></td><td>获取海淘订单请求号</td></tr>
+<tr><td><a href="#03a6d2958b13028380c833619cd0230a">com.pjbest.wop.wm.service.ReSendHtOrderRsp</a></td><td>重推海淘订单响应号</td></tr>
+<tr><td><a href="#3f4d045eec75ce709a634f176f951195">com.pjbest.wop.wm.service.ReSendHtOrderReq</a></td><td>重推海淘订单请求号</td></tr>
+<tr><td><a href="#42245ba223d2e9e8aee668e455f07bf2">com.pjbest.wop.wm.service.CancelHtOrderRsp</a></td><td>取消海淘订单响应号</td></tr>
+<tr><td><a href="#79a1ebc2bc061d183e61cb9c75275acf">com.pjbest.wop.wm.service.CancelHtOrderReq</a></td><td>取消海淘订单请求号</td></tr>
+<tr><td><a href="#dbdffc1930e1dfc4eab62f6f95157fe4">com.pjbest.wop.wm.service.CreateHtOrderDetail</a></td><td>导入海淘订单明细记录号</td></tr>
+<tr><td><a href="#b70ee0991000ffc943ebdba2ca31845e">com.pjbest.wop.wm.service.CreateHtOrderRsp</a></td><td>创建海淘订单响应号</td></tr>
+<tr><td><a href="#c095ac6211dce41a748040bbe7306722">com.pjbest.wop.wm.service.CreateHtOrderReq</a></td><td>创建海淘订单请求号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="064c190dfc36f409ceba1fbf6cea7a26" class="xwdiv">方法描述:取消海淘订单</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#4079aa7ddb548ff4930f37f66ed97159">com.pjbest.wop.wm.service.WopOutterHtOrderService</a></td><td>1.0.0</td><td>cancel</td><td>取消海淘订单</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>cancelReq</td><td><a href="#79a1ebc2bc061d183e61cb9c75275acf">com.pjbest.wop.wm.service.CancelHtOrderReq</a></td><td>是</td><td></td><td></td><td>取消海淘订单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#42245ba223d2e9e8aee668e455f07bf2">com.pjbest.wop.wm.service.CancelHtOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="b8c8877ddd819082281d9fe781a693b7" class="xwdiv">方法描述:创建海淘订单</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#4079aa7ddb548ff4930f37f66ed97159">com.pjbest.wop.wm.service.WopOutterHtOrderService</a></td><td>1.0.0</td><td>createHtOrder</td><td>创建海淘订单</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>createHtOrderReq</td><td><a href="#c095ac6211dce41a748040bbe7306722">com.pjbest.wop.wm.service.CreateHtOrderReq</a></td><td>是</td><td></td><td></td><td>创建海淘订单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#b70ee0991000ffc943ebdba2ca31845e">com.pjbest.wop.wm.service.CreateHtOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="d173d724f4859a48ecfc4ef31b549df7" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#4079aa7ddb548ff4930f37f66ed97159">com.pjbest.wop.wm.service.WopOutterHtOrderService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="d4833fd6a5882a8fda87d8f7b1b393e8" class="xwdiv">方法描述:查询海淘订单</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#4079aa7ddb548ff4930f37f66ed97159">com.pjbest.wop.wm.service.WopOutterHtOrderService</a></td><td>1.0.0</td><td>queryHtOrder</td><td>查询海淘订单</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryReq</td><td><a href="#26797709a205a3181621a0634ef6373c">com.pjbest.wop.wm.service.QueryHtOrderReq</a></td><td>是</td><td></td><td></td><td>查询海淘订单头请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#bacc4fdce9a11317853debb3afd13dae">com.pjbest.wop.wm.service.QueryHtOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="6b6bb8767d53275eedadd7b26b79a48b" class="xwdiv">方法描述:查询海淘订单状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#4079aa7ddb548ff4930f37f66ed97159">com.pjbest.wop.wm.service.WopOutterHtOrderService</a></td><td>1.0.0</td><td>queryStatus</td><td>查询海淘订单状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryStatusReq</td><td><a href="#1d7c57fedf82c9783d6d0749ec7e73a7">com.pjbest.wop.wm.service.QueryStatusReq</a></td><td>是</td><td></td><td></td><td>查询海淘订单状态请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#48dffdbef7fbaf2bf7ce235f6f93b535">com.pjbest.wop.wm.service.QueryStatusRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="ab6affc9dc8a82b7719c5678d2fee26f" class="xwdiv">方法描述:重推海淘订单</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#4079aa7ddb548ff4930f37f66ed97159">com.pjbest.wop.wm.service.WopOutterHtOrderService</a></td><td>1.0.0</td><td>reSend</td><td>重推海淘订单</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>reSendReq</td><td><a href="#3f4d045eec75ce709a634f176f951195">com.pjbest.wop.wm.service.ReSendHtOrderReq</a></td><td>是</td><td></td><td></td><td>重推海淘订单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#03a6d2958b13028380c833619cd0230a">com.pjbest.wop.wm.service.ReSendHtOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="f95828c02721e71b314caf23dc6e09cf" class="xwdiv">构造体描述:导入海淘订单明细记录</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.HtOrderStatus</td><td>导入海淘订单明细记录</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>statusType</td><td>BYTE</td><td>否</td><td></td><td></td><td>状态类型[0:订单状态,1:清关状态]</td></tr>
+<tr><td>status</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单状态[10:新增,20:预占失败,30:待清关中,40:清关中,41:清关完成,42:清关失败,100:仓库新增,110:待审核,111:审核通过,112:审核不通过,113:待确定地址,101:仓库下单中,200:仓库已下单,102:下单失败,300:拣货中,301:已打包,400:已出仓,420:核放中,421:核放完成,422:核放失败,500:配送中,501:已签收,502:已拒收,600:已取消,900:关闭]。清关状态[11:已报国检,12国检放行,13:国检审核不通过,14:国检抽查,21:已报关,22:海关查验,23:海关放行,24:海关退单]</td></tr>
+<tr><td>statusRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>状态备注</td></tr>
+<tr><td>actionTime</td><td>DATE</td><td>否</td><td></td><td></td><td>状态发生时间</td></tr>
+</table>
+</div>
+</div>
+<div id="48dffdbef7fbaf2bf7ce235f6f93b535" class="xwdiv">构造体描述:查询海淘订单状态响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryStatusRsp</td><td>查询海淘订单状态响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>totalCount</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总数量</td></tr>
+<tr><td>htOrderStatusList</td><td>LIST&lt;<a href="#f95828c02721e71b314caf23dc6e09cf">com.pjbest.wop.wm.service.HtOrderStatus</a>&gt;</td><td>否</td><td></td><td></td><td>状态列表</td></tr>
+</table>
+</div>
+</div>
+<div id="1d7c57fedf82c9783d6d0749ec7e73a7" class="xwdiv">构造体描述:查询海淘订单状态请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryStatusReq</td><td>查询海淘订单状态请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>是</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>statusType</td><td>BYTE</td><td>否</td><td></td><td></td><td>状态类型[0:订单状态,1:清关状态]</td></tr>
+<tr><td>status</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单状态[10:新增,20:预占失败,30:待清关中,40:清关中,41:清关完成,42:清关失败,100:仓库新增,110:待审核,111:审核通过,112:审核不通过,113:待确定地址,101:仓库下单中,200:仓库已下单,102:下单失败,300:拣货中,301:已打包,400:已出仓,420:核放中,421:核放完成,422:核放失败,500:配送中,501:已签收,502:已拒收,600:已取消,900:关闭]。清关状态[11:已报国检,12国检放行,13:国检审核不通过,14:国检抽查,21:已报关,22:海关查验,23:海关放行,24:海关退单]</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页面大小</td></tr>
+</table>
+</div>
+</div>
+<div id="ab1b0f60fefbe0a79a4871ec503e58e3" class="xwdiv">构造体描述:查询海淘订单明细记录</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryHtOrderDetail</td><td>查询海淘订单明细记录</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemSeq</td><td>STRING</td><td>否</td><td></td><td></td><td>商品序号</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>数量</td></tr>
+<tr><td>price</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>单价(销售单价)</td></tr>
+<tr><td>totalPrice</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>总价(商品销售总价)</td></tr>
+<tr><td>unit</td><td>STRING</td><td>否</td><td></td><td></td><td>计量单位</td></tr>
+</table>
+</div>
+</div>
+<div id="bacc4fdce9a11317853debb3afd13dae" class="xwdiv">构造体描述:获取海淘订单响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryHtOrderRsp</td><td>获取订海淘单响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>revcWarehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>收货仓</td></tr>
+<tr><td>buyerName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人姓名</td></tr>
+<tr><td>buyerIdcard</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人身份证号码</td></tr>
+<tr><td>buyerTel</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人电话</td></tr>
+<tr><td>buyerMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人手机</td></tr>
+<tr><td>buyerCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>收货国家</td></tr>
+<tr><td>buyerStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货省</td></tr>
+<tr><td>buyerStateCode</td><td>STRING</td><td>否</td><td></td><td></td><td>收货省名称</td></tr>
+<tr><td>buyerCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货市</td></tr>
+<tr><td>buyerCityCode</td><td>STRING</td><td>否</td><td></td><td></td><td>收货市编码</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功，500：失败</td></tr>
+<tr><td>buyerDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货区</td></tr>
+<tr><td>buyerDistrictCode</td><td>STRING</td><td>否</td><td></td><td></td><td>收货区编码</td></tr>
+<tr><td>buyerTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货乡镇/街道</td></tr>
+<tr><td>buyerTownCode</td><td>STRING</td><td>否</td><td></td><td></td><td>收货乡镇/街道编码</td></tr>
+<tr><td>buyerDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>收货详细地址</td></tr>
+<tr><td>zipCode</td><td>STRING</td><td>否</td><td></td><td></td><td>邮政编码</td></tr>
+<tr><td>transportReq</td><td>BYTE</td><td>否</td><td></td><td></td><td>运输要求</td></tr>
+<tr><td>carriage</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>运费</td></tr>
+<tr><td>payType</td><td>STRING</td><td>否</td><td></td><td></td><td>支付方式</td></tr>
+<tr><td>money</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>应收金额</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>codType</td><td>STRING</td><td>否</td><td></td><td></td><td>货到付款方式</td></tr>
+<tr><td>platformAddDtmLoc</td><td>DATE</td><td>否</td><td></td><td></td><td>平台下单时间</td></tr>
+<tr><td>erpCreatedDtmLoc</td><td>DATE</td><td>否</td><td></td><td></td><td>ERP订单创建时间</td></tr>
+<tr><td>carrierCode</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商编码(快递企业代码，不传默认唯品物流)[PJ:唯品物流]</td></tr>
+<tr><td>carrierName</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商全称</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓</td></tr>
+<tr><td>customerRequirements</td><td>STRING</td><td>否</td><td></td><td></td><td>客户要求</td></tr>
+<tr><td>serviceTel</td><td>STRING</td><td>否</td><td></td><td></td><td>服务电话</td></tr>
+<tr><td>isPrintingPrice</td><td>BYTE</td><td>否</td><td></td><td></td><td>清单是否打印价格，0：否，1：是</td></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>outTime</td><td>DATE</td><td>否</td><td></td><td></td><td>出仓时间</td></tr>
+<tr><td>currencyCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货币代码</td></tr>
+<tr><td>ccMode</td><td>STRING</td><td>否</td><td></td><td></td><td>清关模式[1:BBC备货]</td></tr>
+<tr><td>customsCode</td><td>STRING</td><td>否</td><td></td><td></td><td>关口[gzhg广州海关，tjhg天津海关，cqhg重庆海关，nbhg宁波海关]</td></tr>
+<tr><td>declareType</td><td>STRING</td><td>否</td><td></td><td></td><td>申报海关类型[1-总署；2-地方关]</td></tr>
+<tr><td>paymentNo</td><td>STRING</td><td>否</td><td></td><td></td><td>支付交易号</td></tr>
+<tr><td>totalMoney</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>订单总价,订单所有商品的总价不包含运费与税金，单位 RMB</td></tr>
+<tr><td>pkgGweight</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>订单总毛重,整个订单包裹的总重量，单位 KG</td></tr>
+<tr><td>goodsNweight</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>订单总净重,订单所有商品不包含快递包装的重量，单位 KG</td></tr>
+<tr><td>crmCustName</td><td>STRING</td><td>否</td><td></td><td></td><td>货主名称</td></tr>
+<tr><td>insuredFee</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>保费</td></tr>
+<tr><td>cusTax</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>税费</td></tr>
+<tr><td>subscriberName</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人姓名</td></tr>
+<tr><td>subscriberIdcard</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人身份证号码</td></tr>
+<tr><td>subscriberPhone</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人电话</td></tr>
+<tr><td>deliverName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人姓名</td></tr>
+<tr><td>deliverIdcard</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人身份证号码</td></tr>
+<tr><td>deliverTel</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人电话</td></tr>
+<tr><td>deliverMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人手机</td></tr>
+<tr><td>deliverCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>发货国家</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>erp订单号</td></tr>
+<tr><td>deliverStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货省</td></tr>
+<tr><td>deliverStateCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货省名称</td></tr>
+<tr><td>deliverCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货市</td></tr>
+<tr><td>deliverCityCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货市编码</td></tr>
+<tr><td>deliverDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货区</td></tr>
+<tr><td>deliverDistrictCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货区编码</td></tr>
+<tr><td>deliverTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货乡镇/街道</td></tr>
+<tr><td>deliverTownCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货乡镇/街道编码</td></tr>
+<tr><td>deliverDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>发货详细地址</td></tr>
+<tr><td>batchNumber</td><td>STRING</td><td>否</td><td></td><td></td><td>批次号（发货批次）</td></tr>
+<tr><td>oldErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>原订单号</td></tr>
+<tr><td>ladingBillNumber</td><td>STRING</td><td>否</td><td></td><td></td><td>提单号</td></tr>
+<tr><td>subLadingBillNumber</td><td>STRING</td><td>否</td><td></td><td></td><td>子提单号</td></tr>
+<tr><td>orderStatus</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单状态[10:新增,20:预占失败,30:待清关中,40:清关中,41:清关完成,42:清关失败,100:仓库新增,110:待审核,111:审核通过,112:审核不通过,113:待确定地址,101:仓库下单中,200:仓库已下单,102:下单失败,300:拣货中,301:已打包,400:已出仓,420:核放中,421:核放完成,422:核放失败,500:配送中,501:已签收,502:已拒收,600:已取消,900:关闭]</td></tr>
+<tr><td>handleRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>订单处理备注</td></tr>
+<tr><td>details</td><td>LIST&lt;<a href="#ab1b0f60fefbe0a79a4871ec503e58e3">com.pjbest.wop.wm.service.QueryHtOrderDetail</a>&gt;</td><td>否</td><td></td><td></td><td>明细列表</td></tr>
+<tr><td>platformOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>平台(客户)订单号</td></tr>
+<tr><td>platformName</td><td>STRING</td><td>否</td><td></td><td></td><td>销售平台名称(订单来源)[TB:淘宝,JD:京东]</td></tr>
+</table>
+</div>
+</div>
+<div id="26797709a205a3181621a0634ef6373c" class="xwdiv">构造体描述:获取海淘订单请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryHtOrderReq</td><td>获取海淘订单请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP订单号</td></tr>
+</table>
+</div>
+</div>
+<div id="03a6d2958b13028380c833619cd0230a" class="xwdiv">构造体描述:重推海淘订单响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ReSendHtOrderRsp</td><td>重推海淘订单响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码：200：成功，201：幂等成功，500：取消失败，501：订单不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="3f4d045eec75ce709a634f176f951195" class="xwdiv">构造体描述:重推海淘订单请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ReSendHtOrderReq</td><td>重推海淘订单请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>subscriberName</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人姓名</td></tr>
+<tr><td>subscriberIdcard</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人身份证号码</td></tr>
+</table>
+</div>
+</div>
+<div id="42245ba223d2e9e8aee668e455f07bf2" class="xwdiv">构造体描述:取消海淘订单响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CancelHtOrderRsp</td><td>取消海淘订单响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码：200：成功，201：订单已取消过，500：取消失败，501：订单不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="79a1ebc2bc061d183e61cb9c75275acf" class="xwdiv">构造体描述:取消海淘订单请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CancelHtOrderReq</td><td>取消海淘订单请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP订单号</td></tr>
+</table>
+</div>
+</div>
+<div id="dbdffc1930e1dfc4eab62f6f95157fe4" class="xwdiv">构造体描述:导入海淘订单明细记录</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateHtOrderDetail</td><td>导入海淘订单明细记录</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemSeq</td><td>STRING</td><td>否</td><td></td><td></td><td>商品序号</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>数量</td></tr>
+<tr><td>price</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>单价(销售单价)</td></tr>
+<tr><td>totalPrice</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>总价(商品销售总价)</td></tr>
+<tr><td>unit</td><td>STRING</td><td>否</td><td></td><td></td><td>计量单位</td></tr>
+</table>
+</div>
+</div>
+<div id="b70ee0991000ffc943ebdba2ca31845e" class="xwdiv">构造体描述:创建海淘订单响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateHtOrderRsp</td><td>创建海淘订单响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败,501：订单已存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="c095ac6211dce41a748040bbe7306722" class="xwdiv">构造体描述:创建海淘订单请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateHtOrderReq</td><td>创建海淘订单请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码；必填</td></tr>
+<tr><td>buyerTel</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人电话；收货人电话，手机二选一必填</td></tr>
+<tr><td>buyerMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人手机；收货人电话，手机二选一必填</td></tr>
+<tr><td>buyerCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>收货国家；非必填</td></tr>
+<tr><td>buyerStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货省；必填</td></tr>
+<tr><td>buyerCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货市；必填</td></tr>
+<tr><td>buyerDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货区；必填</td></tr>
+<tr><td>buyerTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货乡镇/街道；非必填</td></tr>
+<tr><td>buyerDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>收货详细地址；必填</td></tr>
+<tr><td>zipCode</td><td>STRING</td><td>否</td><td></td><td></td><td>邮政编码，六位的数字；必填</td></tr>
+<tr><td>customerRequirements</td><td>STRING</td><td>否</td><td></td><td></td><td>客户要求；非必填</td></tr>
+<tr><td>crmCustName</td><td>STRING</td><td>否</td><td></td><td></td><td>货主名称；非必填</td></tr>
+<tr><td>carriage</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>运费；必填</td></tr>
+<tr><td>payType</td><td>STRING</td><td>否</td><td></td><td></td><td>支付方式；必填</td></tr>
+<tr><td>money</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>应收金额；必填</td></tr>
+<tr><td>codType</td><td>STRING</td><td>否</td><td></td><td></td><td>货到付款方式；非必填</td></tr>
+<tr><td>platformAddDtmLoc</td><td>DATE</td><td>否</td><td></td><td></td><td>平台下单时间；非必填</td></tr>
+<tr><td>erpCreatedDtmLoc</td><td>DATE</td><td>否</td><td></td><td></td><td>ERP订单创建时间；非必填</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓；必填</td></tr>
+<tr><td>serviceTel</td><td>STRING</td><td>否</td><td></td><td></td><td>服务电话；非必填</td></tr>
+<tr><td>isPrintingPrice</td><td>BYTE</td><td>否</td><td></td><td></td><td>清单是否打印价格，0：否，1：是；非必填</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注；非必填</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>erp订单号；必填</td></tr>
+<tr><td>currencyCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货币代码；非必填</td></tr>
+<tr><td>ccMode</td><td>STRING</td><td>否</td><td></td><td></td><td>清关模式[1:BBC备货]；必填</td></tr>
+<tr><td>customsCode</td><td>STRING</td><td>否</td><td></td><td></td><td>关口[gzhg广州海关，tjhg天津海关，cqhg重庆海关，nbhg宁波海关]；必填</td></tr>
+<tr><td>declareType</td><td>STRING</td><td>否</td><td></td><td></td><td>申报海关类型[1-总署；2-地方关]；必填</td></tr>
+<tr><td>paymentNo</td><td>STRING</td><td>否</td><td></td><td></td><td>支付交易号；必填</td></tr>
+<tr><td>totalMoney</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>订单总价,订单所有商品的总价不包含运费与税金，单位 RMB；必填</td></tr>
+<tr><td>pkgGweight</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>订单总毛重,整个订单包裹的总重量，单位 KG；必填</td></tr>
+<tr><td>goodsNweight</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>订单总净重,订单所有商品不包含快递包装的重量，单位 KG；必填</td></tr>
+<tr><td>insuredFee</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>保费；必填</td></tr>
+<tr><td>cusTax</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>税费；必填</td></tr>
+<tr><td>oldErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>原订单号；非必填</td></tr>
+<tr><td>subscriberName</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人姓名；非必填</td></tr>
+<tr><td>subscriberIdcard</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人身份证号码；非必填</td></tr>
+<tr><td>subscriberPhone</td><td>STRING</td><td>否</td><td></td><td></td><td>订购人电话；非必填</td></tr>
+<tr><td>deliverName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人姓名；必填</td></tr>
+<tr><td>deliverIdcard</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人身份证号码；必填</td></tr>
+<tr><td>deliverTel</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人电话；非必填</td></tr>
+<tr><td>deliverMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人手机；非必填</td></tr>
+<tr><td>deliverCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>发货国家；必填</td></tr>
+<tr><td>deliverStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货省；必填</td></tr>
+<tr><td>deliverCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货市；必填</td></tr>
+<tr><td>platformOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>平台(客户)订单号；必填</td></tr>
+<tr><td>deliverDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货区；必填</td></tr>
+<tr><td>deliverTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货乡镇/街道；非必填</td></tr>
+<tr><td>deliverDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>发货详细地址；必填</td></tr>
+<tr><td>batchNumber</td><td>STRING</td><td>否</td><td></td><td></td><td>批次号（发货批次）；非必填</td></tr>
+<tr><td>ladingBillNumber</td><td>STRING</td><td>否</td><td></td><td></td><td>提单号；非必填</td></tr>
+<tr><td>subLadingBillNumber</td><td>STRING</td><td>否</td><td></td><td></td><td>子提单号；非必填</td></tr>
+<tr><td>details</td><td>LIST&lt;<a href="#dbdffc1930e1dfc4eab62f6f95157fe4">com.pjbest.wop.wm.service.CreateHtOrderDetail</a>&gt;</td><td>否</td><td></td><td></td><td>明细列表；必填</td></tr>
+<tr><td>carriersCode</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商编码，例：SF；必填</td></tr>
+<tr><td>platformName</td><td>STRING</td><td>否</td><td></td><td></td><td>销售平台名称(订单来源)[TB:淘宝,JD:京东]；必填</td></tr>
+<tr><td>revcWarehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>收货仓；非必填</td></tr>
+<tr><td>buyerName</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人姓名；必填</td></tr>
+<tr><td>buyerIdcard</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人身份证号码；非必填</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

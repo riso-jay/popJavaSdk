@@ -1,0 +1,243 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.vip.wop.app.jit.service.WopJitxOrderPopService</div>
+<div class="xwdiv">标题:云仓JITX订单服务</div>
+<div id="802d72a558c3f24f003833a7cc856e21" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.vip.wop.app.jit.service.WopJitxOrderPopService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#7432ff9423d97e8ef4be0798600fed1b">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#9a66bc9e4a04a2b914a3a7bf025119dc">queryJitxOrder</a></td><td>云仓JITX订单查询接口</td><td>queryJitxOrder(STRUCT  request, INTEGER  pageNum, INTEGER  pageSize)</td></tr>
+<tr><td><a href="#a039188f757b2955bc13d26295c24be1">queryJitxOrderDetail</a></td><td>云仓JITX订单明细查询接口</td><td>queryJitxOrderDetail(STRING  crmCustCode, STRING  platformOrderSn)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#7e558dc0825085fc5c274a95a3a5ad66">com.vip.wop.app.jit.service.JitxOrderDetail</a></td><td>云仓JITX订单明细号</td></tr>
+<tr><td><a href="#fdf6a94bc1aec9cbc03ca4dc6e9e0756">com.vip.wop.app.jit.service.JitxOrderDetailQueryResponse</a></td><td>云仓JITX订单明细查询结果号</td></tr>
+<tr><td><a href="#a71d4c96d7464f94fe65f40674623ebe">com.vip.wop.app.jit.service.JitxOrder</a></td><td>云仓JITX订单头号</td></tr>
+<tr><td><a href="#c0755d6960709ca9faf5ba6607c5466c">com.vip.wop.app.jit.service.JitxOrderQueryResponse</a></td><td>云仓JITX订单查询响应号</td></tr>
+<tr><td><a href="#e76b403193fc05c9f8486425b1a91204">com.vip.wop.app.jit.service.JitxOrderQueryRequest</a></td><td>云仓JITX订单查询参数号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="7432ff9423d97e8ef4be0798600fed1b" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#802d72a558c3f24f003833a7cc856e21">com.vip.wop.app.jit.service.WopJitxOrderPopService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="9a66bc9e4a04a2b914a3a7bf025119dc" class="xwdiv">方法描述:云仓JITX订单查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#802d72a558c3f24f003833a7cc856e21">com.vip.wop.app.jit.service.WopJitxOrderPopService</a></td><td>1.0.0</td><td>queryJitxOrder</td><td>云仓JITX订单查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>request</td><td><a href="#e76b403193fc05c9f8486425b1a91204">com.vip.wop.app.jit.service.JitxOrderQueryRequest</a></td><td>是</td><td></td><td></td><td>查询条件</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>否</td><td></td><td></td><td>页码，默认为1</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>否</td><td></td><td></td><td>页大小，默认为10，最大50</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#c0755d6960709ca9faf5ba6607c5466c">com.vip.wop.app.jit.service.JitxOrderQueryResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="a039188f757b2955bc13d26295c24be1" class="xwdiv">方法描述:云仓JITX订单明细查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#802d72a558c3f24f003833a7cc856e21">com.vip.wop.app.jit.service.WopJitxOrderPopService</a></td><td>1.0.0</td><td>queryJitxOrderDetail</td><td>云仓JITX订单明细查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>platformOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>唯品订单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#fdf6a94bc1aec9cbc03ca4dc6e9e0756">com.vip.wop.app.jit.service.JitxOrderDetailQueryResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="7e558dc0825085fc5c274a95a3a5ad66" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.wop.app.jit.service.JitxOrderDetail</td><td>云仓JITX订单明细</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>请求数量</td></tr>
+<tr><td>outQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>出仓数量</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>brandName</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌名称</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建时间，毫秒</td></tr>
+</table>
+</div>
+</div>
+<div id="fdf6a94bc1aec9cbc03ca4dc6e9e0756" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.wop.app.jit.service.JitxOrderDetailQueryResponse</td><td>云仓JITX订单明细查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>否</td><td></td><td></td><td>总记录数</td></tr>
+<tr><td>jitxOrderDetailList</td><td>LIST&lt;<a href="#7e558dc0825085fc5c274a95a3a5ad66">com.vip.wop.app.jit.service.JitxOrderDetail</a>&gt;</td><td>否</td><td></td><td></td><td>云仓JITX订单明细列表</td></tr>
+</table>
+</div>
+</div>
+<div id="a71d4c96d7464f94fe65f40674623ebe" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.wop.app.jit.service.JitxOrder</td><td>云仓JITX订单头</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓</td></tr>
+<tr><td>totalQty</td><td>LONG</td><td>否</td><td></td><td></td><td>订单件数</td></tr>
+<tr><td>totalOutQty</td><td>LONG</td><td>否</td><td></td><td></td><td>订单出仓数量</td></tr>
+<tr><td>outTime</td><td>LONG</td><td>否</td><td></td><td></td><td>出仓时间，毫秒</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建时间，毫秒</td></tr>
+<tr><td>updatedDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>更新时间，毫秒</td></tr>
+<tr><td>crmCustName</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商名称</td></tr>
+<tr><td>odsOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>云仓订单号</td></tr>
+<tr><td>platformOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品订单号</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>云仓ERP订单号</td></tr>
+<tr><td>orderStatus</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单状态，100：新增，101：下单中，102：下单失败，200：已下单，300：拣货中，301：已打包，400：已出仓，500：配送中，501：已签收，502：已拒收，600：已取消，900：已关闭</td></tr>
+<tr><td>carrierCode</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商编码</td></tr>
+<tr><td>carrierName</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商名称</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+</table>
+</div>
+</div>
+<div id="c0755d6960709ca9faf5ba6607c5466c" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.wop.app.jit.service.JitxOrderQueryResponse</td><td>云仓JITX订单查询响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>否</td><td></td><td></td><td>总记录数</td></tr>
+<tr><td>jitxOrders</td><td>LIST&lt;<a href="#a71d4c96d7464f94fe65f40674623ebe">com.vip.wop.app.jit.service.JitxOrder</a>&gt;</td><td>否</td><td></td><td></td><td>云仓JITX订单列表</td></tr>
+</table>
+</div>
+</div>
+<div id="e76b403193fc05c9f8486425b1a91204" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.wop.app.jit.service.JitxOrderQueryRequest</td><td>云仓JITX订单查询参数</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>orderStatus</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单状态，100：新增，101：下单中，102：下单失败，200：已下单，300：拣货中，301：已打包，400：已出仓，500：配送中，501：已签收，502：已拒收，600：已取消，900：已关闭</td></tr>
+<tr><td>outTimeFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>出仓时间范围开始，格式：yyyy-MM-dd HH:mm:ss</td></tr>
+<tr><td>outTimeTo</td><td>STRING</td><td>否</td><td></td><td></td><td>出仓时间范围结束，格式：yyyy-MM-dd HH:mm:ss</td></tr>
+<tr><td>createdDtmLocFrom</td><td>STRING</td><td>是</td><td></td><td></td><td>创建时间范围开始，格式：yyyy-MM-dd HH:mm:ss</td></tr>
+<tr><td>createdDtmLocTo</td><td>STRING</td><td>是</td><td></td><td></td><td>创建时间范围结束，格式：yyyy-MM-dd HH:mm:ss</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

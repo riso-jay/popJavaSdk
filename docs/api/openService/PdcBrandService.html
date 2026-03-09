@@ -1,0 +1,166 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.pdc.service.PdcBrandService</div>
+<div class="xwdiv">标题:WOP品牌同步API</div>
+<div id="7368817756bdac039a76960298ca3f9e" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.pdc.service.PdcBrandService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#9610cfee0a9113b769a786a979a4332a">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#481e956f8a7d466ed71f34378929b002">syncPdcBrand</a></td><td>品牌同步接口</td><td>syncPdcBrand(STRING  crmCustCode, STRUCT  syncBrand)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#b477cf96b26e1888ca2bacdfd56ad06c">com.pjbest.pdc.service.BrandSyncReq</a></td><td>品牌同步请求对象号</td></tr>
+<tr><td><a href="#a81c3256486df4ccdb629ad980b0ac5e">com.pjbest.pdc.service.BrandSyncResult</a></td><td>品牌同步结果号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#f887ca06b480f58121514ccdcb0b3244">com.pjbest.pdc.service.BrandSyncRespone</a></td><td>品牌同步返回结果号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="9610cfee0a9113b769a786a979a4332a" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#7368817756bdac039a76960298ca3f9e">com.pjbest.pdc.service.PdcBrandService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="481e956f8a7d466ed71f34378929b002" class="xwdiv">方法描述:品牌同步接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#7368817756bdac039a76960298ca3f9e">com.pjbest.pdc.service.PdcBrandService</a></td><td>1.0.0</td><td>syncPdcBrand</td><td>品牌同步接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>是</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>syncBrand</td><td><a href="#b477cf96b26e1888ca2bacdfd56ad06c">com.pjbest.pdc.service.BrandSyncReq</a></td><td>是</td><td></td><td></td><td>商品信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#f887ca06b480f58121514ccdcb0b3244">com.pjbest.pdc.service.BrandSyncRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="b477cf96b26e1888ca2bacdfd56ad06c" class="xwdiv">构造体描述:品牌同步请求对象</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.BrandSyncReq</td><td>品牌同步请求对象</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>custBrandCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户品牌编码(必填)</td></tr>
+<tr><td>custbrandName</td><td>STRING</td><td>是</td><td></td><td></td><td>客户品牌名称(必填 长度不能超过128)</td></tr>
+</table>
+</div>
+</div>
+<div id="a81c3256486df4ccdb629ad980b0ac5e" class="xwdiv">构造体描述:品牌同步结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.BrandSyncResult</td><td>品牌同步结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>custBrandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户品牌编码 (原值返回)</td></tr>
+<tr><td>custbrandName</td><td>STRING</td><td>否</td><td></td><td></td><td>客户品牌名称 (原值返回)</td></tr>
+<tr><td>pjBrandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品骏品牌编码</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="f887ca06b480f58121514ccdcb0b3244" class="xwdiv">构造体描述:品牌同步返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.BrandSyncRespone</td><td>品牌同步返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>syncResult</td><td><a href="#a81c3256486df4ccdb629ad980b0ac5e">com.pjbest.pdc.service.BrandSyncResult</a></td><td>否</td><td></td><td></td><td>品牌同步结果</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

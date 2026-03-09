@@ -1,0 +1,595 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WopOuterOrderBackService</div>
+<div class="xwdiv">标题:客退单接口服务</div>
+<div id="2a61984c87e87c941e34b37e0a6526e9" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOuterOrderBackService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#61cc21b5675d45603dcd011aac798e2e">cancelOrder</a></td><td>取消客退单</td><td>cancelOrder(STRING  customerCode, STRING  orderBackSn)</td></tr>
+<tr><td><a href="#951e9dbd46ed88d016fccc39319b22b8">createOrder</a></td><td>创建客退单</td><td>createOrder(STRING  customerCode, STRUCT  orderBackInfo)</td></tr>
+<tr><td><a href="#72547b474094cf5bd3c63eb476b6a99f">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#f3fafb918f6ed0f760b61bd038885561">modifyCarrier</a></td><td>修改客退单承运商信息</td><td>modifyCarrier(STRUCT  req)</td></tr>
+<tr><td><a href="#02a664eec76f5a035104d5b2a8720df9">queryOrderBackByErpOrderSn</a></td><td>通过erp订单号查询客退单列表</td><td>queryOrderBackByErpOrderSn(STRING  customerCode, STRUCT  req)</td></tr>
+<tr><td><a href="#0f9dbf0ff5d9b0d6c65cff2bf459b2d8">queryOrderDetail</a></td><td>查询客退单详情</td><td>queryOrderDetail(STRING  customerCode, STRING  orderBackSn)</td></tr>
+<tr><td><a href="#5a59abd2898d77c79bfbe60c30a0ac49">queryOrderStatusBatch</a></td><td>批量查询客退单状态</td><td>queryOrderStatusBatch(STRING  customerCode, LIST  orderBackSns)</td></tr>
+<tr><td><a href="#44272329e6c02401eaf61f52fe235faf">searchOrderList</a></td><td>查询客退单</td><td>searchOrderList(STRUCT  req)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#1bf821aed6dc14d9693a0af55a046ed0">com.pjbest.wop.wm.service.SearchOrderBackResponse</a></td><td>客退单查询响应结果号</td></tr>
+<tr><td><a href="#a0ec2995dfce4b056d991c21a0bf5880">com.pjbest.wop.wm.service.SearchOrderBackRequest</a></td><td>客退单查询请求号</td></tr>
+<tr><td><a href="#6fb24d62a32147314188cfdd269bc3eb">com.pjbest.wop.wm.service.ModifyCarrierRespone</a></td><td>修改客退单承运商响应号</td></tr>
+<tr><td><a href="#340681a217f632bb034617e580c0a937">com.pjbest.wop.wm.service.ModifyCarrierRequest</a></td><td>修改客退单承运商请求号</td></tr>
+<tr><td><a href="#0e1172fe80ec8fef15f0a5ce39f37d9b">com.pjbest.wop.wm.service.QueryByErpOrderSnReq</a></td><td>订单状态号</td></tr>
+<tr><td><a href="#d07fa12abe9dfecde3186d1f894c4810">com.pjbest.wop.wm.service.WopOrderBackDetailInfo</a></td><td>号</td></tr>
+<tr><td><a href="#06d38e045971c48b6c4c2342b705df41">com.pjbest.wop.wm.service.WopOrderBackInfo</a></td><td>号</td></tr>
+<tr><td><a href="#16c8257f12cf02beb098c88b7ffe9db7">com.pjbest.wop.wm.service.ObStatusResult</a></td><td>订单状态号</td></tr>
+<tr><td><a href="#ad078a858bb1e864289ae78b58a2ae37">com.pjbest.wop.wm.service.ObCancelResult</a></td><td>客退单取消结果号</td></tr>
+<tr><td><a href="#9474f1a6ad0b5d15dc4f4d01572fefb6">com.pjbest.wop.wm.service.ObCreateResult</a></td><td>客退单创建结果号</td></tr>
+<tr><td><a href="#705b9dac7a941c074225c9085332c74f">com.pjbest.wop.wm.service.OrderDetailInfo</a></td><td>客退单明细号</td></tr>
+<tr><td><a href="#bca716558fe3f8fc153f0dae1678f44f">com.pjbest.wop.wm.service.OrderBackInfo</a></td><td>客退单信息号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="61cc21b5675d45603dcd011aac798e2e" class="xwdiv">方法描述:取消客退单</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>cancelOrder</td><td>取消客退单</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客退单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#ad078a858bb1e864289ae78b58a2ae37">com.pjbest.wop.wm.service.ObCancelResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="951e9dbd46ed88d016fccc39319b22b8" class="xwdiv">方法描述:创建客退单</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>createOrder</td><td>创建客退单</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>orderBackInfo</td><td><a href="#bca716558fe3f8fc153f0dae1678f44f">com.pjbest.wop.wm.service.OrderBackInfo</a></td><td>是</td><td></td><td></td><td>客退单信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#9474f1a6ad0b5d15dc4f4d01572fefb6">com.pjbest.wop.wm.service.ObCreateResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="72547b474094cf5bd3c63eb476b6a99f" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="f3fafb918f6ed0f760b61bd038885561" class="xwdiv">方法描述:修改客退单承运商信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>modifyCarrier</td><td>修改客退单承运商信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#340681a217f632bb034617e580c0a937">com.pjbest.wop.wm.service.ModifyCarrierRequest</a></td><td>是</td><td></td><td></td><td>修改客退单承运商请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#6fb24d62a32147314188cfdd269bc3eb">com.pjbest.wop.wm.service.ModifyCarrierRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="02a664eec76f5a035104d5b2a8720df9" class="xwdiv">方法描述:通过erp订单号查询客退单列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>queryOrderBackByErpOrderSn</td><td>通过erp订单号查询客退单列表</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>req</td><td><a href="#0e1172fe80ec8fef15f0a5ce39f37d9b">com.pjbest.wop.wm.service.QueryByErpOrderSnReq</a></td><td>是</td><td></td><td></td><td>客退单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#06d38e045971c48b6c4c2342b705df41">com.pjbest.wop.wm.service.WopOrderBackInfo</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="0f9dbf0ff5d9b0d6c65cff2bf459b2d8" class="xwdiv">方法描述:查询客退单详情</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>queryOrderDetail</td><td>查询客退单详情</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客退单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#06d38e045971c48b6c4c2342b705df41">com.pjbest.wop.wm.service.WopOrderBackInfo</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="5a59abd2898d77c79bfbe60c30a0ac49" class="xwdiv">方法描述:批量查询客退单状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>queryOrderStatusBatch</td><td>批量查询客退单状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>orderBackSns</td><td>LIST&lt;STRING&gt;</td><td>是</td><td></td><td></td><td>客退单号列表</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#16c8257f12cf02beb098c88b7ffe9db7">com.pjbest.wop.wm.service.ObStatusResult</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="44272329e6c02401eaf61f52fe235faf" class="xwdiv">方法描述:查询客退单</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#2a61984c87e87c941e34b37e0a6526e9">com.pjbest.wop.wm.service.WopOuterOrderBackService</a></td><td>1.0.0</td><td>searchOrderList</td><td>查询客退单</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#a0ec2995dfce4b056d991c21a0bf5880">com.pjbest.wop.wm.service.SearchOrderBackRequest</a></td><td>是</td><td></td><td></td><td>查询客退单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#1bf821aed6dc14d9693a0af55a046ed0">com.pjbest.wop.wm.service.SearchOrderBackResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="1bf821aed6dc14d9693a0af55a046ed0" class="xwdiv">构造体描述:客退单查询响应结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchOrderBackResponse</td><td>客退单查询响应结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总记录数</td></tr>
+<tr><td>orderBackInfoList</td><td>LIST&lt;<a href="#06d38e045971c48b6c4c2342b705df41">com.pjbest.wop.wm.service.WopOrderBackInfo</a>&gt;</td><td>否</td><td></td><td></td><td>客退单信息列表</td></tr>
+</table>
+</div>
+</div>
+<div id="a0ec2995dfce4b056d991c21a0bf5880" class="xwdiv">构造体描述:客退单查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchOrderBackRequest</td><td>客退单查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>updatedDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期结束时间 (例：2017-08-09 09:09:09)</td></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客退单号</td></tr>
+<tr><td>systemSource</td><td>STRING</td><td>是</td><td></td><td></td><td>来源系统</td></tr>
+<tr><td>status</td><td>STRING</td><td>否</td><td></td><td></td><td>状态</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页的记录数</td></tr>
+<tr><td>createdDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期开始时间 (例：2017-08-08 08:08:08)，客退单号为空时，需要提供创建日期范围或更新日期范围；日期范围不能超过30天</td></tr>
+<tr><td>createdDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期结束时间 (例：2017-08-09 09:09:09)</td></tr>
+<tr><td>updatedDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期开始时间 (例：2017-08-08 08:08:08)，客退单号为空时，需要提供创建日期范围或更新日期范围；日期范围不能超过30天</td></tr>
+</table>
+</div>
+</div>
+<div id="6fb24d62a32147314188cfdd269bc3eb" class="xwdiv">构造体描述:修改客退单承运商响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ModifyCarrierRespone</td><td>修改客退单承运商响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="340681a217f632bb034617e580c0a937" class="xwdiv">构造体描述:修改客退单承运商请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ModifyCarrierRequest</td><td>修改客退单承运商请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>货主(客户)编码</td></tr>
+<tr><td>erpOrderBackSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP(客户)客退单号</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>是</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>carrierCode</td><td>STRING</td><td>是</td><td></td><td></td><td>承运商</td></tr>
+</table>
+</div>
+</div>
+<div id="0e1172fe80ec8fef15f0a5ce39f37d9b" class="xwdiv">构造体描述:订单状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryByErpOrderSnReq</td><td>订单状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>erp订单号</td></tr>
+<tr><td>orderBackType</td><td>BYTE</td><td>否</td><td></td><td></td><td>客退单类型(0-拒收 1-退货)</td></tr>
+</table>
+</div>
+</div>
+<div id="d07fa12abe9dfecde3186d1f894c4810" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOrderBackDetailInfo</td><td>null</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>否</td><td></td><td></td><td>主键</td></tr>
+<tr><td>inbQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>正品收货数</td></tr>
+<tr><td>damagedQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>残次收货数</td></tr>
+<tr><td>unit</td><td>STRING</td><td>否</td><td></td><td></td><td>单位，默认为件</td></tr>
+<tr><td>po</td><td>STRING</td><td>否</td><td></td><td></td><td>PO号</td></tr>
+<tr><td>returnReasonId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>退货原因ID</td></tr>
+<tr><td>returnReasonName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货原因名称</td></tr>
+<tr><td>brandId</td><td>STRING</td><td>否</td><td></td><td></td><td>档期号</td></tr>
+<tr><td>createdByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>创建者</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建者当地时间</td></tr>
+<tr><td>createdOffice</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者office</td></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客退单号</td></tr>
+<tr><td>createdTimeZone</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者当地时区</td></tr>
+<tr><td>updatedByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者</td></tr>
+<tr><td>updatedOffice</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者office</td></tr>
+<tr><td>updatedDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>修改者当地时间</td></tr>
+<tr><td>updatedTimeZone</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者当地时区</td></tr>
+<tr><td>recordVersion</td><td>LONG</td><td>否</td><td></td><td></td><td>记录版本号</td></tr>
+<tr><td>isDeleted</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否已删除 0、否；1、是 </td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>status</td><td>BYTE</td><td>否</td><td></td><td></td><td>状态 0:未处理 1:已处理 2:处理失败</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>orgQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>原订单数量</td></tr>
+<tr><td>reqQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>请求数</td></tr>
+<tr><td>actualQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>实际客退数量</td></tr>
+</table>
+</div>
+</div>
+<div id="06d38e045971c48b6c4c2342b705df41" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOrderBackInfo</td><td>null</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>否</td><td></td><td></td><td>主键</td></tr>
+<tr><td>odsOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流订单号</td></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>revcWarehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>收货仓</td></tr>
+<tr><td>bkUser</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人姓名</td></tr>
+<tr><td>bkUserMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人手机号码</td></tr>
+<tr><td>bkUserTel</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人固定电话</td></tr>
+<tr><td>bkUserCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人国家</td></tr>
+<tr><td>bkUserStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人省名称</td></tr>
+<tr><td>bkUserStateCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人省编码</td></tr>
+<tr><td>bkUserCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人市</td></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客退单号</td></tr>
+<tr><td>bkCityCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人市编码</td></tr>
+<tr><td>bkDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人区</td></tr>
+<tr><td>bkDistrictCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人区编码</td></tr>
+<tr><td>bkTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人乡镇/街道</td></tr>
+<tr><td>bkTownCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人乡镇/街道编码</td></tr>
+<tr><td>bkDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人详细地址</td></tr>
+<tr><td>zipCode</td><td>STRING</td><td>否</td><td></td><td></td><td>邮政编码</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>returnReason</td><td>STRING</td><td>否</td><td></td><td></td><td>退货原因</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>status</td><td>INTEGER</td><td>否</td><td></td><td></td><td>客退状态(100:待审核 200:审核通过 300:下单中 400:已下单 500:收包完成 600:收件完成 700:取消中  800:已取消 101:审核不通过 501:收包异常 601:收件异常)</td></tr>
+<tr><td>carrierCode</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商编码</td></tr>
+<tr><td>carrierName</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商简称</td></tr>
+<tr><td>inpackTime</td><td>STRING</td><td>否</td><td></td><td></td><td>收包时间yyyy-mm-ddhh:mm:ss</td></tr>
+<tr><td>inpackType</td><td>BYTE</td><td>否</td><td></td><td></td><td>收包类型</td></tr>
+<tr><td>recItemTime</td><td>STRING</td><td>否</td><td></td><td></td><td>收件时间</td></tr>
+<tr><td>expType</td><td>BYTE</td><td>否</td><td></td><td></td><td>异常类型</td></tr>
+<tr><td>expReason</td><td>STRING</td><td>否</td><td></td><td></td><td>异常原因</td></tr>
+<tr><td>returnType</td><td>STRING</td><td>否</td><td></td><td></td><td>退款方式</td></tr>
+<tr><td>returnMethod</td><td>STRING</td><td>否</td><td></td><td></td><td>退货方式</td></tr>
+<tr><td>isSpecialReturn</td><td>BYTE</td><td>否</td><td></td><td></td><td>特殊客退(0非特殊客退  1特殊客退)</td></tr>
+<tr><td>handleResultType</td><td>BYTE</td><td>否</td><td></td><td></td><td>处理结果(0正常 1异常)</td></tr>
+<tr><td>returnClass</td><td>BYTE</td><td>否</td><td></td><td></td><td>退货类型(0拒收 1客退 2拒收重发 3再投递)</td></tr>
+<tr><td>auditTime</td><td>STRING</td><td>否</td><td></td><td></td><td>审核时间yyyy-mm-dd hh:mm:ss</td></tr>
+<tr><td>auditUser</td><td>STRING</td><td>否</td><td></td><td></td><td>审核人</td></tr>
+<tr><td>auditStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>审核状态(0未审核 1审核通过 2审核不通过)</td></tr>
+<tr><td>auditRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>审核备注</td></tr>
+<tr><td>isBlackUser</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否客退黑名单(0否 1是)</td></tr>
+<tr><td>orderType</td><td>BYTE</td><td>否</td><td></td><td></td><td>订单类型(0 一般订单)</td></tr>
+<tr><td>returnsPayType</td><td>BYTE</td><td>否</td><td></td><td></td><td>运费到付标识(0：现付【向会员收取运费】  1：到付【公司负责运费】(揽退项目))</td></tr>
+<tr><td>goGetReturnTime</td><td>STRING</td><td>否</td><td></td><td></td><td>预约上门揽件时间(2015-04-09)</td></tr>
+<tr><td>returnFastType</td><td>BYTE</td><td>否</td><td></td><td></td><td>退款方式(1 - 不是(默认值))</td></tr>
+<tr><td>orderBackType</td><td>BYTE</td><td>否</td><td></td><td></td><td>客退单类型(0-拒收 1-退货)</td></tr>
+<tr><td>transportRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>客退申请回寄补充</td></tr>
+<tr><td>createdByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>创建者</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建者当地时间</td></tr>
+<tr><td>createdOffice</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者office</td></tr>
+<tr><td>createdTimeZone</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者当地时区</td></tr>
+<tr><td>updatedByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者</td></tr>
+<tr><td>updatedOffice</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者office</td></tr>
+<tr><td>updatedDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>修改者当地时间</td></tr>
+<tr><td>updatedTimeZone</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者当地时区</td></tr>
+<tr><td>recordVersion</td><td>LONG</td><td>否</td><td></td><td></td><td>记录版本号</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>erp订单号</td></tr>
+<tr><td>isDeleted</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否已删除 0、否；1、是 </td></tr>
+<tr><td>erpOrderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP客退单号</td></tr>
+<tr><td>dataSource</td><td>BYTE</td><td>否</td><td></td><td></td><td>数据来潮[0:内部转单 1:接口 2:导入]</td></tr>
+<tr><td>detailInfos</td><td>LIST&lt;<a href="#d07fa12abe9dfecde3186d1f894c4810">com.pjbest.wop.wm.service.WopOrderBackDetailInfo</a>&gt;</td><td>否</td><td></td><td></td><td>订单明细</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>wop订单号</td></tr>
+<tr><td>platformOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>平台(客户)订单号</td></tr>
+<tr><td>platformName</td><td>STRING</td><td>否</td><td></td><td></td><td>销售平台名称</td></tr>
+</table>
+</div>
+</div>
+<div id="16c8257f12cf02beb098c88b7ffe9db7" class="xwdiv">构造体描述:订单状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ObStatusResult</td><td>订单状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客退单号</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>状态码[200:成功]</td></tr>
+<tr><td>message</td><td>STRING</td><td>否</td><td></td><td></td><td>错误提示</td></tr>
+<tr><td>status</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单状态</td></tr>
+</table>
+</div>
+</div>
+<div id="ad078a858bb1e864289ae78b58a2ae37" class="xwdiv">构造体描述:客退单取消结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ObCancelResult</td><td>客退单取消结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客退单号</td></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>状态码[200:成功]</td></tr>
+<tr><td>message</td><td>STRING</td><td>否</td><td></td><td></td><td>错误提示</td></tr>
+</table>
+</div>
+</div>
+<div id="9474f1a6ad0b5d15dc4f4d01572fefb6" class="xwdiv">构造体描述:客退单创建结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ObCreateResult</td><td>客退单创建结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP客退单号</td></tr>
+<tr><td>orderBackSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客退单号</td></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>状态码[200:成功]</td></tr>
+<tr><td>message</td><td>STRING</td><td>否</td><td></td><td></td><td>错误提示</td></tr>
+</table>
+</div>
+</div>
+<div id="705b9dac7a941c074225c9085332c74f" class="xwdiv">构造体描述:客退单明细</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderDetailInfo</td><td>客退单明细</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>reqQty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>请求数</td></tr>
+<tr><td>returnReasonName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货原因名称</td></tr>
+</table>
+</div>
+</div>
+<div id="bca716558fe3f8fc153f0dae1678f44f" class="xwdiv">构造体描述:客退单信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderBackInfo</td><td>客退单信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderBackSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP客退单号</td></tr>
+<tr><td>returnMethod</td><td>STRING</td><td>否</td><td></td><td></td><td>退货方式</td></tr>
+<tr><td>isSpecialReturn</td><td>BYTE</td><td>否</td><td></td><td></td><td>特殊客退(0非特殊客退  1特殊客退)</td></tr>
+<tr><td>orderBackType</td><td>BYTE</td><td>是</td><td></td><td></td><td>客退单类型(0-拒收 1-退货)</td></tr>
+<tr><td>isBlackUser</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否客退黑名单(0否 1是)</td></tr>
+<tr><td>orderType</td><td>BYTE</td><td>否</td><td></td><td></td><td>订单类型(0 一般订单)</td></tr>
+<tr><td>returnsPayType</td><td>BYTE</td><td>否</td><td></td><td></td><td>运费到付标识(0：现付【向会员收取运费】  1：到付【公司负责运费】(揽退项目))</td></tr>
+<tr><td>goGetReturnTime</td><td>STRING</td><td>否</td><td></td><td></td><td>预约上门揽件时间(2015-04-09)</td></tr>
+<tr><td>returnFastType</td><td>BYTE</td><td>否</td><td></td><td></td><td>退款方式(1 - 不是(默认值))</td></tr>
+<tr><td>transportRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>客退申请回寄补充</td></tr>
+<tr><td>bkUser</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人姓名</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>erp订单号</td></tr>
+<tr><td>bkUserMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人手机号码</td></tr>
+<tr><td>bkUserTel</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人固定电话</td></tr>
+<tr><td>bkUserCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人国家</td></tr>
+<tr><td>bkUserStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人省名称</td></tr>
+<tr><td>bkUserStateCode</td><td>STRING</td><td>否</td><td></td><td></td><td>null</td></tr>
+<tr><td>bkUserCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人市</td></tr>
+<tr><td>bkCityCode</td><td>STRING</td><td>否</td><td></td><td></td><td>null</td></tr>
+<tr><td>bkDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人区</td></tr>
+<tr><td>bkDistrictCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人区编码</td></tr>
+<tr><td>bkTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人乡镇/街道</td></tr>
+<tr><td>revcWarehouse</td><td>STRING</td><td>是</td><td></td><td></td><td>收货仓</td></tr>
+<tr><td>bkTownCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人乡镇/街道编码</td></tr>
+<tr><td>bkDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>退货人详细地址</td></tr>
+<tr><td>zipCode</td><td>STRING</td><td>否</td><td></td><td></td><td>邮政编码</td></tr>
+<tr><td>orderDetailInfos</td><td>LIST&lt;<a href="#705b9dac7a941c074225c9085332c74f">com.pjbest.wop.wm.service.OrderDetailInfo</a>&gt;</td><td>否</td><td></td><td></td><td>客退单明细</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>returnReason</td><td>STRING</td><td>是</td><td></td><td></td><td>退货原因</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>carrierCode</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商编码</td></tr>
+<tr><td>carrierName</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商名称</td></tr>
+<tr><td>returnType</td><td>STRING</td><td>否</td><td></td><td></td><td>退款方式</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

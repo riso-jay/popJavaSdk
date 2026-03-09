@@ -1,0 +1,876 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</div>
+<div class="xwdiv">标题:WOP退供单服务</div>
+<div id="22addd7e47551089a9c48e51d25a514e" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#1476904ec23682dca4007a7e93f98762">cancelInvReturnOrder</a></td><td>取消退供单接口</td><td>cancelInvReturnOrder(STRUCT  cancelInvReq)</td></tr>
+<tr><td><a href="#ca83842c2a3f235119e63d557b6b4c87">cleanInvReturnDetail</a></td><td>清空退供单明细接口</td><td>cleanInvReturnDetail(STRUCT  cleanDetailReq)</td></tr>
+<tr><td><a href="#feed9e3b35cd1772da8e3e2b20adc6db">createInvReturnOrder</a></td><td>创建退供单表头接口</td><td>createInvReturnOrder(STRUCT  createReq)</td></tr>
+<tr><td><a href="#35cbea0373f10cc6627813093cc7c9e1">editInvReturnOrder</a></td><td>修改退供单表头接口</td><td>editInvReturnOrder(STRUCT  editReq)</td></tr>
+<tr><td><a href="#4425db383fe765ce6f5057aa80525fde">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#2a8c561194f61c0414e4af40c1ddb983">importInvReturnDetail</a></td><td>导入退供单明细接口</td><td>importInvReturnDetail(STRUCT  importDetailReq)</td></tr>
+<tr><td><a href="#5917669971f09dbb8f62c33bee335ebf">queryInvReturnOrder</a></td><td>查询退供单接口</td><td>queryInvReturnOrder(STRUCT  queryReq)</td></tr>
+<tr><td><a href="#a13f70930bbb4a26589d5bb53d299e95">queryInvReturnOrderDetail</a></td><td>退供单明细查询接口</td><td>queryInvReturnOrderDetail(STRUCT  queryReq)</td></tr>
+<tr><td><a href="#7cb65de1a07b415320ca49a358079030">searchInvReturnOrderList</a></td><td>退供单分页查询接口</td><td>searchInvReturnOrderList(STRUCT  searchReq)</td></tr>
+<tr><td><a href="#4ba1ce48e5c201eb0d80331091c02ca0">submitInvReturnOrder</a></td><td>提交退供单接口</td><td>submitInvReturnOrder(STRUCT  submitReq)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#5fac96b9cfaa2f063f36da400479bdd0">com.pjbest.wop.wm.service.CancelInvReturnOrderReq</a></td><td>取消退供单请求号</td></tr>
+<tr><td><a href="#15998917596af6930243af9e96647a1d">com.pjbest.wop.wm.service.CancelInvReturnOrderRsp</a></td><td>取消退供单返回结果号</td></tr>
+<tr><td><a href="#e7775176cec2cae30a64c0d29ecbe96f">com.pjbest.wop.wm.service.CleanInvReturnDetailReq</a></td><td>清空退供单明细请求号</td></tr>
+<tr><td><a href="#f8d4b5ff6a5bf2ec082b3d71d83a7f24">com.pjbest.wop.wm.service.CleanInvReturnDetailRsp</a></td><td>清空退供单明细返回结果号</td></tr>
+<tr><td><a href="#92381df393c2edd045a860e6d4c99cc5">com.pjbest.wop.wm.service.CreateInvReturnOrderReq</a></td><td>创建退供单信息号</td></tr>
+<tr><td><a href="#e9b71af05bb7fae31e82f85df10a7203">com.pjbest.wop.wm.service.CreateInvReturnOrderRsp</a></td><td>创建退供单返回结果号</td></tr>
+<tr><td><a href="#aaa075f2176e0ff98ba6e4601a1a4b23">com.pjbest.wop.wm.service.EditInvReturnOrderReq</a></td><td>修改退供单信息号</td></tr>
+<tr><td><a href="#a1842864d19add415835ace1fe8cdbd6">com.pjbest.wop.wm.service.EditInvReturnOrderRsp</a></td><td>修改退供单返回结果号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#0408c89f4a6e2cd3401fc7c2f0207eda">com.pjbest.wop.wm.service.ImportInvReturnDetailReq</a></td><td>导入退供单明细请求号</td></tr>
+<tr><td><a href="#6dcbb89bfba5b6d3a527bbaa344ddc33">com.pjbest.wop.wm.service.ImportInvReturnDetailRsp</a></td><td>导入退供单明细返回结果号</td></tr>
+<tr><td><a href="#35d310fa33dd256937e1d8af0aa39cfe">com.pjbest.wop.wm.service.QueryInvReturnOrderReq</a></td><td>查询退供单请求号</td></tr>
+<tr><td><a href="#bab1695215199f6cadd2e8780d6a4a97">com.pjbest.wop.wm.service.QueryInvReturnOrderRsp</a></td><td>查询退供单信息返回结果号</td></tr>
+<tr><td><a href="#9f12389a1feb34522681beef99cf5682">com.pjbest.wop.wm.service.QueryInvReturnOrderDetailReq</a></td><td>退供单明细查询请求号</td></tr>
+<tr><td><a href="#96530650d04bfed75ed2f3e623b34474">com.pjbest.wop.wm.service.QueryInvReturnOrderDetailRsp</a></td><td>退供单明细查询返回结果号</td></tr>
+<tr><td><a href="#ccc7f848648f7ca919c148f5da068c8b">com.pjbest.wop.wm.service.SearchInvReturnOrderReq</a></td><td>退供单分页查询请求号</td></tr>
+<tr><td><a href="#edcb8134b8c7824bf0623eba9f458dde">com.pjbest.wop.wm.service.SearchInvReturnResult</a></td><td>退供单查询返回结果号</td></tr>
+<tr><td><a href="#4ad53cdc0d5e93cd2bceb3a78bda97c0">com.pjbest.wop.wm.service.SubmitInvReturnOrderReq</a></td><td>提交退供单请求号</td></tr>
+<tr><td><a href="#fc1daab3c62e7b95dc548bd23ad95656">com.pjbest.wop.wm.service.SubmitInvReturnOrderRsp</a></td><td>提交退供单返回结果号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+<tr><td><a href="#ac12ad228040287ed4cbb02eeecb2b37">com.pjbest.wop.wm.service.ImpItemDetail</a></td><td>导入退供单明细实体号</td></tr>
+<tr><td><a href="#8c546f99495e7db027f2999de49284cd">com.pjbest.wop.wm.service.QueryInvReturnOrderInfoVo</a></td><td>查询退供单信息返回结果实体号</td></tr>
+<tr><td><a href="#263518405f45e5da0c120a6331f5f0c9">com.pjbest.wop.wm.service.QueryInvReturnOrderInfoDetailVo</a></td><td>退供单明细查询返回结果实体号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+<tr><td><a href="#dcf28a0666a94ff6e0d49d2ddc924554">com.pjbest.wop.wm.service.InventroyReturnReturnType</a></td><td>退供类型枚举号</td></tr>
+<tr><td><a href="#4cd72c07e8c5a7c4d9efc98fa0be07b3">com.pjbest.wop.wm.service.InventroyReturnReturnMode</a></td><td>退供方式枚举号</td></tr>
+<tr><td><a href="#e25104b15af1cbea264343b2ed0ccf22">com.pjbest.wop.wm.service.InventroyReturnPayType</a></td><td>支付方式枚举号</td></tr>
+<tr><td><a href="#fe526620ec876c0bc36b98b8fcf774c4">com.pjbest.wop.wm.service.InventroyReturnReturnStatus</a></td><td>退供状态枚举号</td></tr>
+<tr><td><a href="#d8a971b060edca68cd6f8ae4e463da49">com.pjbest.wop.wm.service.InventroyReturnSaleStatus</a></td><td>售卖状态枚举号</td></tr>
+<tr><td><a href="#69178a53175db8333447d6073175dc19">com.pjbest.wop.wm.service.InventroyReturnGrade</a></td><td>货品等级枚举号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="1476904ec23682dca4007a7e93f98762" class="xwdiv">方法描述:取消退供单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>cancelInvReturnOrder</td><td>取消退供单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>cancelInvReq</td><td><a href="#5fac96b9cfaa2f063f36da400479bdd0">com.pjbest.wop.wm.service.CancelInvReturnOrderReq</a></td><td>是</td><td></td><td></td><td>取消退供单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#15998917596af6930243af9e96647a1d">com.pjbest.wop.wm.service.CancelInvReturnOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="ca83842c2a3f235119e63d557b6b4c87" class="xwdiv">方法描述:清空退供单明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>cleanInvReturnDetail</td><td>清空退供单明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>cleanDetailReq</td><td><a href="#e7775176cec2cae30a64c0d29ecbe96f">com.pjbest.wop.wm.service.CleanInvReturnDetailReq</a></td><td>是</td><td></td><td></td><td>清空退供单明细请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#f8d4b5ff6a5bf2ec082b3d71d83a7f24">com.pjbest.wop.wm.service.CleanInvReturnDetailRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="feed9e3b35cd1772da8e3e2b20adc6db" class="xwdiv">方法描述:创建退供单表头接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>createInvReturnOrder</td><td>创建退供单表头接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>createReq</td><td><a href="#92381df393c2edd045a860e6d4c99cc5">com.pjbest.wop.wm.service.CreateInvReturnOrderReq</a></td><td>是</td><td></td><td></td><td>创建退供单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#e9b71af05bb7fae31e82f85df10a7203">com.pjbest.wop.wm.service.CreateInvReturnOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="35cbea0373f10cc6627813093cc7c9e1" class="xwdiv">方法描述:修改退供单表头接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>editInvReturnOrder</td><td>修改退供单表头接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>editReq</td><td><a href="#aaa075f2176e0ff98ba6e4601a1a4b23">com.pjbest.wop.wm.service.EditInvReturnOrderReq</a></td><td>是</td><td></td><td></td><td>修改退供单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#a1842864d19add415835ace1fe8cdbd6">com.pjbest.wop.wm.service.EditInvReturnOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="4425db383fe765ce6f5057aa80525fde" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="2a8c561194f61c0414e4af40c1ddb983" class="xwdiv">方法描述:导入退供单明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>importInvReturnDetail</td><td>导入退供单明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>importDetailReq</td><td><a href="#0408c89f4a6e2cd3401fc7c2f0207eda">com.pjbest.wop.wm.service.ImportInvReturnDetailReq</a></td><td>是</td><td></td><td></td><td>导入退供单明细请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#6dcbb89bfba5b6d3a527bbaa344ddc33">com.pjbest.wop.wm.service.ImportInvReturnDetailRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="5917669971f09dbb8f62c33bee335ebf" class="xwdiv">方法描述:查询退供单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>queryInvReturnOrder</td><td>查询退供单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryReq</td><td><a href="#35d310fa33dd256937e1d8af0aa39cfe">com.pjbest.wop.wm.service.QueryInvReturnOrderReq</a></td><td>是</td><td></td><td></td><td>查询退供单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#bab1695215199f6cadd2e8780d6a4a97">com.pjbest.wop.wm.service.QueryInvReturnOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="a13f70930bbb4a26589d5bb53d299e95" class="xwdiv">方法描述:退供单明细查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>queryInvReturnOrderDetail</td><td>退供单明细查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryReq</td><td><a href="#9f12389a1feb34522681beef99cf5682">com.pjbest.wop.wm.service.QueryInvReturnOrderDetailReq</a></td><td>是</td><td></td><td></td><td>退供单明细查询请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#96530650d04bfed75ed2f3e623b34474">com.pjbest.wop.wm.service.QueryInvReturnOrderDetailRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="7cb65de1a07b415320ca49a358079030" class="xwdiv">方法描述:退供单分页查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>searchInvReturnOrderList</td><td>退供单分页查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>searchReq</td><td><a href="#ccc7f848648f7ca919c148f5da068c8b">com.pjbest.wop.wm.service.SearchInvReturnOrderReq</a></td><td>是</td><td></td><td></td><td>退供单查询请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#edcb8134b8c7824bf0623eba9f458dde">com.pjbest.wop.wm.service.SearchInvReturnResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="4ba1ce48e5c201eb0d80331091c02ca0" class="xwdiv">方法描述:提交退供单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#22addd7e47551089a9c48e51d25a514e">com.pjbest.wop.wm.service.WopOuterInvReturnOrderService</a></td><td>1.0.0</td><td>submitInvReturnOrder</td><td>提交退供单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>submitReq</td><td><a href="#4ad53cdc0d5e93cd2bceb3a78bda97c0">com.pjbest.wop.wm.service.SubmitInvReturnOrderReq</a></td><td>是</td><td></td><td></td><td>提交退供单请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#fc1daab3c62e7b95dc548bd23ad95656">com.pjbest.wop.wm.service.SubmitInvReturnOrderRsp</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="5fac96b9cfaa2f063f36da400479bdd0" class="xwdiv">构造体描述:取消退供单请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CancelInvReturnOrderReq</td><td>取消退供单请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+</table>
+</div>
+</div>
+<div id="15998917596af6930243af9e96647a1d" class="xwdiv">构造体描述:取消退供单返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CancelInvReturnOrderRsp</td><td>取消退供单返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码：200：成功，500：取消失败，501：退供单已取消过，502：退供单不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="e7775176cec2cae30a64c0d29ecbe96f" class="xwdiv">构造体描述:清空退供单明细请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CleanInvReturnDetailReq</td><td>清空退供单明细请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+</table>
+</div>
+</div>
+<div id="f8d4b5ff6a5bf2ec082b3d71d83a7f24" class="xwdiv">构造体描述:清空退供单明细返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CleanInvReturnDetailRsp</td><td>清空退供单明细返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码：200：成功，500：失败，501：退供单不存在，502：该退供单状态下不能清空</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="92381df393c2edd045a860e6d4c99cc5" class="xwdiv">构造体描述:创建退供单信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateInvReturnOrderReq</td><td>创建退供单信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>postcode</td><td>STRING</td><td>是</td><td></td><td></td><td>退供收货邮政编码</td></tr>
+<tr><td>state</td><td>STRING</td><td>是</td><td></td><td></td><td>退供收货省/州</td></tr>
+<tr><td>city</td><td>STRING</td><td>是</td><td></td><td></td><td>退供收货城市</td></tr>
+<tr><td>region</td><td>STRING</td><td>是</td><td></td><td></td><td>退供收货区/县</td></tr>
+<tr><td>town</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货乡镇/街道</td></tr>
+<tr><td>address</td><td>STRING</td><td>是</td><td></td><td></td><td>退供收货详细地址</td></tr>
+<tr><td>toEmail</td><td>STRING</td><td>是</td><td></td><td></td><td>通知邮箱</td></tr>
+<tr><td>ccEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>抄送邮箱</td></tr>
+<tr><td>transactionId</td><td>STRING</td><td>否</td><td></td><td></td><td>传输id</td></tr>
+<tr><td>refundToWarehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货仓码</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+<tr><td>refundRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>单据备注</td></tr>
+<tr><td>sourceFlag</td><td>STRING</td><td>否</td><td></td><td></td><td>来源标识</td></tr>
+<tr><td>returnType</td><td><a href="#dcf28a0666a94ff6e0d49d2ddc924554">com.pjbest.wop.wm.service.InventroyReturnReturnType</a></td><td>是</td><td></td><td></td><td>退供类型：110正常退供，111残次退供，112过期退供，113入库凭证退供</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>是</td><td></td><td></td><td>退供发货仓</td></tr>
+<tr><td>returnMode</td><td><a href="#4cd72c07e8c5a7c4d9efc98fa0be07b3">com.pjbest.wop.wm.service.InventroyReturnReturnMode</a></td><td>是</td><td></td><td></td><td>退供方式：1、自提；2、退供应商；3、增值服务；4、报废；5、暂存转上线</td></tr>
+<tr><td>payType</td><td><a href="#e25104b15af1cbea264343b2ed0ccf22">com.pjbest.wop.wm.service.InventroyReturnPayType</a></td><td>是</td><td></td><td></td><td>支付方式:0-到付，1-月结</td></tr>
+<tr><td>consignee</td><td>STRING</td><td>是</td><td></td><td></td><td>退供收货人</td></tr>
+<tr><td>telephone</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人电话</td></tr>
+<tr><td>mobile</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人手机</td></tr>
+</table>
+</div>
+</div>
+<div id="e9b71af05bb7fae31e82f85df10a7203" class="xwdiv">构造体描述:创建退供单返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateInvReturnOrderRsp</td><td>创建退供单返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败，501：退供单头已存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客户退供单号</td></tr>
+<tr><td>erpReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>退供单号</td></tr>
+</table>
+</div>
+</div>
+<div id="aaa075f2176e0ff98ba6e4601a1a4b23" class="xwdiv">构造体描述:修改退供单信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.EditInvReturnOrderReq</td><td>修改退供单信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>postcode</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货邮政编码</td></tr>
+<tr><td>state</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货省/州</td></tr>
+<tr><td>city</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货城市</td></tr>
+<tr><td>region</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货区/县</td></tr>
+<tr><td>town</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货乡镇/街道</td></tr>
+<tr><td>address</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货详细地址</td></tr>
+<tr><td>toEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>通知邮箱</td></tr>
+<tr><td>ccEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>抄送邮箱</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+<tr><td>returnType</td><td><a href="#dcf28a0666a94ff6e0d49d2ddc924554">com.pjbest.wop.wm.service.InventroyReturnReturnType</a></td><td>否</td><td></td><td></td><td>退供类型：110正常退供，111残次退供，112过期退供，113入库凭证退供</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>退供发货仓</td></tr>
+<tr><td>returnMode</td><td><a href="#4cd72c07e8c5a7c4d9efc98fa0be07b3">com.pjbest.wop.wm.service.InventroyReturnReturnMode</a></td><td>否</td><td></td><td></td><td>退供方式：1、自提；2、退供应商；3、增值服务；4、报废；5、暂存转上线</td></tr>
+<tr><td>payType</td><td><a href="#e25104b15af1cbea264343b2ed0ccf22">com.pjbest.wop.wm.service.InventroyReturnPayType</a></td><td>否</td><td></td><td></td><td>支付方式:0-到付，1-月结</td></tr>
+<tr><td>consignee</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人</td></tr>
+<tr><td>telephone</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人电话</td></tr>
+<tr><td>mobile</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人手机</td></tr>
+</table>
+</div>
+</div>
+<div id="a1842864d19add415835ace1fe8cdbd6" class="xwdiv">构造体描述:修改退供单返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.EditInvReturnOrderRsp</td><td>修改退供单返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败，501：退供单不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="0408c89f4a6e2cd3401fc7c2f0207eda" class="xwdiv">构造体描述:导入退供单明细请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ImportInvReturnDetailReq</td><td>导入退供单明细请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+<tr><td>detailList</td><td>LIST&lt;<a href="#ac12ad228040287ed4cbb02eeecb2b37">com.pjbest.wop.wm.service.ImpItemDetail</a>&gt;</td><td>是</td><td></td><td></td><td>退供单信息</td></tr>
+<tr><td>sourceFlag</td><td>STRING</td><td>否</td><td></td><td></td><td>来源标识</td></tr>
+</table>
+</div>
+</div>
+<div id="6dcbb89bfba5b6d3a527bbaa344ddc33" class="xwdiv">构造体描述:导入退供单明细返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ImportInvReturnDetailRsp</td><td>导入退供单明细返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码：200 成功,500 失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功，500：失败，501：明细全部重复，502：明细部分重复，503：退供单不存在，504：该退供单状态下不能导入</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="35d310fa33dd256937e1d8af0aa39cfe" class="xwdiv">构造体描述:查询退供单请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryInvReturnOrderReq</td><td>查询退供单请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客户退供单号，clientReturnSn和returnSn必须有一个不为空</td></tr>
+<tr><td>returnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>系统退供单号，clientReturnSn和returnSn必须有一个不为空</td></tr>
+</table>
+</div>
+</div>
+<div id="bab1695215199f6cadd2e8780d6a4a97" class="xwdiv">构造体描述:查询退供单信息返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryInvReturnOrderRsp</td><td>查询退供单信息返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功，500：失败，501：退供单不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>invReturnOrderInfo</td><td><a href="#8c546f99495e7db027f2999de49284cd">com.pjbest.wop.wm.service.QueryInvReturnOrderInfoVo</a></td><td>否</td><td></td><td></td><td>退供单信息</td></tr>
+</table>
+</div>
+</div>
+<div id="9f12389a1feb34522681beef99cf5682" class="xwdiv">构造体描述:退供单明细查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryInvReturnOrderDetailReq</td><td>退供单明细查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客户退供单号，clientReturnSn和returnSn必须有一个不为空</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页的记录数</td></tr>
+<tr><td>returnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>系统退供单号，clientReturnSn和returnSn必须有一个不为空</td></tr>
+<tr><td>returnSnList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>系统退供单号集合</td></tr>
+<tr><td>clientReturnSnList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>客户退供单号集合</td></tr>
+</table>
+</div>
+</div>
+<div id="96530650d04bfed75ed2f3e623b34474" class="xwdiv">构造体描述:退供单明细查询返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryInvReturnOrderDetailRsp</td><td>退供单明细查询返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码：200 成功,500 失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码：200 成功,500 失败，501：退供单不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>totalCount</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总数量</td></tr>
+<tr><td>detailItems</td><td>LIST&lt;<a href="#263518405f45e5da0c120a6331f5f0c9">com.pjbest.wop.wm.service.QueryInvReturnOrderInfoDetailVo</a>&gt;</td><td>否</td><td></td><td></td><td>明细列表</td></tr>
+</table>
+</div>
+</div>
+<div id="ccc7f848648f7ca919c148f5da068c8b" class="xwdiv">构造体描述:退供单分页查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchInvReturnOrderReq</td><td>退供单分页查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页的记录数</td></tr>
+<tr><td>updatedDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期开始时间 (例：2017-08-08 08:08:08)，客户退供单号和系统退供单号都为空时，创建日期范围和更新日期范围必填一个；日期范围不能超过30天</td></tr>
+<tr><td>updatedDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期结束时间 (例：2017-08-09 09:09:09)</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>客户退供单号</td></tr>
+<tr><td>returnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>系统退供单号</td></tr>
+<tr><td>returnType</td><td><a href="#dcf28a0666a94ff6e0d49d2ddc924554">com.pjbest.wop.wm.service.InventroyReturnReturnType</a></td><td>否</td><td></td><td></td><td>退供类型：110正常退供，111残次退供，112过期退供，113入库凭证退供</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓码</td></tr>
+<tr><td>status</td><td><a href="#fe526620ec876c0bc36b98b8fcf774c4">com.pjbest.wop.wm.service.InventroyReturnReturnStatus</a></td><td>否</td><td></td><td></td><td>退供单状态</td></tr>
+<tr><td>createdDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期开始时间 (例：2017-08-08 08:08:08)，客户退供单号和系统退供单号都为空时，创建日期范围和更新日期范围必填一个；日期范围不能超过30天</td></tr>
+<tr><td>createdDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期结束时间 (例：2017-08-09 09:09:09)</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+</table>
+</div>
+</div>
+<div id="edcb8134b8c7824bf0623eba9f458dde" class="xwdiv">构造体描述:退供单查询返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchInvReturnResult</td><td>退供单查询返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总的记录数</td></tr>
+<tr><td>returnOrderInfoVoList</td><td>LIST&lt;<a href="#8c546f99495e7db027f2999de49284cd">com.pjbest.wop.wm.service.QueryInvReturnOrderInfoVo</a>&gt;</td><td>否</td><td></td><td></td><td>当前页面退供单记录</td></tr>
+</table>
+</div>
+</div>
+<div id="4ad53cdc0d5e93cd2bceb3a78bda97c0" class="xwdiv">构造体描述:提交退供单请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SubmitInvReturnOrderReq</td><td>提交退供单请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+</table>
+</div>
+</div>
+<div id="fc1daab3c62e7b95dc548bd23ad95656" class="xwdiv">构造体描述:提交退供单返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SubmitInvReturnOrderRsp</td><td>提交退供单返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码：200：成功，500：失败，501：退供单已提交过，502：退供单不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div id="ac12ad228040287ed4cbb02eeecb2b37" class="xwdiv">构造体描述:导入退供单明细实体</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ImpItemDetail</td><td>导入退供单明细实体</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>saleStatus</td><td><a href="#d8a971b060edca68cd6f8ae4e463da49">com.pjbest.wop.wm.service.InventroyReturnSaleStatus</a></td><td>是</td><td></td><td></td><td>售卖状态</td></tr>
+<tr><td>grade</td><td><a href="#69178a53175db8333447d6073175dc19">com.pjbest.wop.wm.service.InventroyReturnGrade</a></td><td>是</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>qty</td><td>LONG</td><td>是</td><td></td><td></td><td>申请退供数量</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>客户PO号</td></tr>
+</table>
+</div>
+</div>
+<div id="8c546f99495e7db027f2999de49284cd" class="xwdiv">构造体描述:查询退供单信息返回结果实体</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryInvReturnOrderInfoVo</td><td>查询退供单信息返回结果实体</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>postcode</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货邮政编码</td></tr>
+<tr><td>state</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货省/州</td></tr>
+<tr><td>city</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货城市</td></tr>
+<tr><td>region</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货区/县</td></tr>
+<tr><td>town</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货乡镇/街道</td></tr>
+<tr><td>address</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货详细地址</td></tr>
+<tr><td>toEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>通知邮箱</td></tr>
+<tr><td>ccEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>抄送邮箱</td></tr>
+<tr><td>status</td><td>INTEGER</td><td>否</td><td></td><td></td><td>退供单状态</td></tr>
+<tr><td>erpReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>WOP退供单号</td></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+<tr><td>outTime</td><td>LONG</td><td>否</td><td></td><td></td><td>出仓时间</td></tr>
+<tr><td>totalBoxNum</td><td>INTEGER</td><td>否</td><td></td><td></td><td>总箱数</td></tr>
+<tr><td>boxId</td><td>STRING</td><td>否</td><td></td><td></td><td>箱号</td></tr>
+<tr><td>refundToWarehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货仓码</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建时间</td></tr>
+<tr><td>returnType</td><td><a href="#dcf28a0666a94ff6e0d49d2ddc924554">com.pjbest.wop.wm.service.InventroyReturnReturnType</a></td><td>否</td><td></td><td></td><td>退供类型：110正常退供，111残次退供，112过期退供，113入库凭证退供</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>退供发货仓</td></tr>
+<tr><td>returnMode</td><td><a href="#4cd72c07e8c5a7c4d9efc98fa0be07b3">com.pjbest.wop.wm.service.InventroyReturnReturnMode</a></td><td>否</td><td></td><td></td><td>退供方式：1、自提；2、退供应商；3、增值服务；4、报废；5、暂存转上线</td></tr>
+<tr><td>payType</td><td><a href="#e25104b15af1cbea264343b2ed0ccf22">com.pjbest.wop.wm.service.InventroyReturnPayType</a></td><td>否</td><td></td><td></td><td>支付方式:0-到付，1-月结</td></tr>
+<tr><td>consignee</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人</td></tr>
+<tr><td>telephone</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人电话</td></tr>
+<tr><td>mobile</td><td>STRING</td><td>否</td><td></td><td></td><td>退供收货人手机</td></tr>
+</table>
+</div>
+</div>
+<div id="263518405f45e5da0c120a6331f5f0c9" class="xwdiv">构造体描述:退供单明细查询返回结果实体</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryInvReturnOrderInfoDetailVo</td><td>退供单明细查询返回结果实体</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>clientReturnSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户退供单号</td></tr>
+<tr><td>vipPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品Po单号</td></tr>
+<tr><td>vipBoxNo</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品退供箱号</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>云仓Po单号</td></tr>
+<tr><td>returnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>云仓退供单号</td></tr>
+<tr><td>boxId</td><td>STRING</td><td>否</td><td></td><td></td><td>云仓退供箱号</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>saleStatus</td><td><a href="#d8a971b060edca68cd6f8ae4e463da49">com.pjbest.wop.wm.service.InventroyReturnSaleStatus</a></td><td>否</td><td></td><td></td><td>售卖状态</td></tr>
+<tr><td>grade</td><td><a href="#69178a53175db8333447d6073175dc19">com.pjbest.wop.wm.service.InventroyReturnGrade</a></td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>qty</td><td>LONG</td><td>否</td><td></td><td></td><td>申请退供数量</td></tr>
+<tr><td>actuallyQty</td><td>LONG</td><td>否</td><td></td><td></td><td>实际退供数量</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>客户PO号</td></tr>
+<tr><td>vipReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品退供单号</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+<div id="dcf28a0666a94ff6e0d49d2ddc924554" class="xwdiv">枚举描述:退供类型枚举</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InventroyReturnReturnType</td><td>退供类型枚举</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>COMMON_TYPE</td><td>110</td><td>正常退供</td></tr>
+<tr><td>DEFECTIVE_TYPE</td><td>111</td><td>残次退供</td></tr>
+<tr><td>OVERDUE_TYPE</td><td>112</td><td>过期退供</td></tr>
+<tr><td>BY_PO_TYPE</td><td>113</td><td>入库凭证退供</td></tr>
+<tr><td>SMART_RETURN_TYPE</td><td>114</td><td>智能退供</td></tr>
+</table>
+</div>
+<div id="4cd72c07e8c5a7c4d9efc98fa0be07b3" class="xwdiv">枚举描述:退供方式枚举</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InventroyReturnReturnMode</td><td>退供方式枚举</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>BY_SELF</td><td>1</td><td>自提</td></tr>
+<tr><td>RETURN_TO_VENDOR</td><td>2</td><td>退供应商</td></tr>
+<tr><td>VALUE_ADDED</td><td>3</td><td>增值服务</td></tr>
+<tr><td>SCRAPPED</td><td>4</td><td>报废</td></tr>
+<tr><td>TEMPORARY_TRANSFER_ONLINE</td><td>5</td><td>暂存转上线</td></tr>
+</table>
+</div>
+<div id="e25104b15af1cbea264343b2ed0ccf22" class="xwdiv">枚举描述:支付方式枚举</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InventroyReturnPayType</td><td>支付方式枚举</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>BY_COD</td><td>0</td><td>到付</td></tr>
+<tr><td>BY_MONTHLY</td><td>1</td><td>月结</td></tr>
+</table>
+</div>
+<div id="fe526620ec876c0bc36b98b8fcf774c4" class="xwdiv">枚举描述:退供状态枚举</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InventroyReturnReturnStatus</td><td>退供状态枚举</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>NEW</td><td>0</td><td>新增</td></tr>
+<tr><td>SUBMIT</td><td>1</td><td>已提交</td></tr>
+<tr><td>CANCEL</td><td>2</td><td>作废</td></tr>
+<tr><td>EX_WAREHOUSE</td><td>3</td><td>出仓</td></tr>
+<tr><td>DRAFT</td><td>4</td><td>草稿</td></tr>
+<tr><td>IN_AUTHED</td><td>5</td><td>待审核</td></tr>
+<tr><td>REJECT_AUTHED</td><td>6</td><td>驳回</td></tr>
+<tr><td>ROLL_BACK</td><td>7</td><td>退回</td></tr>
+<tr><td>CLOSE</td><td>8</td><td>关闭</td></tr>
+<tr><td>CANCEL_SUCC</td><td>9</td><td>取消成功</td></tr>
+<tr><td>EX_WAREHOUSE_ERROR</td><td>10</td><td>出仓错误</td></tr>
+</table>
+</div>
+<div id="d8a971b060edca68cd6f8ae4e463da49" class="xwdiv">枚举描述:售卖状态枚举</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InventroyReturnSaleStatus</td><td>售卖状态枚举</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>CAN_SALE</td><td>0</td><td>可用</td></tr>
+<tr><td>CAN_NOT_SALE</td><td>1</td><td>不可用</td></tr>
+</table>
+</div>
+<div id="69178a53175db8333447d6073175dc19" class="xwdiv">枚举描述:货品等级枚举</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InventroyReturnGrade</td><td>货品等级枚举</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>NORMAL</td><td>100</td><td>正常</td></tr>
+<tr><td>NORMAL_OVER_ONLINE</td><td>101</td><td>正常，已过可上线日期</td></tr>
+<tr><td>NORAL_OVER_INSURANCE</td><td>102</td><td>正常，已过保险期</td></tr>
+<tr><td>NORMAL_OVER_EXP</td><td>103</td><td>正常，已过失效期</td></tr>
+<tr><td>DEFECTIVE_1</td><td>210</td><td>一级残次</td></tr>
+<tr><td>DEFECTIVE_1_OVER_ONLINE</td><td>211</td><td>一级残次，已过可上线日期</td></tr>
+<tr><td>DEFECTIVE_1_OVER_INSURANCE</td><td>212</td><td>一级残次，已过保险期</td></tr>
+<tr><td>DEFECTIVE_1_OVER_EXP</td><td>213</td><td>一级残次，已过失效期</td></tr>
+<tr><td>DEFECTIVE_2</td><td>220</td><td>二级残次</td></tr>
+<tr><td>DEFECTIVE_2_OVER_ONLINE</td><td>221</td><td>二级残次，已过可上线日期</td></tr>
+<tr><td>DEFECTIVE_2_OVER_INSURANCE</td><td>222</td><td>二级残次，已过保险期</td></tr>
+<tr><td>DEFECTIVE_2_OVER_EXP</td><td>223</td><td>二级残次，已过失效期</td></tr>
+<tr><td>DEFECTIVE_3</td><td>230</td><td>三级残次</td></tr>
+<tr><td>DEFECTIVE_3_OVER_ONLINE</td><td>231</td><td>三级残次，已过可上线日期</td></tr>
+<tr><td>DEFECTIVE_3_OVER_INSURANCE</td><td>232</td><td>三级残次，已过保险期</td></tr>
+<tr><td>DEFECTIVE_3_OVER_EXP</td><td>233</td><td>三级残次，已过失效期</td></tr>
+</table>
+</div>
+</div></center></body></html>

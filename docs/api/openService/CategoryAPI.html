@@ -1,0 +1,538 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.pdc.service.CategoryAPI</div>
+<div class="xwdiv">标题:WOP类目API</div>
+<div id="d2dc95d07a9d537858d9fc3d2c69865e" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.pdc.service.CategoryAPI</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#c63a3ef29b20922dba9bbcdd8c4d2b2d">checkCategoryByCodeAndName</a></td><td>根据品类编码和名称校验品类信息接口</td><td>checkCategoryByCodeAndName(STRING  categoryCode, STRING  categoryName)</td></tr>
+<tr><td><a href="#232a66d07b82da1b33a68eb697ea250a">getCategory</a></td><td>获取类目节点信息接口</td><td>getCategory(INTEGER  categoryId)</td></tr>
+<tr><td><a href="#cc968a91339916112cd247a3fcb7ae3a">getCategorySpecialAttributeList</a></td><td>批量获取分类ID和属性IDS特有属性信息</td><td>getCategorySpecialAttributeList(LIST  categorySpecialParams)</td></tr>
+<tr><td><a href="#bc1b7b5ce1263d47f459618312aca189">getCategorySpecialAttributes</a></td><td>根据分类ID和属性ID获取特有属性信息</td><td>getCategorySpecialAttributes(INTEGER  categoryId, INTEGER  attributeId)</td></tr>
+<tr><td><a href="#4a0e196a05508b8f4078aac607789b83">getUpdatedPublishCategories</a></td><td>获取给定时间戳以后变更的发布导航分类节点信息接口</td><td>getUpdatedPublishCategories(LONG  sinceUpdateTime, INTEGER  hierarchyId, INTEGER  pageNum, INTEGER  pageSize)</td></tr>
+<tr><td><a href="#690854dfdd4463547ca9473018a81342">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#c8061bf03ce852323c5c4dcc0d6aa2d7">com.pjbest.pdc.service.AttributeValue</a></td><td>特有属性值号</td></tr>
+<tr><td><a href="#379f1257118cc4effad526674f12a730">com.pjbest.pdc.service.CategorySpecialAttributes</a></td><td>分类的特有属性及属性值号</td></tr>
+<tr><td><a href="#91fb0c4b59a8223d0b4960a7babceeac">com.pjbest.pdc.service.Parents</a></td><td>父分类信息号</td></tr>
+<tr><td><a href="#2cfd936359e3f388c90f13d948b62ed2">com.pjbest.pdc.service.CategoryUpdate</a></td><td>变更节点类号</td></tr>
+<tr><td><a href="#c74b9954d0adbc96eadb0907336d3e4d">com.pjbest.pdc.service.CategoryMapping</a></td><td>分类映射号</td></tr>
+<tr><td><a href="#e927cef0674bd5c3d9ceb2cf683a9e16">com.pjbest.pdc.service.Brands</a></td><td>分类关联的品牌号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+<tr><td><a href="#63a586359ed132ee04dcfda2aa350f7a">com.pjbest.pdc.service.Category</a></td><td>变更分类节点号</td></tr>
+<tr><td><a href="#fd4cf1b535fffb079a022a57f2cb879c">com.pjbest.pdc.service.AttributeWithValue</a></td><td>特有属性及属性值号</td></tr>
+<tr><td><a href="#a16c84dc05bbaf3e29fe1eed3b5c4669">com.pjbest.pdc.service.CategoryUpdates</a></td><td>变更节点集合号</td></tr>
+<tr><td><a href="#476188dae924fcc75e34161798abe540">com.pjbest.pdc.service.CategorySpecialParam</a></td><td>分类特有属性参数号</td></tr>
+<tr><td><a href="#9129229ad16972167bed5e70b99f5dec">com.pjbest.pdc.service.Attribute</a></td><td>分类属性号</td></tr>
+<tr><td><a href="#74f370f82d7b4cde678c734a708cf78b">com.pjbest.pdc.service.Option</a></td><td>属性选项号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+<tr><td><a href="#328d8a739b9150bc651636b2bc03248f">com.pjbest.pdc.service.CategoryType</a></td><td>类目节点类型号</td></tr>
+<tr><td><a href="#c1c4bce218268975421c6d8b69735942">com.pjbest.pdc.service.UpdateType</a></td><td>更新类型, 获取变更的节点接口使用号</td></tr>
+<tr><td><a href="#285e36b3d35469f4a42d977d4c89c3fa">com.pjbest.pdc.service.AttributeType</a></td><td>属性类型号</td></tr>
+<tr><td><a href="#acd7ca5bd228142515cad7cd645f2744">com.pjbest.pdc.service.DataType</a></td><td>属性数据类型号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="c63a3ef29b20922dba9bbcdd8c4d2b2d" class="xwdiv">方法描述:根据品类编码和名称校验品类信息接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#d2dc95d07a9d537858d9fc3d2c69865e">com.pjbest.pdc.service.CategoryAPI</a></td><td>1.0.0</td><td>checkCategoryByCodeAndName</td><td>根据品类编码和名称校验品类信息接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categoryCode</td><td>STRING</td><td>是</td><td></td><td></td><td>品类编码</td></tr>
+<tr><td>categoryName</td><td>STRING</td><td>是</td><td></td><td></td><td>品类名称</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>BOOLEAN</td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="232a66d07b82da1b33a68eb697ea250a" class="xwdiv">方法描述:获取类目节点信息接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#d2dc95d07a9d537858d9fc3d2c69865e">com.pjbest.pdc.service.CategoryAPI</a></td><td>1.0.0</td><td>getCategory</td><td>获取类目节点信息接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categoryId</td><td>INTEGER</td><td>是</td><td>categoryId=1</td><td></td><td>分类ID</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#63a586359ed132ee04dcfda2aa350f7a">com.pjbest.pdc.service.Category</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="cc968a91339916112cd247a3fcb7ae3a" class="xwdiv">方法描述:批量获取分类ID和属性IDS特有属性信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#d2dc95d07a9d537858d9fc3d2c69865e">com.pjbest.pdc.service.CategoryAPI</a></td><td>1.0.0</td><td>getCategorySpecialAttributeList</td><td>批量获取分类ID和属性IDS特有属性信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categorySpecialParams</td><td>LIST&lt;<a href="#476188dae924fcc75e34161798abe540">com.pjbest.pdc.service.CategorySpecialParam</a>&gt;</td><td>是</td><td></td><td></td><td>分类特有属性参数集合</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#379f1257118cc4effad526674f12a730">com.pjbest.pdc.service.CategorySpecialAttributes</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="bc1b7b5ce1263d47f459618312aca189" class="xwdiv">方法描述:根据分类ID和属性ID获取特有属性信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#d2dc95d07a9d537858d9fc3d2c69865e">com.pjbest.pdc.service.CategoryAPI</a></td><td>1.0.0</td><td>getCategorySpecialAttributes</td><td>根据分类ID和属性ID获取特有属性信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categoryId</td><td>INTEGER</td><td>是</td><td>categoryId=1</td><td></td><td>分类ID</td></tr>
+<tr><td>attributeId</td><td>INTEGER</td><td>否</td><td>attributeId=0</td><td></td><td>分类属性ID, 当attributeId=0时返回分类对应所有的特有属性信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#fd4cf1b535fffb079a022a57f2cb879c">com.pjbest.pdc.service.AttributeWithValue</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="4a0e196a05508b8f4078aac607789b83" class="xwdiv">方法描述:获取给定时间戳以后变更的发布导航分类节点信息接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#d2dc95d07a9d537858d9fc3d2c69865e">com.pjbest.pdc.service.CategoryAPI</a></td><td>1.0.0</td><td>getUpdatedPublishCategories</td><td>获取给定时间戳以后变更的发布导航分类节点信息接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>sinceUpdateTime</td><td>LONG</td><td>是</td><td>sinceUpdateTime=0</td><td></td><td>时间戳</td></tr>
+<tr><td>hierarchyId</td><td>INTEGER</td><td>是</td><td>hierarchyId=0</td><td>0</td><td>导航ID</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>否</td><td></td><td>1</td><td>当前页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td>500</td><td>一页多少条,不能大于1000</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#a16c84dc05bbaf3e29fe1eed3b5c4669">com.pjbest.pdc.service.CategoryUpdates</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="690854dfdd4463547ca9473018a81342" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#d2dc95d07a9d537858d9fc3d2c69865e">com.pjbest.pdc.service.CategoryAPI</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="c8061bf03ce852323c5c4dcc0d6aa2d7" class="xwdiv">构造体描述:特有属性值</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.AttributeValue</td><td>特有属性值</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>literal</td><td>STRING</td><td>否</td><td></td><td></td><td>特有属性值</td></tr>
+<tr><td>options</td><td>LIST&lt;<a href="#74f370f82d7b4cde678c734a708cf78b">com.pjbest.pdc.service.Option</a>&gt;</td><td>否</td><td></td><td></td><td>属性选项值</td></tr>
+</table>
+</div>
+</div>
+<div id="379f1257118cc4effad526674f12a730" class="xwdiv">构造体描述:分类的特有属性及属性值</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.CategorySpecialAttributes</td><td>分类的特有属性及属性值</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categoryId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>分类ID</td></tr>
+<tr><td>attributeWithValueList</td><td>LIST&lt;<a href="#fd4cf1b535fffb079a022a57f2cb879c">com.pjbest.pdc.service.AttributeWithValue</a>&gt;</td><td>否</td><td></td><td></td><td>属性值</td></tr>
+</table>
+</div>
+</div>
+<div id="91fb0c4b59a8223d0b4960a7babceeac" class="xwdiv">构造体描述:父分类信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.Parents</td><td>父分类信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categoryId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>父分类ID</td></tr>
+<tr><td>name</td><td>STRING</td><td>否</td><td></td><td></td><td>父分类名称</td></tr>
+<tr><td>type</td><td><a href="#328d8a739b9150bc651636b2bc03248f">com.pjbest.pdc.service.CategoryType</a></td><td>否</td><td></td><td></td><td>父分类类型</td></tr>
+</table>
+</div>
+</div>
+<div id="2cfd936359e3f388c90f13d948b62ed2" class="xwdiv">构造体描述:变更节点类</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.CategoryUpdate</td><td>变更节点类</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>updateType</td><td><a href="#c1c4bce218268975421c6d8b69735942">com.pjbest.pdc.service.UpdateType</a></td><td>否</td><td></td><td></td><td>更新类型, 获取变更的节点接口使用</td></tr>
+<tr><td>category</td><td><a href="#63a586359ed132ee04dcfda2aa350f7a">com.pjbest.pdc.service.Category</a></td><td>否</td><td></td><td></td><td>变更分类节点</td></tr>
+</table>
+</div>
+</div>
+<div id="c74b9954d0adbc96eadb0907336d3e4d" class="xwdiv">构造体描述:分类映射</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.CategoryMapping</td><td>分类映射</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>sourcecategory</td><td><a href="#63a586359ed132ee04dcfda2aa350f7a">com.pjbest.pdc.service.Category</a></td><td>否</td><td></td><td></td><td>更新类型, 获取变更的节点接口使用</td></tr>
+<tr><td>filter</td><td>STRING</td><td>否</td><td></td><td></td><td>属性条件, 格式：属性ID1:选项ID1,选项ID2|属性ID2:选项ID1,选项ID2</td></tr>
+</table>
+</div>
+</div>
+<div id="e927cef0674bd5c3d9ceb2cf683a9e16" class="xwdiv">构造体描述:分类关联的品牌</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.Brands</td><td>分类关联的品牌</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>brand</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>分类关联的品牌信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div id="63a586359ed132ee04dcfda2aa350f7a" class="xwdiv">构造体描述:变更分类节点</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.Category</td><td>变更分类节点</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categoryId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>分类ID</td></tr>
+<tr><td>relatedCategories</td><td>LIST&lt;INTEGER&gt;</td><td>否</td><td></td><td></td><td>相关分类</td></tr>
+<tr><td>children</td><td>LIST&lt;<a href="#63a586359ed132ee04dcfda2aa350f7a">com.pjbest.pdc.service.Category</a>&gt;</td><td>否</td><td></td><td></td><td>子分类</td></tr>
+<tr><td>mapping</td><td>LIST&lt;<a href="#c74b9954d0adbc96eadb0907336d3e4d">com.pjbest.pdc.service.CategoryMapping</a>&gt;</td><td>否</td><td></td><td></td><td>分类映射</td></tr>
+<tr><td>majorParentCategoryid</td><td>INTEGER</td><td>否</td><td></td><td></td><td>主父分类</td></tr>
+<tr><td>salveParentCategoryids</td><td>LIST&lt;INTEGER&gt;</td><td>否</td><td></td><td></td><td>非主父分类</td></tr>
+<tr><td>attributes</td><td>LIST&lt;<a href="#9129229ad16972167bed5e70b99f5dec">com.pjbest.pdc.service.Attribute</a>&gt;</td><td>否</td><td></td><td></td><td>分类属性</td></tr>
+<tr><td>foreignname</td><td>STRING</td><td>否</td><td></td><td></td><td>外国名称, 保存格式为JSON</td></tr>
+<tr><td>image</td><td>STRING</td><td>否</td><td></td><td></td><td>图片链接</td></tr>
+<tr><td>linkaddress</td><td>STRING</td><td>否</td><td></td><td></td><td>目标链接地址</td></tr>
+<tr><td>flag</td><td>INTEGER</td><td>否</td><td></td><td></td><td>展示粒度状态位</td></tr>
+<tr><td>name</td><td>STRING</td><td>否</td><td></td><td></td><td>分类名称</td></tr>
+<tr><td>maxsalenum</td><td>INTEGER</td><td>否</td><td></td><td></td><td>最大售售卖数</td></tr>
+<tr><td>minisalenum</td><td>INTEGER</td><td>否</td><td></td><td></td><td>最小售卖数</td></tr>
+<tr><td>showType</td><td>INTEGER</td><td>否</td><td></td><td></td><td>展示模式 0:映射录入导航 1:URL链接 2:档期ID</td></tr>
+<tr><td>timeLineId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>档期ID</td></tr>
+<tr><td>brands</td><td><a href="#e927cef0674bd5c3d9ceb2cf683a9e16">com.pjbest.pdc.service.Brands</a></td><td>否</td><td></td><td></td><td>分类关联的品牌</td></tr>
+<tr><td>subCatAttr</td><td>STRING</td><td>否</td><td></td><td></td><td>展示导航二级分类属性交集属性值并集，格式：pid:vid;pid:vid;</td></tr>
+<tr><td>tagFilter</td><td>STRING</td><td>否</td><td></td><td></td><td>展示分类标签条件属性，格式：pid:vid;pid:vid; </td></tr>
+<tr><td>status</td><td>INTEGER</td><td>否</td><td></td><td>0</td><td>删除状态</td></tr>
+<tr><td>majorParents</td><td><a href="#91fb0c4b59a8223d0b4960a7babceeac">com.pjbest.pdc.service.Parents</a></td><td>否</td><td></td><td></td><td>主父分类</td></tr>
+<tr><td>salveParents</td><td>LIST&lt;<a href="#91fb0c4b59a8223d0b4960a7babceeac">com.pjbest.pdc.service.Parents</a>&gt;</td><td>否</td><td></td><td></td><td>从父分类</td></tr>
+<tr><td>englishname</td><td>STRING</td><td>否</td><td></td><td></td><td>英文名称</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>分类描述</td></tr>
+<tr><td>type</td><td><a href="#328d8a739b9150bc651636b2bc03248f">com.pjbest.pdc.service.CategoryType</a></td><td>否</td><td></td><td></td><td>分类类型</td></tr>
+<tr><td>keywords</td><td>STRING</td><td>否</td><td></td><td></td><td>关键字</td></tr>
+<tr><td>flags</td><td>LONG</td><td>否</td><td></td><td></td><td>标记位，用于后续扩展属性</td></tr>
+<tr><td>hierarchyId</td><td>STRING</td><td>否</td><td></td><td></td><td>展示导航ID</td></tr>
+<tr><td>lastUpdateTime</td><td>LONG</td><td>否</td><td></td><td></td><td>最后变更时间, 获取变更的节点接口使用</td></tr>
+</table>
+</div>
+</div>
+<div id="fd4cf1b535fffb079a022a57f2cb879c" class="xwdiv">构造体描述:特有属性及属性值</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.AttributeWithValue</td><td>特有属性及属性值</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>attribute</td><td><a href="#9129229ad16972167bed5e70b99f5dec">com.pjbest.pdc.service.Attribute</a></td><td>否</td><td></td><td></td><td>属性</td></tr>
+<tr><td>attributeValue</td><td><a href="#c8061bf03ce852323c5c4dcc0d6aa2d7">com.pjbest.pdc.service.AttributeValue</a></td><td>否</td><td></td><td></td><td>属性值</td></tr>
+</table>
+</div>
+</div>
+<div id="a16c84dc05bbaf3e29fe1eed3b5c4669" class="xwdiv">构造体描述:变更节点集合</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.CategoryUpdates</td><td>变更节点集合</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>sinceUpdateTime</td><td>LONG</td><td>否</td><td></td><td></td><td>变更开始时间</td></tr>
+<tr><td>lastUpdateTime</td><td>LONG</td><td>否</td><td></td><td></td><td>变更结束时间</td></tr>
+<tr><td>total</td><td>INTEGER</td><td>否</td><td></td><td></td><td>按当前入参可返回的结果的总条数</td></tr>
+<tr><td>categories</td><td>LIST&lt;<a href="#2cfd936359e3f388c90f13d948b62ed2">com.pjbest.pdc.service.CategoryUpdate</a>&gt;</td><td>否</td><td></td><td></td><td>变更节点集合</td></tr>
+</table>
+</div>
+</div>
+<div id="476188dae924fcc75e34161798abe540" class="xwdiv">构造体描述:分类特有属性参数</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.CategorySpecialParam</td><td>分类特有属性参数</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>categoryId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>分类ID</td></tr>
+<tr><td>attributeIds</td><td>LIST&lt;INTEGER&gt;</td><td>否</td><td></td><td></td><td>属性IDS</td></tr>
+</table>
+</div>
+</div>
+<div id="9129229ad16972167bed5e70b99f5dec" class="xwdiv">构造体描述:分类属性</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.Attribute</td><td>分类属性</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>attriuteId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>属性Id</td></tr>
+<tr><td>parentAttributeId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>父属性ID，为0表示为独立属性，否则为依赖属性</td></tr>
+<tr><td>options</td><td>LIST&lt;<a href="#74f370f82d7b4cde678c734a708cf78b">com.pjbest.pdc.service.Option</a>&gt;</td><td>否</td><td></td><td></td><td>选项列表</td></tr>
+<tr><td>attributegroup</td><td>STRING</td><td>否</td><td></td><td></td><td>属性分组名称</td></tr>
+<tr><td>foreignname</td><td>STRING</td><td>否</td><td></td><td></td><td>外国名称, 保存格式为JSON</td></tr>
+<tr><td>textlength</td><td>INTEGER</td><td>否</td><td></td><td></td><td>数据类型为文本类型时，需要增加文本长度限制</td></tr>
+<tr><td>screeningstatus</td><td>INTEGER</td><td>否</td><td></td><td></td><td>是否为筛选条件，默认为否（是：0 否：1）</td></tr>
+<tr><td>starttime</td><td>LONG</td><td>否</td><td></td><td></td><td>有效开始时间</td></tr>
+<tr><td>endtime</td><td>LONG</td><td>否</td><td></td><td></td><td>有效结束时间</td></tr>
+<tr><td>flag</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>属性解析是否成功标识。false：失败，true：成功</td></tr>
+<tr><td>charactersetid</td><td>INTEGER</td><td>否</td><td></td><td></td><td>特征集ID ，内部字段不对外开放 </td></tr>
+<tr><td>name</td><td>STRING</td><td>否</td><td></td><td></td><td>属性名称</td></tr>
+<tr><td>dependenceStatus</td><td>INTEGER</td><td>否</td><td></td><td></td><td>前置状态 ，内部字段不对外开放 </td></tr>
+<tr><td>englishname</td><td>STRING</td><td>否</td><td></td><td></td><td>英文名称</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>属性说明</td></tr>
+<tr><td>type</td><td><a href="#285e36b3d35469f4a42d977d4c89c3fa">com.pjbest.pdc.service.AttributeType</a></td><td>否</td><td></td><td></td><td>属性类型：自然属性/Tag属性</td></tr>
+<tr><td>dataType</td><td><a href="#acd7ca5bd228142515cad7cd645f2744">com.pjbest.pdc.service.DataType</a></td><td>否</td><td></td><td></td><td>数据类型：文本/数值/选项</td></tr>
+<tr><td>unit</td><td>STRING</td><td>否</td><td></td><td></td><td>数值单位</td></tr>
+<tr><td>sort</td><td>INTEGER</td><td>否</td><td></td><td></td><td>排序因子</td></tr>
+<tr><td>flags</td><td>LONG</td><td>否</td><td></td><td></td><td>属性标记位,条件属性</td></tr>
+</table>
+</div>
+</div>
+<div id="74f370f82d7b4cde678c734a708cf78b" class="xwdiv">构造体描述:属性选项</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.Option</td><td>属性选项</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>attributeId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>属性项ID</td></tr>
+<tr><td>realOptions</td><td>LIST&lt;INTEGER&gt;</td><td>否</td><td></td><td></td><td>如果是虚拟选项，这里是其它需要聚合的多个选项</td></tr>
+<tr><td>foreignname</td><td>STRING</td><td>否</td><td></td><td></td><td>外国名称, 保存格式为JSON</td></tr>
+<tr><td>externaldata</td><td>STRING</td><td>否</td><td></td><td></td><td>选项外部信息, 保存格式为JSON</td></tr>
+<tr><td>aliases</td><td>STRING</td><td>否</td><td></td><td></td><td>选项别名</td></tr>
+<tr><td>literal</td><td>STRING</td><td>否</td><td></td><td></td><td>属性值（文本/数值/布尔）</td></tr>
+<tr><td>flag</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>属性值解析是否成功标识。false：失败，true：成功 </td></tr>
+<tr><td>remarks</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>备注信息 add by chuping.zhai 2014-12-25</td></tr>
+<tr><td>optionId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>选项ID</td></tr>
+<tr><td>name</td><td>STRING</td><td>否</td><td></td><td></td><td>选项名称</td></tr>
+<tr><td>englishname</td><td>STRING</td><td>否</td><td></td><td></td><td>英文名称</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>选项描述</td></tr>
+<tr><td>hierarchyGroup</td><td>STRING</td><td>否</td><td></td><td></td><td>选项分组</td></tr>
+<tr><td>sort</td><td>INTEGER</td><td>否</td><td></td><td></td><td>排序因子</td></tr>
+<tr><td>parentOptionId</td><td>INTEGER</td><td>否</td><td></td><td></td><td>父选项ID，为0表示都独立选项，否则为依赖选项</td></tr>
+<tr><td>isVirtual</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>是否为虚拟选项，虚拟选型是多个其它选型的聚合</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+<div id="328d8a739b9150bc651636b2bc03248f" class="xwdiv">枚举描述:类目节点类型</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.CategoryType</td><td>类目节点类型</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>TopCategory</td><td>0</td><td>顶层类目节点</td></tr>
+<tr><td>SubCategory</td><td>1</td><td>中间层类目节点</td></tr>
+<tr><td>LeafCategory</td><td>2</td><td>最底层类目节点，商品只能挂载在这个节点下</td></tr>
+</table>
+</div>
+<div id="c1c4bce218268975421c6d8b69735942" class="xwdiv">枚举描述:更新类型, 获取变更的节点接口使用</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.UpdateType</td><td>更新类型, 获取变更的节点接口使用</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>Insert</td><td>0</td><td>添加</td></tr>
+<tr><td>Update</td><td>1</td><td>更新</td></tr>
+<tr><td>Delete</td><td>2</td><td>删除</td></tr>
+</table>
+</div>
+<div id="285e36b3d35469f4a42d977d4c89c3fa" class="xwdiv">枚举描述:属性类型</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.AttributeType</td><td>属性类型</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>Normal</td><td>0</td><td>商品属性</td></tr>
+<tr><td>Tag</td><td>1</td><td>商品标签</td></tr>
+<tr><td>Special</td><td>2</td><td>分类特有属性</td></tr>
+</table>
+</div>
+<div id="acd7ca5bd228142515cad7cd645f2744" class="xwdiv">枚举描述:属性数据类型</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.DataType</td><td>属性数据类型</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>Text</td><td>0</td><td>自由文本，约定不包括英文标点符号</td></tr>
+<tr><td>Numeric</td><td>1</td><td>数值类型</td></tr>
+<tr><td>Option</td><td>2</td><td>选项类型</td></tr>
+<tr><td>Bumble</td><td>3</td><td>布尔类型 </td></tr>
+<tr><td>Picture</td><td>4</td><td>图片类型 </td></tr>
+</table>
+</div>
+</div></center></body></html>

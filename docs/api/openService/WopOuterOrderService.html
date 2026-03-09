@@ -1,0 +1,881 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WopOuterOrderService</div>
+<div class="xwdiv">标题:WOP外部订单接口</div>
+<div id="c9aca1e4aad5eab3b43564207c2534b9" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOuterOrderService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#c707b749fff52a40e212f5cdaacb2661">batchCancelOrder</a></td><td>批量取消订单接口</td><td>batchCancelOrder(STRING  customerCode, LIST  wopErpOrderSnList)</td></tr>
+<tr><td><a href="#1dbaa873c9375f515146e4b2994a8871">getDeliveryTrace</a></td><td>获取订单物流轨迹接口</td><td>getDeliveryTrace(STRUCT  req)</td></tr>
+<tr><td><a href="#2413cf7ca4b8703d0f06604150e93450">getOrderDetails</a></td><td>查询订单明细接口</td><td>getOrderDetails(STRING  customerCode, STRING  wopErpOrderSn)</td></tr>
+<tr><td><a href="#905a803567ea1ba86c3097360097a232">getOrderLackByMaxId</a></td><td>获获取订单缺货接口</td><td>getOrderLackByMaxId(STRUCT  req)</td></tr>
+<tr><td><a href="#b0c5135023257e2d2c00b260e96db30f">getOrderStatus</a></td><td>查询订单状态接口</td><td>getOrderStatus(STRING  customerCode, STRING  wopErpOrderSn)</td></tr>
+<tr><td><a href="#00413845e6c0f3340a8ec41f447db064">getOrderStatusBatch</a></td><td>批量查询订单状态接口</td><td>getOrderStatusBatch(STRING  customerCode, LONG  maxId, INTEGER  limit)</td></tr>
+<tr><td><a href="#6911841b8d14f5e5fa61795351a66c4b">getOrderTrace</a></td><td>查询订单轨迹接口</td><td>getOrderTrace(STRING  customerCode, STRING  wopErpOrderSn)</td></tr>
+<tr><td><a href="#a76efa3cb9d962ac3390ffd3666501e4">getWopErpOrderSnByCustomerErpOrderSn</a></td><td>根据客户ERP订单号查询查询唯品物流ERP订单号</td><td>getWopErpOrderSnByCustomerErpOrderSn(STRING  customerCode, STRING  erpOrderSn)</td></tr>
+<tr><td><a href="#bee0d6f734899304666db664ea152624">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#e5c26f08cd7f29e7c188b0f6a40a22ae">orderLackConfirm</a></td><td>订单缺货拉取确认接口</td><td>orderLackConfirm(STRUCT  req)</td></tr>
+<tr><td><a href="#4d01bbfe4845460f17168748647206c0">queryCreateOrderTaskStatus</a></td><td>批量查询创建订单任务状态</td><td>queryCreateOrderTaskStatus(STRING  customerCode, LIST  createOrderTaskCode)</td></tr>
+<tr><td><a href="#9dd8a2325367d77c19847f975598ac0c">queryOutQty</a></td><td>查询订单出仓数量（带PO）接口</td><td>queryOutQty(STRUCT  req)</td></tr>
+<tr><td><a href="#bbc2c301a46982f2597ccb191d6ad8ee">submitCreateOrderTask</a></td><td>批量提交创建订单任务（异步创建订单）</td><td>submitCreateOrderTask(STRING  customerCode, LIST  orderInfo)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#2b6bc23f23b6719e0834dee27844c702">com.pjbest.wop.wm.service.GetOrderDeliveryTraceRequest</a></td><td>获取订单物流轨迹请求号</td></tr>
+<tr><td><a href="#7c3aa8d6b04a3e5570b7ba1bb0493070">com.pjbest.wop.wm.service.GetOrderDeliveryItem</a></td><td>订单物流轨迹记录号</td></tr>
+<tr><td><a href="#71beaaca6852b3d96e6236aabb10ccbd">com.pjbest.wop.wm.service.GetOrderDeliveryTraceRespone</a></td><td>获取订单物流轨迹响应号</td></tr>
+<tr><td><a href="#c28a593a42d4f4665cc00a4b9ab138c2">com.pjbest.wop.wm.service.OutQtyEntity</a></td><td>查询订单出仓数量（带PO）响应号</td></tr>
+<tr><td><a href="#3b855bd1f5952b9311153c9a318f7a62">com.pjbest.wop.wm.service.QueryOutQtyRespone</a></td><td>查询订单出仓数量（带PO）响应号</td></tr>
+<tr><td><a href="#4e945486b7a59fdd243d46ed5b9d7146">com.pjbest.wop.wm.service.QueryOutQtyRequest</a></td><td>查询订单出仓数量（带PO）请求号</td></tr>
+<tr><td><a href="#4b7e90e101ecd9c50c303df69e3015a3">com.pjbest.wop.wm.service.OrderLackConfirmRespone</a></td><td>订单缺货拉取确认响应号</td></tr>
+<tr><td><a href="#9ee3a784b0a958727072d263a90e8954">com.pjbest.wop.wm.service.OrderLackConfirmRequest</a></td><td>订单缺货拉取确认请求号</td></tr>
+<tr><td><a href="#ec456f0ec224716a292da49e49aa25b7">com.pjbest.wop.wm.service.GetOrderLackByMaxIdItemDetail</a></td><td>获取订单缺货明细号</td></tr>
+<tr><td><a href="#bc204659e5ef940f8552c21f961a4ce7">com.pjbest.wop.wm.service.GetOrderLackByMaxIdItem</a></td><td>获取订单缺货明细号</td></tr>
+<tr><td><a href="#1ba88851845c0d7032010d5d4b025226">com.pjbest.wop.wm.service.GetOrderLackByMaxIdRespone</a></td><td>获取订单缺货响应号</td></tr>
+<tr><td><a href="#af5b637711f51747ddd42adf5d78c52d">com.pjbest.wop.wm.service.GetOrderLackByMaxIdRequest</a></td><td>获取订单缺货请求号</td></tr>
+<tr><td><a href="#8d7f7d71c14d17e7f333acdb91a9c64f">com.pjbest.wop.wm.service.OrderDetail</a></td><td>订单明细号</td></tr>
+<tr><td><a href="#c8fd67625a63f55feac334e0d296da9a">com.pjbest.wop.wm.service.CreateOrderTaskStatus</a></td><td>查询创建订单任务编码结果号</td></tr>
+<tr><td><a href="#38283d3d03180db5620f59c0560cbe5f">com.pjbest.wop.wm.service.CreateOrderTaskResult</a></td><td>提交创建订单任务编码结果号</td></tr>
+<tr><td><a href="#077195fe9fb4ceb9b7f1ccb8cf6079c6">com.pjbest.wop.wm.service.OrderTrace</a></td><td>订单轨迹号</td></tr>
+<tr><td><a href="#a8cedaaa4dc9db3c0d374d02b64c3a12">com.pjbest.wop.wm.service.OrderStatus</a></td><td>订单状态号</td></tr>
+<tr><td><a href="#d1764a13bfb9eb62077a2b6026586bcc">com.pjbest.wop.wm.service.OrderCancelResult</a></td><td>订单取消结果号</td></tr>
+<tr><td><a href="#9d5a415aa635412843d4d4ea96ef7add">com.pjbest.wop.wm.service.OrderCreateResult</a></td><td>订单创建结果号</td></tr>
+<tr><td><a href="#7be5135f566f32e1e5b8f5b8b09a91a1">com.pjbest.wop.wm.service.OrderItemInfo</a></td><td>订单明细信息号</td></tr>
+<tr><td><a href="#3030ae33a5952c8f8a3713f425400e7e">com.pjbest.wop.wm.service.OrderExtendsField</a></td><td>订单扩展字段(用于非核心业务)号</td></tr>
+<tr><td><a href="#581788a94e50b2710e0d418128985a70">com.pjbest.wop.wm.service.OrderInfo</a></td><td>订单信息号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="c707b749fff52a40e212f5cdaacb2661" class="xwdiv">方法描述:批量取消订单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>batchCancelOrder</td><td>批量取消订单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>wopErpOrderSnList</td><td>LIST&lt;STRING&gt;</td><td>是</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#d1764a13bfb9eb62077a2b6026586bcc">com.pjbest.wop.wm.service.OrderCancelResult</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="1dbaa873c9375f515146e4b2994a8871" class="xwdiv">方法描述:获取订单物流轨迹接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>getDeliveryTrace</td><td>获取订单物流轨迹接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#2b6bc23f23b6719e0834dee27844c702">com.pjbest.wop.wm.service.GetOrderDeliveryTraceRequest</a></td><td>是</td><td></td><td></td><td>获取单物流轨迹请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#71beaaca6852b3d96e6236aabb10ccbd">com.pjbest.wop.wm.service.GetOrderDeliveryTraceRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="2413cf7ca4b8703d0f06604150e93450" class="xwdiv">方法描述:查询订单明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>getOrderDetails</td><td>查询订单明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#8d7f7d71c14d17e7f333acdb91a9c64f">com.pjbest.wop.wm.service.OrderDetail</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="905a803567ea1ba86c3097360097a232" class="xwdiv">方法描述:获取订单缺货接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>getOrderLackByMaxId</td><td>获获取订单缺货接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#af5b637711f51747ddd42adf5d78c52d">com.pjbest.wop.wm.service.GetOrderLackByMaxIdRequest</a></td><td>是</td><td></td><td></td><td>获取订单缺货请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#1ba88851845c0d7032010d5d4b025226">com.pjbest.wop.wm.service.GetOrderLackByMaxIdRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="b0c5135023257e2d2c00b260e96db30f" class="xwdiv">方法描述:查询订单状态接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>getOrderStatus</td><td>查询订单状态接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#a8cedaaa4dc9db3c0d374d02b64c3a12">com.pjbest.wop.wm.service.OrderStatus</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="00413845e6c0f3340a8ec41f447db064" class="xwdiv">方法描述:批量查询订单状态接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>getOrderStatusBatch</td><td>批量查询订单状态接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>maxId</td><td>LONG</td><td>是</td><td></td><td></td><td>上次查询返回的最大ID</td></tr>
+<tr><td>limit</td><td>INTEGER</td><td>是</td><td></td><td></td><td>查询数量</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#a8cedaaa4dc9db3c0d374d02b64c3a12">com.pjbest.wop.wm.service.OrderStatus</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="6911841b8d14f5e5fa61795351a66c4b" class="xwdiv">方法描述:查询订单轨迹接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>getOrderTrace</td><td>查询订单轨迹接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#077195fe9fb4ceb9b7f1ccb8cf6079c6">com.pjbest.wop.wm.service.OrderTrace</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="a76efa3cb9d962ac3390ffd3666501e4" class="xwdiv">方法描述:根据客户ERP订单号查询查询唯品物流ERP订单号</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>getWopErpOrderSnByCustomerErpOrderSn</td><td>根据客户ERP订单号查询查询唯品物流ERP订单号</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>客户ERP订单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>STRING</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="bee0d6f734899304666db664ea152624" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="e5c26f08cd7f29e7c188b0f6a40a22ae" class="xwdiv">方法描述:订单缺货拉取确认接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>orderLackConfirm</td><td>订单缺货拉取确认接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#9ee3a784b0a958727072d263a90e8954">com.pjbest.wop.wm.service.OrderLackConfirmRequest</a></td><td>是</td><td></td><td></td><td>订单缺货拉取确认请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#4b7e90e101ecd9c50c303df69e3015a3">com.pjbest.wop.wm.service.OrderLackConfirmRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="4d01bbfe4845460f17168748647206c0" class="xwdiv">方法描述:批量查询创建订单任务状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>queryCreateOrderTaskStatus</td><td>批量查询创建订单任务状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>createOrderTaskCode</td><td>LIST&lt;STRING&gt;</td><td>是</td><td></td><td></td><td>创建订单任务编码列表</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#c8fd67625a63f55feac334e0d296da9a">com.pjbest.wop.wm.service.CreateOrderTaskStatus</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="9dd8a2325367d77c19847f975598ac0c" class="xwdiv">方法描述:查询订单出仓数量（带PO）接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>queryOutQty</td><td>查询订单出仓数量（带PO）接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#4e945486b7a59fdd243d46ed5b9d7146">com.pjbest.wop.wm.service.QueryOutQtyRequest</a></td><td>是</td><td></td><td></td><td>查询订单出仓数量（带PO）请求</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#3b855bd1f5952b9311153c9a318f7a62">com.pjbest.wop.wm.service.QueryOutQtyRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="bbc2c301a46982f2597ccb191d6ad8ee" class="xwdiv">方法描述:批量提交创建订单任务（异步创建订单）</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#c9aca1e4aad5eab3b43564207c2534b9">com.pjbest.wop.wm.service.WopOuterOrderService</a></td><td>1.0.0</td><td>submitCreateOrderTask</td><td>批量提交创建订单任务（异步创建订单）</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>orderInfo</td><td>LIST&lt;<a href="#581788a94e50b2710e0d418128985a70">com.pjbest.wop.wm.service.OrderInfo</a>&gt;</td><td>是</td><td></td><td></td><td>订单信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#38283d3d03180db5620f59c0560cbe5f">com.pjbest.wop.wm.service.CreateOrderTaskResult</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="2b6bc23f23b6719e0834dee27844c702" class="xwdiv">构造体描述:获取订单物流轨迹请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.GetOrderDeliveryTraceRequest</td><td>获取订单物流轨迹请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP订单号</td></tr>
+</table>
+</div>
+</div>
+<div id="7c3aa8d6b04a3e5570b7ba1bb0493070" class="xwdiv">构造体描述:订单物流轨迹记录</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.GetOrderDeliveryItem</td><td>订单物流轨迹记录</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>statusCode</td><td>STRING</td><td>否</td><td></td><td></td><td>物流轨迹状态码</td></tr>
+<tr><td>statusName</td><td>STRING</td><td>否</td><td></td><td></td><td>物流轨迹状态名称</td></tr>
+<tr><td>transportDetail</td><td>STRING</td><td>否</td><td></td><td></td><td>物流轨迹状态描述</td></tr>
+<tr><td>actionTime</td><td>DATE</td><td>否</td><td></td><td></td><td>物流轨迹发生时间</td></tr>
+</table>
+</div>
+</div>
+<div id="71beaaca6852b3d96e6236aabb10ccbd" class="xwdiv">构造体描述:获取订单物流轨迹响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.GetOrderDeliveryTraceRespone</td><td>获取订单物流轨迹响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功，500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>deliveryItems</td><td>LIST&lt;<a href="#7c3aa8d6b04a3e5570b7ba1bb0493070">com.pjbest.wop.wm.service.GetOrderDeliveryItem</a>&gt;</td><td>否</td><td></td><td></td><td>轨迹记录列表</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>carrierCode</td><td>STRING</td><td>否</td><td></td><td></td><td>物流公司编码</td></tr>
+<tr><td>carrierName</td><td>STRING</td><td>否</td><td></td><td></td><td>物流公司名称</td></tr>
+</table>
+</div>
+</div>
+<div id="c28a593a42d4f4665cc00a4b9ab138c2" class="xwdiv">构造体描述:查询订单出仓数量（带PO）响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OutQtyEntity</td><td>查询订单出仓数量（带PO）响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>outQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>出仓数量</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>客户PO号</td></tr>
+</table>
+</div>
+</div>
+<div id="3b855bd1f5952b9311153c9a318f7a62" class="xwdiv">构造体描述:查询订单出仓数量（带PO）响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryOutQtyRespone</td><td>查询订单出仓数量（带PO）响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>details</td><td>LIST&lt;<a href="#c28a593a42d4f4665cc00a4b9ab138c2">com.pjbest.wop.wm.service.OutQtyEntity</a>&gt;</td><td>否</td><td></td><td></td><td>明细列表</td></tr>
+</table>
+</div>
+</div>
+<div id="4e945486b7a59fdd243d46ed5b9d7146" class="xwdiv">构造体描述:查询订单出仓数量（带PO）请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryOutQtyRequest</td><td>查询订单出仓数量（带PO）请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>odsOrderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ODS订单号</td></tr>
+</table>
+</div>
+</div>
+<div id="4b7e90e101ecd9c50c303df69e3015a3" class="xwdiv">构造体描述:订单缺货拉取确认响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderLackConfirmRespone</td><td>订单缺货拉取确认响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,201:被忽略的重复操作,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="9ee3a784b0a958727072d263a90e8954" class="xwdiv">构造体描述:订单缺货拉取确认请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderLackConfirmRequest</td><td>订单缺货拉取确认请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>id</td><td>LONG</td><td>是</td><td></td><td></td><td>订单缺货唯一标记ID</td></tr>
+<tr><td>success</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>推送是否成功</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+</table>
+</div>
+</div>
+<div id="ec456f0ec224716a292da49e49aa25b7" class="xwdiv">构造体描述:获取订单缺货明细</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.GetOrderLackByMaxIdItemDetail</td><td>获取订单缺货明细</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>否</td><td></td><td></td><td>订单缺货明细唯一标记ID</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>planQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>计划应发商品数量</td></tr>
+<tr><td>lackQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>缺货商品数量</td></tr>
+<tr><td>reason</td><td>STRING</td><td>否</td><td></td><td></td><td>缺货原因(系统报缺,实物报缺)</td></tr>
+</table>
+</div>
+</div>
+<div id="bc204659e5ef940f8552c21f961a4ce7" class="xwdiv">构造体描述:获取订单缺货表头</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.GetOrderLackByMaxIdItem</td><td>获取订单缺货明细</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>否</td><td></td><td></td><td>订单缺货唯一标记ID</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>第三方ERP订单号</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+<tr><td>odsOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流系统订单号</td></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>pjWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流仓库编码</td></tr>
+<tr><td>virtualWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>虚拟仓库编码</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建者当地时间</td></tr>
+<tr><td>items</td><td>LIST&lt;<a href="#ec456f0ec224716a292da49e49aa25b7">com.pjbest.wop.wm.service.GetOrderLackByMaxIdItemDetail</a>&gt;</td><td>否</td><td></td><td></td><td>缺货明细列表</td></tr>
+</table>
+</div>
+</div>
+<div id="1ba88851845c0d7032010d5d4b025226" class="xwdiv">构造体描述:获取订单缺货响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.GetOrderLackByMaxIdRespone</td><td>获取订单缺货响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>items</td><td>LIST&lt;<a href="#bc204659e5ef940f8552c21f961a4ce7">com.pjbest.wop.wm.service.GetOrderLackByMaxIdItem</a>&gt;</td><td>否</td><td></td><td></td><td>缺货明细列表</td></tr>
+</table>
+</div>
+</div>
+<div id="af5b637711f51747ddd42adf5d78c52d" class="xwdiv">构造体描述:获取订单缺货请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.GetOrderLackByMaxIdRequest</td><td>获取订单缺货请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>maxId</td><td>LONG</td><td>是</td><td></td><td></td><td>maxId</td></tr>
+<tr><td>rowLimit</td><td>INTEGER</td><td>是</td><td></td><td></td><td>请求返回数据条数限制</td></tr>
+</table>
+</div>
+</div>
+<div id="8d7f7d71c14d17e7f333acdb91a9c64f" class="xwdiv">构造体描述:订单明细</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderDetail</td><td>订单明细</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品代码</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>申请商品数量</td></tr>
+<tr><td>outQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>出仓商品数量</td></tr>
+<tr><td>serialNo</td><td>STRING</td><td>否</td><td></td><td></td><td>序列号</td></tr>
+<tr><td>custOweQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>客户欠货数量</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>客户PO号</td></tr>
+<tr><td>systemPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>系统PO号</td></tr>
+</table>
+</div>
+</div>
+<div id="c8fd67625a63f55feac334e0d296da9a" class="xwdiv">构造体描述:提交创建订单任务编码结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateOrderTaskStatus</td><td>查询创建订单任务编码结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>createOrderTaskCode</td><td>STRING</td><td>否</td><td></td><td></td><td>创建订单任务编码</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>taskStatus</td><td>INTEGER</td><td>否</td><td></td><td></td><td>状态码[0:未处理,1:处理成功,-1:处理失败]</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>任务执行备注</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+<tr><td>taskSubStatus</td><td>INTEGER</td><td>是</td><td></td><td></td><td>子状态码[0:未处理,1:处理成功,-1:处理失败,-11:订单已存在]</td></tr>
+</table>
+</div>
+</div>
+<div id="38283d3d03180db5620f59c0560cbe5f" class="xwdiv">构造体描述:提交创建订单任务编码结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateOrderTaskResult</td><td>提交创建订单任务编码结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>createOrderTaskCode</td><td>STRING</td><td>否</td><td></td><td></td><td>创建订单任务编码</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>状态码[200:成功,500:失败]</td></tr>
+<tr><td>message</td><td>STRING</td><td>否</td><td></td><td></td><td>错误提示</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>子状态码[200:成功,500:失败,501:任务已存在]</td></tr>
+</table>
+</div>
+</div>
+<div id="077195fe9fb4ceb9b7f1ccb8cf6079c6" class="xwdiv">构造体描述:订单轨迹</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderTrace</td><td>订单轨迹</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>否</td><td></td><td></td><td>当前记录自增ID</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>transportCode</td><td>STRING</td><td>否</td><td></td><td></td><td>物流状态编码</td></tr>
+<tr><td>transportDetail</td><td>STRING</td><td>否</td><td></td><td></td><td>物流状态信息</td></tr>
+<tr><td>carriersCode</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商编码</td></tr>
+<tr><td>carriersName</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商名称称</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓编码</td></tr>
+<tr><td>actionTime</td><td>DATE</td><td>否</td><td></td><td></td><td>状态发生时间</td></tr>
+</table>
+</div>
+</div>
+<div id="a8cedaaa4dc9db3c0d374d02b64c3a12" class="xwdiv">构造体描述:订单状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderStatus</td><td>订单状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>否</td><td></td><td></td><td>当前记录自增ID</td></tr>
+<tr><td>odsOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流订单号</td></tr>
+<tr><td>actionTime</td><td>DATE</td><td>否</td><td></td><td></td><td>处理时间</td></tr>
+<tr><td>wpCode</td><td>STRING</td><td>否</td><td></td><td></td><td>原始供应商承运商编码</td></tr>
+<tr><td>wpCodeName</td><td>STRING</td><td>否</td><td></td><td></td><td>原始供应商承运商名称</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>carriersCode</td><td>STRING</td><td>否</td><td></td><td></td><td>承运商编码</td></tr>
+<tr><td>orderStatusCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单状态编码</td></tr>
+<tr><td>orderStatusName</td><td>STRING</td><td>否</td><td></td><td></td><td>订单状态名称</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓编码</td></tr>
+<tr><td>warehouseName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓名称</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+</table>
+</div>
+</div>
+<div id="d1764a13bfb9eb62077a2b6026586bcc" class="xwdiv">构造体描述:订单取消结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderCancelResult</td><td>订单取消结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>状态码[200:成功]</td></tr>
+<tr><td>message</td><td>STRING</td><td>否</td><td></td><td></td><td>错误提示</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+</table>
+</div>
+</div>
+<div id="9d5a415aa635412843d4d4ea96ef7add" class="xwdiv">构造体描述:订单创建结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderCreateResult</td><td>订单创建结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>message</td><td>STRING</td><td>否</td><td></td><td></td><td>错误提示</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流ERP订单号</td></tr>
+</table>
+</div>
+</div>
+<div id="7be5135f566f32e1e5b8f5b8b09a91a1" class="xwdiv">构造体描述:订单明细信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderItemInfo</td><td>订单明细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品代码</td></tr>
+<tr><td>extendProps</td><td>STRING</td><td>否</td><td></td><td></td><td>扩展属性Map(json字符串) [{'att1':1},{'att1':2}]</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>商品数量</td></tr>
+<tr><td>price</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>单价</td></tr>
+<tr><td>serialNo</td><td>STRING</td><td>否</td><td></td><td></td><td>序列号</td></tr>
+<tr><td>custOweQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>客户欠货数量</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>客户PO号</td></tr>
+<tr><td>productDate</td><td>STRING</td><td>否</td><td></td><td></td><td>生产日期(YYYY-MM-DD) 2016-07-06</td></tr>
+<tr><td>expireDate</td><td>STRING</td><td>否</td><td></td><td></td><td>过期日期(YYYY-MM-DD) 2016-07-06</td></tr>
+</table>
+</div>
+</div>
+<div id="3030ae33a5952c8f8a3713f425400e7e" class="xwdiv">构造体描述:订单扩展字段(用于非核心业务)</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderExtendsField</td><td>订单扩展字段(用于非核心业务)</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>fieldKey</td><td>STRING</td><td>否</td><td></td><td></td><td>扩展字段KEY</td></tr>
+<tr><td>fieldValue</td><td>STRING</td><td>否</td><td></td><td></td><td>扩展字段VAULE</td></tr>
+</table>
+</div>
+</div>
+<div id="581788a94e50b2710e0d418128985a70" class="xwdiv">构造体描述:订单信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OrderInfo</td><td>订单信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP订单号</td></tr>
+<tr><td>buyerTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>乡镇/街道</td></tr>
+<tr><td>buyerDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>收货地址</td></tr>
+<tr><td>platformName</td><td>STRING</td><td>否</td><td></td><td></td><td>销售平台</td></tr>
+<tr><td>zipCode</td><td>STRING</td><td>否</td><td></td><td></td><td>邮政编码</td></tr>
+<tr><td>buyerTel</td><td>STRING</td><td>否</td><td></td><td></td><td>座机</td></tr>
+<tr><td>buyerMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>移动电话</td></tr>
+<tr><td>payType</td><td>STRING</td><td>否</td><td></td><td></td><td>支付方式</td></tr>
+<tr><td>customerRequirements</td><td>STRING</td><td>否</td><td></td><td></td><td>客户要求</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>用户备注</td></tr>
+<tr><td>totalMoney</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>用户备注</td></tr>
+<tr><td>oldErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>原订单号</td></tr>
+<tr><td>money</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>现金应收</td></tr>
+<tr><td>carriage</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>运费</td></tr>
+<tr><td>codType</td><td>STRING</td><td>否</td><td></td><td></td><td>货到付款方式</td></tr>
+<tr><td>platformAddDtmLoc</td><td>DATE</td><td>否</td><td></td><td></td><td>下单时间</td></tr>
+<tr><td>erpCreatedDtmLoc</td><td>DATE</td><td>否</td><td></td><td></td><td>ERP订单创建时间</td></tr>
+<tr><td>isPrintingPrice</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>是否打印价格</td></tr>
+<tr><td>serviceTel</td><td>STRING</td><td>否</td><td></td><td></td><td>服务电话</td></tr>
+<tr><td>transportReq</td><td>BYTE</td><td>否</td><td></td><td></td><td>运输要求</td></tr>
+<tr><td>carrierCode</td><td>STRING</td><td>否</td><td></td><td></td><td>物流公司编码</td></tr>
+<tr><td>carrierName</td><td>STRING</td><td>否</td><td></td><td></td><td>物流公司名称</td></tr>
+<tr><td>platformOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>平台订单编号</td></tr>
+<tr><td>erpCreateUser</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP下单人员</td></tr>
+<tr><td>orderType</td><td>BYTE</td><td>否</td><td></td><td></td><td>订单类型</td></tr>
+<tr><td>detailList</td><td>LIST&lt;<a href="#7be5135f566f32e1e5b8f5b8b09a91a1">com.pjbest.wop.wm.service.OrderItemInfo</a>&gt;</td><td>是</td><td></td><td></td><td>订单商品明细</td></tr>
+<tr><td>productType</td><td>BYTE</td><td>否</td><td></td><td></td><td>服务产品</td></tr>
+<tr><td>carriagePayType</td><td>BYTE</td><td>否</td><td></td><td></td><td>运费付款方式（结算方式）</td></tr>
+<tr><td>deliveryType</td><td>BYTE</td><td>否</td><td></td><td></td><td>交货方式</td></tr>
+<tr><td>orderBatchNo</td><td>STRING</td><td>否</td><td></td><td></td><td>订单批次号</td></tr>
+<tr><td>orderBatchQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单批次包含订单数</td></tr>
+<tr><td>transactionSource</td><td>STRING</td><td>否</td><td></td><td></td><td>交易来源</td></tr>
+<tr><td>custStoreCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户店铺编码</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>否</td><td></td><td></td><td>发货仓</td></tr>
+<tr><td>custStoreName</td><td>STRING</td><td>否</td><td></td><td></td><td>客户店铺名称</td></tr>
+<tr><td>isWhaleWarehouse</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否鲸仓[0:VIPSHOP 1:VIPMAXX]</td></tr>
+<tr><td>excise</td><td>LONG</td><td>否</td><td></td><td></td><td>消费税</td></tr>
+<tr><td>inventorySwitch</td><td>STRING</td><td>否</td><td></td><td></td><td>货权转移开关1:shop转max</td></tr>
+<tr><td>subOrderType</td><td>BYTE</td><td>否</td><td></td><td></td><td>子订单类型 0:默认订单 2:JITX订单 3: 海淘保税仓订单</td></tr>
+<tr><td>cusStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>申报结果海关状态:7：放行,500：查验</td></tr>
+<tr><td>transportNo</td><td>STRING</td><td>否</td><td></td><td></td><td>运单号</td></tr>
+<tr><td>positionNo</td><td>STRING</td><td>否</td><td></td><td></td><td>三段码（分拣码）</td></tr>
+<tr><td>currencyCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货币代码</td></tr>
+<tr><td>extendsFieldList</td><td>LIST&lt;<a href="#3030ae33a5952c8f8a3713f425400e7e">com.pjbest.wop.wm.service.OrderExtendsField</a>&gt;</td><td>否</td><td></td><td></td><td>订单扩展字段列表(用于非核心业务)</td></tr>
+<tr><td>buyer</td><td>STRING</td><td>否</td><td></td><td></td><td>收货人</td></tr>
+<tr><td>oaid</td><td>STRING</td><td>否</td><td></td><td></td><td>淘宝开平台的收件人ID</td></tr>
+<tr><td>senderName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人</td></tr>
+<tr><td>senderTel</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人电话</td></tr>
+<tr><td>senderMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>发货人手机</td></tr>
+<tr><td>senderCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>发货国家</td></tr>
+<tr><td>senderStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货省</td></tr>
+<tr><td>senderCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货城市</td></tr>
+<tr><td>senderDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货区</td></tr>
+<tr><td>senderTownName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货乡镇/街道</td></tr>
+<tr><td>senderDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>发货详细地址</td></tr>
+<tr><td>buyerCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>国</td></tr>
+<tr><td>oaidOrderSourceCode</td><td>STRING</td><td>否</td><td></td><td></td><td>淘宝开放平台的订单加密、解密、取号唯一标识</td></tr>
+<tr><td>extendProps</td><td>STRING</td><td>否</td><td></td><td></td><td>扩展属性Map(json字符串) [{'att1':1},{'att1':2}]</td></tr>
+<tr><td>performanceType</td><td>STRING</td><td>否</td><td></td><td></td><td>(得物)订单履约类型</td></tr>
+<tr><td>originalPlatformName</td><td>STRING</td><td>否</td><td></td><td></td><td>原始销售平台</td></tr>
+<tr><td>buyerStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>省/州</td></tr>
+<tr><td>buyerCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>城市</td></tr>
+<tr><td>buyerDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>区/县</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

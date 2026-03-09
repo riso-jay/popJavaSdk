@@ -1,0 +1,500 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WopOrderEventService</div>
+<div class="xwdiv">标题:WOP订单事件服务</div>
+<div id="b11285123ef7497283fde93ec41b7886" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOrderEventService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#b1d94e74771fda0b60e3d2861f9fe383">createSelective</a></td><td></td><td>createSelective(STRUCT  wopOrderEventModel)</td></tr>
+<tr><td><a href="#5b409aaa60ff2ee37c7d0acede271a3e">findByRowMd5</a></td><td>通过rowMd5查询记录（内部方法）</td><td>findByRowMd5(STRING  rowMd5)</td></tr>
+<tr><td><a href="#f7dbe659f4e03d799e9943969078bcbc">finishEvent</a></td><td>完成事件处理</td><td>finishEvent(STRUCT  req)</td></tr>
+<tr><td><a href="#b90f0731fc67947cfd30d6349b5a9de9">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#552b9856b2bedc9842446ede9b2ae56d">markTryEvent</a></td><td>累加事件处理次数（用于曾经处理过但失败需重试，累加处理次数，不更新处理状态）</td><td>markTryEvent(STRUCT  req)</td></tr>
+<tr><td><a href="#20b144da3fb7e0202bf92fcb0854d320">queryNeedHandleEvents</a></td><td>查询待处理订单事件列表</td><td>queryNeedHandleEvents(STRUCT  req)</td></tr>
+<tr><td><a href="#8db0c741f7885218f1c5bf09e665f4a8">queryTrackingIds</a></td><td>查询在库序列号（追踪ID）</td><td>queryTrackingIds(STRUCT  req)</td></tr>
+<tr><td><a href="#d689e61285ecab99f83136d7df9ce4ba">resetEvent</a></td><td>重置订单事件为未处理</td><td>resetEvent(STRUCT  req)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#0bb8ee65ebf3910fe0b2f91349d9cae4">com.pjbest.wop.wm.service.Tracking</a></td><td>查询在库序列号（追踪ID）响应号</td></tr>
+<tr><td><a href="#5e321ac4eaa618beecd10a732d45bffa">com.pjbest.wop.wm.service.QueryTrackingIdsRespone</a></td><td>查询在库序列号（追踪ID）响应号</td></tr>
+<tr><td><a href="#968da05158223c552402071d3376652a">com.pjbest.wop.wm.service.QueryTrackingIdsRequest</a></td><td>查询在库序列号（追踪ID）请求号</td></tr>
+<tr><td><a href="#a3ac659832ea78f7ba663e69539b74f2">com.pjbest.wop.wm.service.ResetEventRespone</a></td><td>重置订单事件为未处理响应号</td></tr>
+<tr><td><a href="#82a64a3a9e604b5773eb0bd13e6cc55b">com.pjbest.wop.wm.service.ResetEventRequest</a></td><td>重置订单事件为未处理请求号</td></tr>
+<tr><td><a href="#8ddea08bef721e31e708c947cdec7c37">com.pjbest.wop.wm.service.MarkTryEventRespone</a></td><td>累加事件处理次数响应号</td></tr>
+<tr><td><a href="#35a2eecf4420010572ed778124984bab">com.pjbest.wop.wm.service.MarkTryEventRequest</a></td><td>累加事件处理次数请求号</td></tr>
+<tr><td><a href="#99409fde82fe0bc69da6a85bbb4deaae">com.pjbest.wop.wm.service.FinishEventRespone</a></td><td>完成事件处理响应号</td></tr>
+<tr><td><a href="#cbc436d45e643a271701161ea6898400">com.pjbest.wop.wm.service.FinishEventRequest</a></td><td>完成事件处理请求号</td></tr>
+<tr><td><a href="#d544264dacb96e586e03c44941850751">com.pjbest.wop.wm.service.QueryNeedHandleEventsRespone</a></td><td>查询待处理订单事件列表响应号</td></tr>
+<tr><td><a href="#78de842598614e661ecdb1972f73b89b">com.pjbest.wop.wm.service.QueryNeedHandleEventsRequest</a></td><td>查询待处理订单事件列表请求号</td></tr>
+<tr><td><a href="#0f0755a92dfc3d44725a4e59e06f924f">com.pjbest.wop.wm.service.WopOrderEventModel</a></td><td>订单事件号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+<tr><td><a href="#60f0bb8e2a1cd2f27b72eb44de8a8e7b">com.pjbest.wop.wm.service.HandleEventStatus</a></td><td>订单事件处理状态号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="b1d94e74771fda0b60e3d2861f9fe383" class="xwdiv">方法描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>createSelective</td><td>null</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>wopOrderEventModel</td><td><a href="#0f0755a92dfc3d44725a4e59e06f924f">com.pjbest.wop.wm.service.WopOrderEventModel</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>INTEGER</td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="5b409aaa60ff2ee37c7d0acede271a3e" class="xwdiv">方法描述:通过rowMd5查询记录（内部方法）</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>findByRowMd5</td><td>通过rowMd5查询记录（内部方法）</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>rowMd5</td><td>STRING</td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#0f0755a92dfc3d44725a4e59e06f924f">com.pjbest.wop.wm.service.WopOrderEventModel</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="f7dbe659f4e03d799e9943969078bcbc" class="xwdiv">方法描述:完成事件处理</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>finishEvent</td><td>完成事件处理</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#cbc436d45e643a271701161ea6898400">com.pjbest.wop.wm.service.FinishEventRequest</a></td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#99409fde82fe0bc69da6a85bbb4deaae">com.pjbest.wop.wm.service.FinishEventRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="b90f0731fc67947cfd30d6349b5a9de9" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="552b9856b2bedc9842446ede9b2ae56d" class="xwdiv">方法描述:累加事件处理次数（用于曾经处理过但失败需重试，累加处理次数，不更新处理状态）</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>markTryEvent</td><td>累加事件处理次数（用于曾经处理过但失败需重试，累加处理次数，不更新处理状态）</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#35a2eecf4420010572ed778124984bab">com.pjbest.wop.wm.service.MarkTryEventRequest</a></td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#8ddea08bef721e31e708c947cdec7c37">com.pjbest.wop.wm.service.MarkTryEventRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="20b144da3fb7e0202bf92fcb0854d320" class="xwdiv">方法描述:查询待处理订单事件列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>queryNeedHandleEvents</td><td>查询待处理订单事件列表</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#78de842598614e661ecdb1972f73b89b">com.pjbest.wop.wm.service.QueryNeedHandleEventsRequest</a></td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#d544264dacb96e586e03c44941850751">com.pjbest.wop.wm.service.QueryNeedHandleEventsRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="8db0c741f7885218f1c5bf09e665f4a8" class="xwdiv">方法描述:查询在库序列号（追踪ID）</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>queryTrackingIds</td><td>查询在库序列号（追踪ID）</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#968da05158223c552402071d3376652a">com.pjbest.wop.wm.service.QueryTrackingIdsRequest</a></td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#5e321ac4eaa618beecd10a732d45bffa">com.pjbest.wop.wm.service.QueryTrackingIdsRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="d689e61285ecab99f83136d7df9ce4ba" class="xwdiv">方法描述:重置订单事件为未处理</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b11285123ef7497283fde93ec41b7886">com.pjbest.wop.wm.service.WopOrderEventService</a></td><td>1.0.0</td><td>resetEvent</td><td>重置订单事件为未处理</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#82a64a3a9e604b5773eb0bd13e6cc55b">com.pjbest.wop.wm.service.ResetEventRequest</a></td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#a3ac659832ea78f7ba663e69539b74f2">com.pjbest.wop.wm.service.ResetEventRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="0bb8ee65ebf3910fe0b2f91349d9cae4" class="xwdiv">构造体描述:查询在库序列号（追踪ID）响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.Tracking</td><td>查询在库序列号（追踪ID）响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>sizeSn</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>id</td><td>STRING</td><td>否</td><td></td><td></td><td>序列号（追踪ID）</td></tr>
+</table>
+</div>
+</div>
+<div id="5e321ac4eaa618beecd10a732d45bffa" class="xwdiv">构造体描述:查询在库序列号（追踪ID）响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryTrackingIdsRespone</td><td>查询在库序列号（追踪ID）响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>totalCount</td><td>INTEGER</td><td>否</td><td></td><td></td><td>记录总数</td></tr>
+<tr><td>pageNo</td><td>INTEGER</td><td>否</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>否</td><td></td><td></td><td>每页记录数</td></tr>
+<tr><td>trackings</td><td>LIST&lt;<a href="#0bb8ee65ebf3910fe0b2f91349d9cae4">com.pjbest.wop.wm.service.Tracking</a>&gt;</td><td>否</td><td></td><td></td><td>序列号（追踪ID）列表</td></tr>
+</table>
+</div>
+</div>
+<div id="968da05158223c552402071d3376652a" class="xwdiv">构造体描述:查询在库序列号（追踪ID）请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryTrackingIdsRequest</td><td>查询在库序列号（追踪ID）请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>orderSn</td><td>STRING</td><td>是</td><td></td><td></td><td>单据号</td></tr>
+<tr><td>sizeSn</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>pageNo</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页记录数</td></tr>
+</table>
+</div>
+</div>
+<div id="a3ac659832ea78f7ba663e69539b74f2" class="xwdiv">构造体描述:重置订单事件为未处理响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ResetEventRespone</td><td>重置订单事件为未处理响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败,501 事件不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="82a64a3a9e604b5773eb0bd13e6cc55b" class="xwdiv">构造体描述:重置订单事件为未处理请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ResetEventRequest</td><td>重置订单事件为未处理请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>是</td><td></td><td></td><td>事件ID（主键）</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>处理备注</td></tr>
+</table>
+</div>
+</div>
+<div id="8ddea08bef721e31e708c947cdec7c37" class="xwdiv">构造体描述:累加事件处理次数响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.MarkTryEventRespone</td><td>累加事件处理次数响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败,501 事件不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="35a2eecf4420010572ed778124984bab" class="xwdiv">构造体描述:累加事件处理次数请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.MarkTryEventRequest</td><td>累加事件处理次数请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>是</td><td></td><td></td><td>事件ID（主键）</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>处理备注</td></tr>
+</table>
+</div>
+</div>
+<div id="99409fde82fe0bc69da6a85bbb4deaae" class="xwdiv">构造体描述:完成事件处理响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.FinishEventRespone</td><td>完成事件处理响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败,501 事件不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="cbc436d45e643a271701161ea6898400" class="xwdiv">构造体描述:完成事件处理请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.FinishEventRequest</td><td>完成事件处理请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>是</td><td></td><td></td><td>事件ID（主键）</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>处理备注</td></tr>
+<tr><td>eventStatus</td><td><a href="#60f0bb8e2a1cd2f27b72eb44de8a8e7b">com.pjbest.wop.wm.service.HandleEventStatus</a></td><td>是</td><td></td><td></td><td>处理状态</td></tr>
+</table>
+</div>
+</div>
+<div id="d544264dacb96e586e03c44941850751" class="xwdiv">构造体描述:查询待处理订单事件列表响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryNeedHandleEventsRespone</td><td>查询待处理订单事件列表响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败,batchSize 过大</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>events</td><td>LIST&lt;<a href="#0f0755a92dfc3d44725a4e59e06f924f">com.pjbest.wop.wm.service.WopOrderEventModel</a>&gt;</td><td>否</td><td></td><td></td><td>订单事件列表</td></tr>
+</table>
+</div>
+</div>
+<div id="78de842598614e661ecdb1972f73b89b" class="xwdiv">构造体描述:查询待处理订单事件列表请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryNeedHandleEventsRequest</td><td>查询待处理订单事件列表请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>batchSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>查询批次条数大小</td></tr>
+</table>
+</div>
+</div>
+<div id="0f0755a92dfc3d44725a4e59e06f924f" class="xwdiv">构造体描述:订单事件</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOrderEventModel</td><td>订单事件</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>id</td><td>LONG</td><td>否</td><td></td><td></td><td>null</td></tr>
+<tr><td>tryCount</td><td>INTEGER</td><td>否</td><td></td><td></td><td>尝试次数</td></tr>
+<tr><td>handleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>处理状态 0 未处理 1-已处理 -1 处理失败</td></tr>
+<tr><td>handleDt</td><td>LONG</td><td>否</td><td></td><td></td><td>处理时间</td></tr>
+<tr><td>handleRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>处理备注</td></tr>
+<tr><td>rowMd5</td><td>STRING</td><td>否</td><td></td><td></td><td>row md5 hash</td></tr>
+<tr><td>createdByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>创建者</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建者当地时间</td></tr>
+<tr><td>createdOffice</td><td>STRING</td><td>否</td><td></td><td></td><td>创建者office</td></tr>
+<tr><td>createdTimeZone</td><td>STRING</td><td>否</td><td></td><td></td><td>创建者当地时区</td></tr>
+<tr><td>updatedByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者</td></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>updatedOffice</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者office</td></tr>
+<tr><td>updatedDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>修改者当地时间</td></tr>
+<tr><td>updatedTimeZone</td><td>STRING</td><td>否</td><td></td><td></td><td>修改者当地时区</td></tr>
+<tr><td>isDelete</td><td>BYTE</td><td>否</td><td></td><td></td><td>置为删除</td></tr>
+<tr><td>platformOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>(客户)平台订单号</td></tr>
+<tr><td>erpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>(客户)erp订单号</td></tr>
+<tr><td>wopErpOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>wop erp订单号</td></tr>
+<tr><td>odsOrderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>系统订单号</td></tr>
+<tr><td>orderStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>状态 200-已下单 300-拣货中 301-已打包 400-已出仓 500-配送中 501-已签收 502-已拒收 600-已取消 </td></tr>
+<tr><td>orderStatusRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>状态备注</td></tr>
+<tr><td>actionTime</td><td>LONG</td><td>否</td><td></td><td></td><td>发生时间</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+<div id="60f0bb8e2a1cd2f27b72eb44de8a8e7b" class="xwdiv">枚举描述:订单事件处理状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.HandleEventStatus</td><td>订单事件处理状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>OK</td><td>1</td><td>处理成功</td></tr>
+<tr><td>FAIL</td><td>2</td><td>处理失败</td></tr>
+</table>
+</div>
+</div></center></body></html>

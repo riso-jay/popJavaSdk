@@ -1,0 +1,573 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WopOuterTransferService</div>
+<div class="xwdiv">标题:WOP仓间调拨单服务</div>
+<div id="b437c4c73656e0857c3b6631c5a376f9" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOuterTransferService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#8ce4525c19288973d27fcdef36e2d2e5">cancelTransfer</a></td><td>取消调拨单接口</td><td>cancelTransfer(STRING  customerCode, STRING  erpTransferSn, STRING  remark, STRING  actionTime, STRING  userName)</td></tr>
+<tr><td><a href="#bd79624c87d6f5583dc8c2540d02348e">cleanTransferDetail</a></td><td>清空调拨单明细接口</td><td>cleanTransferDetail(STRING  customerCode, STRING  erpTransferSn)</td></tr>
+<tr><td><a href="#1684e19d6a72f0770dc979eb922b8ef2">createTransfer</a></td><td>创建调拨单表头接口</td><td>createTransfer(STRING  customerCode, STRUCT  transferInfo)</td></tr>
+<tr><td><a href="#5663a8278fc68c694008c490596c5bf5">createTransferOrder</a></td><td>创建调拨单接口</td><td>createTransferOrder(STRING  customerCode, STRUCT  transferInfo, LIST  transferDetailList)</td></tr>
+<tr><td><a href="#fe16940fcdafbac76f8ab65fe06b758f">editTransfer</a></td><td>修改调拨单表头接口</td><td>editTransfer(STRING  customerCode, STRING  erpTransferSn, STRUCT  transferInfo)</td></tr>
+<tr><td><a href="#5f209243188aa9f64b6c658575f9bef5">getTransferDetailList</a></td><td>调拨单明细查询接口</td><td>getTransferDetailList(STRING  customerCode, STRING  erpTransferSn, INTEGER  pageNum, INTEGER  pageSize)</td></tr>
+<tr><td><a href="#d8d5b5e828f420d6f48886b2a2c29aea">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#12fc0886c29d4c79045d07809db9fed4">importTransferDetail</a></td><td>导入调拨单明细接口</td><td>importTransferDetail(STRING  customerCode, STRING  erpTransferSn, LIST  transferDetailList)</td></tr>
+<tr><td><a href="#95188e79e3a5960ba1c8f020524eee4f">searchTransferList</a></td><td>调拨单查询接口</td><td>searchTransferList(STRING  customerCode, STRUCT  con, INTEGER  pageNum, INTEGER  pageSize)</td></tr>
+<tr><td><a href="#11038c609f19780c5c8d34d31bce0de0">submitTransfer</a></td><td>提交调拨单接口</td><td>submitTransfer(STRING  customerCode, STRING  erpTransferSn)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#76d86938cd395e103f26c73e4fb992c8">com.pjbest.wop.wm.service.TransferQueryCondition</a></td><td>调拨单查询条件号</td></tr>
+<tr><td><a href="#2969ea24f0230f4f13e4492dc476d644">com.pjbest.wop.wm.service.TransferInfo</a></td><td>调拨单信息号</td></tr>
+<tr><td><a href="#85e655f1d959cd0258b1518d718cdf66">com.pjbest.wop.wm.service.SearchTransferResult</a></td><td>查询调拨单单结果号</td></tr>
+<tr><td><a href="#9309caf282504f36435a40c704e0909e">com.pjbest.wop.wm.service.TransferDetail</a></td><td>调拨单明细信息号</td></tr>
+<tr><td><a href="#d86d413e914b04654f1c31d2094c7c00">com.pjbest.wop.wm.service.SearchTransferDetailResult</a></td><td>获取调拨单明细结果号</td></tr>
+<tr><td><a href="#64412b6cd0a9eda1a4a7006408cb00e7">com.pjbest.wop.wm.service.ImpTransferDetail</a></td><td>导入调拨单明细对象号</td></tr>
+<tr><td><a href="#cb018291ea77ada2c12364f823c0d273">com.pjbest.wop.wm.service.EditTransferInfo</a></td><td>修改单信息号</td></tr>
+<tr><td><a href="#d34bae0b2fe676cf404276c888560759">com.pjbest.wop.wm.service.CreateTransferInfo</a></td><td>创建调拨单信息号</td></tr>
+<tr><td><a href="#51cd497fd5a024c9eeb353541bf7dd7a">com.pjbest.wop.wm.service.TransferImportItemResult</a></td><td>调拨单明细导入响应号</td></tr>
+<tr><td><a href="#6500fc5e8c587f74d58b677b289a4a24">com.pjbest.wop.wm.service.TransferImportDetailResult</a></td><td>调拨单明细导入响应号</td></tr>
+<tr><td><a href="#3baf399d11f50a5b61a61b35baa1dd16">com.pjbest.wop.wm.service.TransferOperationResult</a></td><td>调拨单响应号</td></tr>
+<tr><td><a href="#6c7f044f626db0da7d2f5a80f5e4360c">com.pjbest.wop.wm.service.CreateTransferRespone</a></td><td>创建调拨单单头响应号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="8ce4525c19288973d27fcdef36e2d2e5" class="xwdiv">方法描述:取消调拨单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>cancelTransfer</td><td>取消调拨单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP调拨单号</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>取消原因</td></tr>
+<tr><td>actionTime</td><td>STRING</td><td>是</td><td></td><td></td><td>操作时间</td></tr>
+<tr><td>userName</td><td>STRING</td><td>是</td><td></td><td></td><td>操作人</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#3baf399d11f50a5b61a61b35baa1dd16">com.pjbest.wop.wm.service.TransferOperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="bd79624c87d6f5583dc8c2540d02348e" class="xwdiv">方法描述:清空调拨单明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>cleanTransferDetail</td><td>清空调拨单明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP调拨单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#3baf399d11f50a5b61a61b35baa1dd16">com.pjbest.wop.wm.service.TransferOperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="1684e19d6a72f0770dc979eb922b8ef2" class="xwdiv">方法描述:创建调拨单表头接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>createTransfer</td><td>创建调拨单表头接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>transferInfo</td><td><a href="#d34bae0b2fe676cf404276c888560759">com.pjbest.wop.wm.service.CreateTransferInfo</a></td><td>是</td><td></td><td></td><td>调拨单信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#6c7f044f626db0da7d2f5a80f5e4360c">com.pjbest.wop.wm.service.CreateTransferRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="5663a8278fc68c694008c490596c5bf5" class="xwdiv">方法描述:创建调拨单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>createTransferOrder</td><td>创建调拨单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>transferInfo</td><td><a href="#d34bae0b2fe676cf404276c888560759">com.pjbest.wop.wm.service.CreateTransferInfo</a></td><td>是</td><td></td><td></td><td>调拨单信息</td></tr>
+<tr><td>transferDetailList</td><td>LIST&lt;<a href="#64412b6cd0a9eda1a4a7006408cb00e7">com.pjbest.wop.wm.service.ImpTransferDetail</a>&gt;</td><td>是</td><td></td><td></td><td>调拨单明细信息 不能大于100</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#6c7f044f626db0da7d2f5a80f5e4360c">com.pjbest.wop.wm.service.CreateTransferRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="fe16940fcdafbac76f8ab65fe06b758f" class="xwdiv">方法描述:修改调拨单表头接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>editTransfer</td><td>修改调拨单表头接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP调拨单号</td></tr>
+<tr><td>transferInfo</td><td><a href="#cb018291ea77ada2c12364f823c0d273">com.pjbest.wop.wm.service.EditTransferInfo</a></td><td>是</td><td></td><td></td><td>拔单信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#3baf399d11f50a5b61a61b35baa1dd16">com.pjbest.wop.wm.service.TransferOperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="5f209243188aa9f64b6c658575f9bef5" class="xwdiv">方法描述:调拨单明细查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>getTransferDetailList</td><td>调拨单明细查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP调拨单号</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页的记录数 不能大于500</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#d86d413e914b04654f1c31d2094c7c00">com.pjbest.wop.wm.service.SearchTransferDetailResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="d8d5b5e828f420d6f48886b2a2c29aea" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="12fc0886c29d4c79045d07809db9fed4" class="xwdiv">方法描述:导入调拨单明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>importTransferDetail</td><td>导入调拨单明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP调拨单号</td></tr>
+<tr><td>transferDetailList</td><td>LIST&lt;<a href="#64412b6cd0a9eda1a4a7006408cb00e7">com.pjbest.wop.wm.service.ImpTransferDetail</a>&gt;</td><td>是</td><td></td><td></td><td>调拨单明细信息 不能大于100</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#6500fc5e8c587f74d58b677b289a4a24">com.pjbest.wop.wm.service.TransferImportDetailResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="95188e79e3a5960ba1c8f020524eee4f" class="xwdiv">方法描述:调拨单查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>searchTransferList</td><td>调拨单查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>con</td><td><a href="#76d86938cd395e103f26c73e4fb992c8">com.pjbest.wop.wm.service.TransferQueryCondition</a></td><td>是</td><td></td><td></td><td>查询条件</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页的记录数 不能大于500</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#85e655f1d959cd0258b1518d718cdf66">com.pjbest.wop.wm.service.SearchTransferResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="11038c609f19780c5c8d34d31bce0de0" class="xwdiv">方法描述:提交调拨单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#b437c4c73656e0857c3b6631c5a376f9">com.pjbest.wop.wm.service.WopOuterTransferService</a></td><td>1.0.0</td><td>submitTransfer</td><td>提交调拨单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP调拨单号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#3baf399d11f50a5b61a61b35baa1dd16">com.pjbest.wop.wm.service.TransferOperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="76d86938cd395e103f26c73e4fb992c8" class="xwdiv">构造体描述:调拨单查询条件</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.TransferQueryCondition</td><td>调拨单查询条件</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>transferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>系统调拨单号</td></tr>
+<tr><td>updatedDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期开始日期 (例：2017-08-08 08:08:08)</td></tr>
+<tr><td>updatedDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期结束日期 (例：2017-08-09 09:09:09)</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP调拨单号</td></tr>
+<tr><td>transferStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨单状态 枚举(50:草稿 100:新增 101:下发中 200:已提交 300:已出仓 400:已入仓 500:已关闭 600:已取消 201:提交失败)</td></tr>
+<tr><td>transferType</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨类型 枚举(110:普通调拨 111:残次调拨)</td></tr>
+<tr><td>fromWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨发货仓库 长度小于等于50个字符</td></tr>
+<tr><td>toWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨收货仓库 长度小于等于50个字符</td></tr>
+<tr><td>payType</td><td>BYTE</td><td>否</td><td></td><td></td><td>支付方式 枚举(0:到付 1:月结)</td></tr>
+<tr><td>createdDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期开始日期 (例：2017-08-08 08:08:08)</td></tr>
+<tr><td>createdDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期结束日期 (例：2017-08-09 09:09:09)</td></tr>
+</table>
+</div>
+</div>
+<div id="2969ea24f0230f4f13e4492dc476d644" class="xwdiv">构造体描述:调拨单信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.TransferInfo</td><td>调拨单信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP调拨单号 长度小于等于50个字符</td></tr>
+<tr><td>createUser</td><td>STRING</td><td>否</td><td></td><td></td><td>创建人</td></tr>
+<tr><td>createDateTime</td><td>STRING</td><td>否</td><td></td><td></td><td>创建时间 格式(例:2019-05-29 11:11:10)</td></tr>
+<tr><td>erpCreater</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP创建人</td></tr>
+<tr><td>erpCreateTime</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP创建时间 例(2019-04-03 19:15:56)</td></tr>
+<tr><td>transferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>系统调拨单号 长度小于等于50个字符</td></tr>
+<tr><td>transferStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨单状态 枚举(50:草稿 100:新增 101:下发中 200:已提交 300:已出仓 400:已入仓 500:已关闭 600:已取消 201:提交失败)</td></tr>
+<tr><td>transferType</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨类型 枚举(110:普通调拨 111:残次调拨 QDCF:调拨渠道拆分)</td></tr>
+<tr><td>fromWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨发货仓库 长度小于等于50个字符</td></tr>
+<tr><td>toWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>调拨收货仓库 长度小于等于50个字符</td></tr>
+<tr><td>payType</td><td>BYTE</td><td>否</td><td></td><td></td><td>支付方式 枚举(0:到付 1:月结)</td></tr>
+<tr><td>toEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>通知邮箱 长度小于等于100个字符</td></tr>
+<tr><td>ccEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>抄送邮箱 长度小于等于100个字符</td></tr>
+</table>
+</div>
+</div>
+<div id="85e655f1d959cd0258b1518d718cdf66" class="xwdiv">构造体描述:查询调拨单单结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchTransferResult</td><td>查询调拨单单结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总的记录数</td></tr>
+<tr><td>transferList</td><td>LIST&lt;<a href="#2969ea24f0230f4f13e4492dc476d644">com.pjbest.wop.wm.service.TransferInfo</a>&gt;</td><td>否</td><td></td><td></td><td>当前页面调拨单记录</td></tr>
+</table>
+</div>
+</div>
+<div id="9309caf282504f36435a40c704e0909e" class="xwdiv">构造体描述:调拨单明细信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.TransferDetail</td><td>调拨单明细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品条形码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>是</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级 枚举(100:正常 101:正常，已过可上线日期 102:正常，已过保险期 103:正常，已过失效期 210:一级残次 211:一级残次，已过可上线日期 212:一级残次，已过保险期 213:一级残次，已过失效期 220:二级残次 221:二级残次，已过可上线日期 222:二级残次，已过保险期 223:二级残次，已过失效期 230:三级残次 231:三级残次，已过可上线日期 232:三级残次，已过保险期 233:三级残次，已过失效期)</td></tr>
+<tr><td>saleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>售卖状态 枚举(0:可用 1:不可用)</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>申请调拨数量</td></tr>
+<tr><td>actuallyOutQty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>实际调出数量</td></tr>
+<tr><td>actuallyInQty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>实际调入数量</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库凭证</td></tr>
+</table>
+</div>
+</div>
+<div id="d86d413e914b04654f1c31d2094c7c00" class="xwdiv">构造体描述:获取调拨单明细结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchTransferDetailResult</td><td>获取调拨单明细结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总的记录数</td></tr>
+<tr><td>transferDetailList</td><td>LIST&lt;<a href="#9309caf282504f36435a40c704e0909e">com.pjbest.wop.wm.service.TransferDetail</a>&gt;</td><td>否</td><td></td><td></td><td>当前页面PO明细记录</td></tr>
+</table>
+</div>
+</div>
+<div id="64412b6cd0a9eda1a4a7006408cb00e7" class="xwdiv">构造体描述:导入调拨单明细对象</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ImpTransferDetail</td><td>导入调拨单明细对象</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品条形码</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级(说明：部份供应商非必填，其他必填) 枚举(100:正常 101:正常，已过可上线日期 102:正常，已过保险期 103:正常，已过失效期 210:一级残次 211:一级残次，已过可上线日期 212:一级残次，已过保险期 213:一级残次，已过失效期 220:二级残次 221:二级残次，已过可上线日期 222:二级残次，已过保险期 223:二级残次，已过失效期 230:三级残次 231:三级残次，已过可上线日期 232:三级残次，已过保险期 233:三级残次，已过失效期)</td></tr>
+<tr><td>saleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>售卖状态(说明：部份供应商非必填，其他必填) 枚举(0:可用 1:不可用)</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>调拨申请数量</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库凭证</td></tr>
+<tr><td>type</td><td>STRING</td><td>是</td><td></td><td></td><td>库存类型;只支持3PL</td></tr>
+</table>
+</div>
+</div>
+<div id="cb018291ea77ada2c12364f823c0d273" class="xwdiv">构造体描述:修改调拨单信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.EditTransferInfo</td><td>修改单信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>toWarehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>调拨收货仓库 长度小于等于50个字符</td></tr>
+<tr><td>payType</td><td>BYTE</td><td>是</td><td></td><td></td><td>支付方式 枚举(0:到付 1:月结)</td></tr>
+<tr><td>toEmail</td><td>STRING</td><td>是</td><td></td><td></td><td>通知邮箱 长度小于等于100个字符</td></tr>
+<tr><td>ccEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>抄送邮箱 长度小于等于100个字符</td></tr>
+<tr><td>erpCreater</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP创建人</td></tr>
+<tr><td>erpCreateTime</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP创建时间 例(2019-04-03 19:15:56)</td></tr>
+</table>
+</div>
+</div>
+<div id="d34bae0b2fe676cf404276c888560759" class="xwdiv">构造体描述:创建调拨单信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateTransferInfo</td><td>创建调拨单信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP调拨单号 长度小于等于50个字符</td></tr>
+<tr><td>transferType</td><td>STRING</td><td>是</td><td></td><td></td><td>调拨类型 枚举(110:普通调拨 111:残次调拨 QDCF:调拨渠道拆分)</td></tr>
+<tr><td>fromWarehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>调拨发货仓库 长度小于等于50个字符</td></tr>
+<tr><td>toWarehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>调拨收货仓库 长度小于等于50个字符</td></tr>
+<tr><td>payType</td><td>BYTE</td><td>是</td><td></td><td></td><td>支付方式 枚举(0:到付 1:月结)</td></tr>
+<tr><td>toEmail</td><td>STRING</td><td>是</td><td></td><td></td><td>通知邮箱 长度小于等于100个字符</td></tr>
+<tr><td>ccEmail</td><td>STRING</td><td>否</td><td></td><td></td><td>抄送邮箱 长度小于等于100个字符</td></tr>
+<tr><td>erpCreater</td><td>STRING</td><td>是</td><td></td><td></td><td>ERP创建人</td></tr>
+<tr><td>erpCreateTime</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP创建时间 例(2019-04-03 19:15:56)</td></tr>
+</table>
+</div>
+</div>
+<div id="51cd497fd5a024c9eeb353541bf7dd7a" class="xwdiv">构造体描述:调拨单明细导入响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.TransferImportItemResult</td><td>调拨单明细导入响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品条形码</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败,501：本批次存在重新的商品，502：本商品已经存在于本调拨单</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="6500fc5e8c587f74d58b677b289a4a24" class="xwdiv">构造体描述:调拨单明细导入响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.TransferImportDetailResult</td><td>调拨单明细导入响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败，501：明细部分已存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP调拨单号</td></tr>
+<tr><td>itemResultList</td><td>LIST&lt;<a href="#51cd497fd5a024c9eeb353541bf7dd7a">com.pjbest.wop.wm.service.TransferImportItemResult</a>&gt;</td><td>否</td><td></td><td></td><td>ERP调拨明细导入结果</td></tr>
+</table>
+</div>
+</div>
+<div id="3baf399d11f50a5b61a61b35baa1dd16" class="xwdiv">构造体描述:调拨单响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.TransferOperationResult</td><td>调拨单响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP调拨单号</td></tr>
+</table>
+</div>
+</div>
+<div id="6c7f044f626db0da7d2f5a80f5e4360c" class="xwdiv">构造体描述:创建调拨单单头响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreateTransferRespone</td><td>创建调拨单单头响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败,501：调拨单已存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>erpTransferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>ERP调拨单号</td></tr>
+<tr><td>transferSn</td><td>STRING</td><td>否</td><td></td><td></td><td>WOP调拨单号</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

@@ -1,0 +1,182 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.pdc.service.PdcDecItemErpService</div>
+<div class="xwdiv">标题:ERP 商品同步服务</div>
+<div id="bd7725729ec4fb37a8fd9e71bd4ea44f" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.pdc.service.PdcDecItemErpService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#f22a308be63d17db4a70e9ef4c3f9306">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#969ab7fae418f01db9783808f29ca665">syncPdcItem</a></td><td>同步商品信息</td><td>syncPdcItem(STRING  crmCustCode, STRUCT  item)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#000eca62fad456ad0cb3db9868c4105c">com.pjbest.pdc.service.ErpDecPdcItem</a></td><td>ERP 商品信息号</td></tr>
+<tr><td><a href="#e7b1ce575cb20e6d68b5d990c2d64a2e">com.pjbest.pdc.service.ErpDecPdcItemResult</a></td><td>ERP商品信息同步结号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="f22a308be63d17db4a70e9ef4c3f9306" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#bd7725729ec4fb37a8fd9e71bd4ea44f">com.pjbest.pdc.service.PdcDecItemErpService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="969ab7fae418f01db9783808f29ca665" class="xwdiv">方法描述:同步商品信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#bd7725729ec4fb37a8fd9e71bd4ea44f">com.pjbest.pdc.service.PdcDecItemErpService</a></td><td>1.0.0</td><td>syncPdcItem</td><td>同步商品信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>item</td><td><a href="#000eca62fad456ad0cb3db9868c4105c">com.pjbest.pdc.service.ErpDecPdcItem</a></td><td>否</td><td></td><td></td><td>商品信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#e7b1ce575cb20e6d68b5d990c2d64a2e">com.pjbest.pdc.service.ErpDecPdcItemResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="000eca62fad456ad0cb3db9868c4105c" class="xwdiv">构造体描述:ERP 商品信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.ErpDecPdcItem</td><td>ERP 商品信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>transactionId</td><td>STRING</td><td>是</td><td></td><td></td><td>唯一标识 (长度不能超过 50)</td></tr>
+<tr><td>size</td><td>STRING</td><td>是</td><td></td><td></td><td>商品规格(长度不能超过 50)</td></tr>
+<tr><td>color</td><td>STRING</td><td>是</td><td></td><td></td><td>商品颜色(长度不能超过 50)</td></tr>
+<tr><td>tagPrice</td><td>STRING</td><td>否</td><td></td><td></td><td>吊牌价 (单位元)不填默认填0 整数位数上限为15位，小数位数上限为2位</td></tr>
+<tr><td>stockUnit</td><td>STRING</td><td>是</td><td></td><td></td><td>商品单位(长度不能超过 64)</td></tr>
+<tr><td>parts</td><td>STRING</td><td>否</td><td></td><td></td><td>商品配件(长度不能超过 50)</td></tr>
+<tr><td>isShelfLifeMgmt</td><td>STRING</td><td>是</td><td></td><td></td><td>是否质保(Y/N ;默认为N) 当选择Y则(期限基线、保质期时长、保险期时长、拒上线日期（refeuse）、拒收期限(inbLife) )必填、【保质期时长 > 保险期时长】，而且【1 <= 拒收期限 <= 保质期时长】;如果选择否则保质期时长必填</td></tr>
+<tr><td>qgpStandard</td><td>STRING</td><td>否</td><td></td><td></td><td>期限基线 E:过期日期 V:生产日期       只能为 E/V</td></tr>
+<tr><td>shelfLife</td><td>INTEGER</td><td>否</td><td></td><td></td><td>保质期时长(单位：天 长度10位)</td></tr>
+<tr><td>insurancePeriod</td><td>INTEGER</td><td>是</td><td></td><td></td><td>保险期时长(单位：天    长度10位)</td></tr>
+<tr><td>refuse</td><td>INTEGER</td><td>否</td><td></td><td></td><td>拒上线日期(单位：天  长度10位)</td></tr>
+<tr><td>actionType</td><td>STRING</td><td>是</td><td></td><td></td><td>操作类型(两种类型：add|update)</td></tr>
+<tr><td>temperature</td><td>STRING</td><td>否</td><td></td><td></td><td>保存温度（单位℃  长度不能超过 50）</td></tr>
+<tr><td>provenance</td><td>BYTE</td><td>是</td><td></td><td></td><td>是否国产:0未知|1中国|2进口 (只能为 0、1、2)</td></tr>
+<tr><td>isSerialNumManage</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否序列号管理:0否|1是 (不填默认否)</td></tr>
+<tr><td>isFragile</td><td>STRING</td><td>是</td><td></td><td></td><td>是否易碎品(Y/N ;默认为N)</td></tr>
+<tr><td>isAirForbit</td><td>BYTE</td><td>是</td><td></td><td></td><td>是否航空禁运 0：否，1：是。默认0</td></tr>
+<tr><td>isLuxury</td><td>BYTE</td><td>是</td><td></td><td></td><td>是否贵重品 默认0：否  只能为 0、1</td></tr>
+<tr><td>isLarge</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否大件 默认0：否   只能为 0、1</td></tr>
+<tr><td>netWeight</td><td>STRING</td><td>否</td><td></td><td></td><td>净重(单位：克  10位整数)</td></tr>
+<tr><td>grossWeight</td><td>STRING</td><td>否</td><td></td><td></td><td>毛重(单位：克   10位整数)</td></tr>
+<tr><td>length</td><td>STRING</td><td>否</td><td></td><td></td><td>长（含包装）(单位：毫米  10位整数)</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品编码(长度不能超过 50)</td></tr>
+<tr><td>width</td><td>STRING</td><td>否</td><td></td><td></td><td>宽（含包装）(单位：毫米  10位整数)</td></tr>
+<tr><td>height</td><td>STRING</td><td>否</td><td></td><td></td><td>高（含包装）(单位：毫米 10位整数)</td></tr>
+<tr><td>grossLength</td><td>STRING</td><td>否</td><td></td><td></td><td>长（不含包装）(单位：毫米  10位整数)</td></tr>
+<tr><td>grossWidth</td><td>STRING</td><td>否</td><td></td><td></td><td>宽（不含包装）(单位：毫米  10位整数)</td></tr>
+<tr><td>grossHeight</td><td>STRING</td><td>否</td><td></td><td></td><td>高（不含包装）(单位：毫米  10位整数)</td></tr>
+<tr><td>isBatchMgmt</td><td>STRING</td><td>否</td><td></td><td></td><td>是否需要批次管理(Y/N ;默认为N)</td></tr>
+<tr><td>customMade</td><td>STRING</td><td>否</td><td></td><td></td><td>是否定制品(0否，1是,默认值0)</td></tr>
+<tr><td>dataSource</td><td>STRING</td><td>是</td><td></td><td></td><td>数据源(长度不能超过 20)</td></tr>
+<tr><td>inbLife</td><td>INTEGER</td><td>否</td><td></td><td></td><td>拒收期限(单位：天    长度10位)</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>是</td><td></td><td></td><td>商品名称(长度不能超过 64)</td></tr>
+<tr><td>category3Name</td><td>STRING</td><td>否</td><td></td><td></td><td>商品小类名称(长度不能超过 50) 商品小类编码或商品小类名称两个选填一个 </td></tr>
+<tr><td>category3Code</td><td>STRING</td><td>否</td><td></td><td></td><td>商品小类编码(长度不能超过 50) 商品小类编码或商品小类名称两个选填一个</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码(长度不能超过 50)  品牌编码和品牌名称两个选填一个</td></tr>
+<tr><td>brandName</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌名称(长度不能超过 120)  品牌编码和品牌名称两个选填一个</td></tr>
+<tr><td>goodsCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品货号(长度不能超过 50)</td></tr>
+</table>
+</div>
+</div>
+<div id="e7b1ce575cb20e6d68b5d990c2d64a2e" class="xwdiv">构造体描述:ERP商品信息同步结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.pdc.service.ErpDecPdcItemResult</td><td>ERP商品信息同步结</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>result</td><td>BOOLEAN</td><td>是</td><td></td><td></td><td>处理结果（true 成功 false 失败）</td></tr>
+<tr><td>message</td><td>STRING</td><td>否</td><td></td><td></td><td>处理结果描述（ 如果处理失败则是失败原因）</td></tr>
+<tr><td>resultCode</td><td>STRING</td><td>否</td><td></td><td></td><td>结果编码：000 失败;001 成功 ;002 品牌问题 ;003 品类问题 ;004 其他信息问题;005 商品已存在; 006 唯一标识已存在; 007 更新时商品不存在</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

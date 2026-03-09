@@ -1,0 +1,491 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.cis.service.CisInvChannelQueryAPI</div>
+<div class="xwdiv">标题:CIS渠道库存查询API</div>
+<div id="77b4d39e708d4dcbba7ec37e5dcf1ee7" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.cis.service.CisInvChannelQueryAPI</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#8685b6cb4831c86428247e8275fe0230">getActionChannel</a></td><td>获取供应商业务渠道列表</td><td>getActionChannel(STRING  vendorCode, STRING  actionCode, STRING  opType, STRING  systemPoNo, INTEGER  qty, STRING  otherPoNo, STRING  grade, BYTE  saleStatus)</td></tr>
+<tr><td><a href="#d2ec9a81886e5d66bffc9ad76e204880">getAllChannelByPriorityCode</a></td><td>获取供应商所有的渠道,供应商没配置则返回默认渠道</td><td>getAllChannelByPriorityCode(STRING  vendorCode, STRING  priorityCode)</td></tr>
+<tr><td><a href="#8a5ba1baf0d82a30e728bc1b387e07ec">getAllChannelByVendor</a></td><td>获取供应商所有的渠道,供应商没配置则返回默认渠道</td><td>getAllChannelByVendor(STRING  vendorCode, BYTE  priorityType)</td></tr>
+<tr><td><a href="#a79995834e89f368f76b279374e0e1b7">getChannelPriorityType</a></td><td>获取渠道优先级类型 0:调减 1:调增</td><td>getChannelPriorityType(STRING  actionCode, STRING  opType, INTEGER  qty)</td></tr>
+<tr><td><a href="#8cb749ccb008365f055b74b70872b5da">getVipChannelSaleBaseReq</a></td><td>获取唯品会渠道销售请求参数</td><td>getVipChannelSaleBaseReq(STRING  vendorCode, STRING  warehouse, STRING  itemCode)</td></tr>
+<tr><td><a href="#86e17642f18b2c285d905b03b7011192">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#981d201d53a4abefaa391779c84613fe">invChannelQueryByPage</a></td><td>分页返回查询结果</td><td>invChannelQueryByPage(STRUCT  queryChannelReq, STRUCT  paginationModel)</td></tr>
+<tr><td><a href="#850e149407ba7d847d9c01db6c0b2801">invChannelQueryCount</a></td><td>查询总记录 数</td><td>invChannelQueryCount(STRUCT  queryChannelReq)</td></tr>
+<tr><td><a href="#86e1affb77d6675d8e4be85fa2468d0e">selectByInvCode</a></td><td>通过渠道库存编码获取渠道库存</td><td>selectByInvCode(STRING  invCode)</td></tr>
+<tr><td><a href="#0af2f8dbc111458f89d7135005c6e25c">selectInvChannelQuerySum</a></td><td>汇总查询结果</td><td>selectInvChannelQuerySum(STRUCT  queryChannelReq)</td></tr>
+<tr><td><a href="#32ba788137d079b00365a2a7251b13a4">selectInvChannelSumByMultiRequests</a></td><td>库存汇总查询</td><td>selectInvChannelSumByMultiRequests(LIST  inventoryQueryReqList)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#d8f9ed124a0acbe53a4f3fbb9ab0995e">com.pjbest.cis.service.QueryChannelResult</a></td><td>号</td></tr>
+<tr><td><a href="#f8c17be8770795f0a2a4734e6c8b9ba1">com.pjbest.cis.service.QueryChannelReq</a></td><td>渠道库存查询请求号</td></tr>
+<tr><td><a href="#4f872b30fc02df943d9aa63f9946456b">com.pjbest.cis.service.ActionChannelList</a></td><td>供应商渠道列表号</td></tr>
+<tr><td><a href="#aa18817e7025c305a866188c5248a546">com.pjbest.cis.service.InvChannelSum</a></td><td>库存汇总查询结果号</td></tr>
+<tr><td><a href="#929b32c58404847a1b03d51dc9928f2b">com.pjbest.cis.service.InventoryQueryReq</a></td><td>库存汇总查询请求号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#f1bb65d957244736dd154bbb86296c9f">com.pjbest.wop.base.inner.common.service.PaginationModel</a></td><td>号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+<tr><td><a href="#bdd1db2c0dda23c67a1b0818ace6c44c">com.pjbest.wop.base.inner.common.service.SortModel</a></td><td>号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="8685b6cb4831c86428247e8275fe0230" class="xwdiv">方法描述:获取供应商业务渠道列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>getActionChannel</td><td>获取供应商业务渠道列表</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>actionCode</td><td>STRING</td><td>是</td><td></td><td></td><td>业务编码</td></tr>
+<tr><td>opType</td><td>STRING</td><td>是</td><td></td><td></td><td>业务类型</td></tr>
+<tr><td>systemPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库单号</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>操作数</td></tr>
+<tr><td>otherPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>其他入库单号</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>saleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>售卖状态 0:可用 1:不可用</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#4f872b30fc02df943d9aa63f9946456b">com.pjbest.cis.service.ActionChannelList</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="d2ec9a81886e5d66bffc9ad76e204880" class="xwdiv">方法描述:获取供应商所有的渠道,供应商没配置则返回默认渠道</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>getAllChannelByPriorityCode</td><td>获取供应商所有的渠道,供应商没配置则返回默认渠道</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>priorityCode</td><td>STRING</td><td>是</td><td></td><td></td><td>优先级代码</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;BYTE&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="8a5ba1baf0d82a30e728bc1b387e07ec" class="xwdiv">方法描述:获取供应商所有的渠道,供应商没配置则返回默认渠道</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>getAllChannelByVendor</td><td>获取供应商所有的渠道,供应商没配置则返回默认渠道</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>priorityType</td><td>BYTE</td><td>是</td><td></td><td></td><td>调整类型  0:调减 1:调增</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;BYTE&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="a79995834e89f368f76b279374e0e1b7" class="xwdiv">方法描述:获取渠道优先级类型 0:调减 1:调</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>getChannelPriorityType</td><td>获取渠道优先级类型 0:调减 1:调增</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>actionCode</td><td>STRING</td><td>是</td><td></td><td></td><td>业务编码</td></tr>
+<tr><td>opType</td><td>STRING</td><td>是</td><td></td><td></td><td>业务类型</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>操作数</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>BYTE</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="8cb749ccb008365f055b74b70872b5da" class="xwdiv">方法描述:获取唯品会渠道销售请求参数</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>getVipChannelSaleBaseReq</td><td>获取唯品会渠道销售请求参数</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>warehouse</td><td>STRING</td><td>是</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#f8c17be8770795f0a2a4734e6c8b9ba1">com.pjbest.cis.service.QueryChannelReq</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="86e17642f18b2c285d905b03b7011192" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="981d201d53a4abefaa391779c84613fe" class="xwdiv">方法描述:分页返回查询结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>invChannelQueryByPage</td><td>分页返回查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryChannelReq</td><td><a href="#f8c17be8770795f0a2a4734e6c8b9ba1">com.pjbest.cis.service.QueryChannelReq</a></td><td>是</td><td></td><td></td><td>查询对象</td></tr>
+<tr><td>paginationModel</td><td><a href="#f1bb65d957244736dd154bbb86296c9f">com.pjbest.wop.base.inner.common.service.PaginationModel</a></td><td>是</td><td></td><td></td><td>分页对象 注:排序不起作用</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#d8f9ed124a0acbe53a4f3fbb9ab0995e">com.pjbest.cis.service.QueryChannelResult</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="850e149407ba7d847d9c01db6c0b2801" class="xwdiv">方法描述:查询总记录 数</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>invChannelQueryCount</td><td>查询总记录 数</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryChannelReq</td><td><a href="#f8c17be8770795f0a2a4734e6c8b9ba1">com.pjbest.cis.service.QueryChannelReq</a></td><td>是</td><td></td><td></td><td>查询对象</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>INTEGER</td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="86e1affb77d6675d8e4be85fa2468d0e" class="xwdiv">方法描述:通过渠道库存编码获取渠道库存</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>selectByInvCode</td><td>通过渠道库存编码获取渠道库存</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>invCode</td><td>STRING</td><td>是</td><td></td><td></td><td>渠道库存编码</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#d8f9ed124a0acbe53a4f3fbb9ab0995e">com.pjbest.cis.service.QueryChannelResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="0af2f8dbc111458f89d7135005c6e25c" class="xwdiv">方法描述:汇总查询结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>selectInvChannelQuerySum</td><td>汇总查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryChannelReq</td><td><a href="#f8c17be8770795f0a2a4734e6c8b9ba1">com.pjbest.cis.service.QueryChannelReq</a></td><td>是</td><td></td><td></td><td>查询对象</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#d8f9ed124a0acbe53a4f3fbb9ab0995e">com.pjbest.cis.service.QueryChannelResult</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="32ba788137d079b00365a2a7251b13a4" class="xwdiv">方法描述:库存汇总查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#77b4d39e708d4dcbba7ec37e5dcf1ee7">com.pjbest.cis.service.CisInvChannelQueryAPI</a></td><td>1.0.0</td><td>selectInvChannelSumByMultiRequests</td><td>库存汇总查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>inventoryQueryReqList</td><td>LIST&lt;<a href="#929b32c58404847a1b03d51dc9928f2b">com.pjbest.cis.service.InventoryQueryReq</a>&gt;</td><td>是</td><td></td><td></td><td>查询对象集合</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#aa18817e7025c305a866188c5248a546">com.pjbest.cis.service.InvChannelSum</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="d8f9ed124a0acbe53a4f3fbb9ab0995e" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.cis.service.QueryChannelResult</td><td>null</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>usableQty</td><td>LONG</td><td>否</td><td></td><td></td><td>可用库存数</td></tr>
+<tr><td>safeQty</td><td>LONG</td><td>否</td><td></td><td></td><td>安全库存数</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>itemSn</td><td>STRING</td><td>否</td><td></td><td></td><td>货号</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>channel</td><td>BYTE</td><td>否</td><td></td><td></td><td>渠道编码</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>saleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>售卖状态 0:可用 1:不可用</td></tr>
+<tr><td>invQty</td><td>LONG</td><td>否</td><td></td><td></td><td>当前库存数</td></tr>
+<tr><td>holdQty</td><td>LONG</td><td>否</td><td></td><td></td><td>预占库存数</td></tr>
+<tr><td>onTheWayQty</td><td>LONG</td><td>否</td><td></td><td></td><td>在途库存数</td></tr>
+</table>
+</div>
+</div>
+<div id="f8c17be8770795f0a2a4734e6c8b9ba1" class="xwdiv">构造体描述:渠道库存查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.cis.service.QueryChannelReq</td><td>渠道库存查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>isGroupByVendor</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>是否查总库存</td></tr>
+<tr><td>itemCodeList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>商品编码集合</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>PO号</td></tr>
+<tr><td>itemSnList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>货号集合</td></tr>
+<tr><td>warehouseCodeList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>仓码集合</td></tr>
+<tr><td>isLessThanZero</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>是否只返回小于0的库存</td></tr>
+<tr><td>brandCodeList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>品牌编码集合</td></tr>
+<tr><td>isIncludeReplica</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>是否包括复刻的实物条码</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>channel</td><td>BYTE</td><td>否</td><td></td><td></td><td>渠道编码</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>saleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>售卖状态 0:可用 1:不可用</td></tr>
+<tr><td>isMoreThanZero</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>是否只返回大于0的库存</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>itemSn</td><td>STRING</td><td>否</td><td></td><td></td><td>货号</td></tr>
+</table>
+</div>
+</div>
+<div id="4f872b30fc02df943d9aa63f9946456b" class="xwdiv">构造体描述:供应商渠道列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.cis.service.ActionChannelList</td><td>供应商渠道列表</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>actionCode</td><td>STRING</td><td>否</td><td></td><td></td><td>业务编码</td></tr>
+<tr><td>opType</td><td>STRING</td><td>否</td><td></td><td></td><td>业务类型</td></tr>
+<tr><td>priorityType</td><td>BYTE</td><td>否</td><td></td><td></td><td>调整类型  0:调减 1:调增</td></tr>
+<tr><td>channelList</td><td>LIST&lt;BYTE&gt;</td><td>否</td><td></td><td></td><td>渠道列表</td></tr>
+</table>
+</div>
+</div>
+<div id="aa18817e7025c305a866188c5248a546" class="xwdiv">构造体描述:库存汇总查询结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.cis.service.InvChannelSum</td><td>库存汇总查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>invQty</td><td>LONG</td><td>否</td><td></td><td></td><td>当前库存总数</td></tr>
+<tr><td>holdQty</td><td>LONG</td><td>否</td><td></td><td></td><td>预占库存总数</td></tr>
+<tr><td>onTheWayQty</td><td>LONG</td><td>否</td><td></td><td></td><td>在途库存总数</td></tr>
+<tr><td>usableQty</td><td>LONG</td><td>否</td><td></td><td></td><td>可用库存总数</td></tr>
+<tr><td>safeQty</td><td>LONG</td><td>否</td><td></td><td></td><td>安全库存总数</td></tr>
+</table>
+</div>
+</div>
+<div id="929b32c58404847a1b03d51dc9928f2b" class="xwdiv">构造体描述:库存汇总查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.cis.service.InventoryQueryReq</td><td>库存汇总查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="f1bb65d957244736dd154bbb86296c9f" class="xwdiv">构造体描述:分页</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.base.inner.common.service.PaginationModel</td><td>null</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>pageNumber</td><td>INTEGER</td><td>否</td><td></td><td>1</td><td>页号</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>否</td><td></td><td>10</td><td>每一页条数</td></tr>
+<tr><td>total</td><td>LONG</td><td>否</td><td></td><td></td><td>总记录数</td></tr>
+<tr><td>sort</td><td>LIST&lt;<a href="#bdd1db2c0dda23c67a1b0818ace6c44c">com.pjbest.wop.base.inner.common.service.SortModel</a>&gt;</td><td>否</td><td></td><td></td><td>排序</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div id="bdd1db2c0dda23c67a1b0818ace6c44c" class="xwdiv">构造体描述:排序</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.base.inner.common.service.SortModel</td><td>null</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>property</td><td>STRING</td><td>否</td><td></td><td></td><td>属性</td></tr>
+<tr><td>direction</td><td>STRING</td><td>否</td><td></td><td>ASC</td><td>方向</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

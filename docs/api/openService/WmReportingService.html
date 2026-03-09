@@ -1,0 +1,963 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WmReportingService</div>
+<div class="xwdiv">标题:唯品物流WOP外部报表接口</div>
+<div id="88bca98935eed98966ddfd287a07b5b4" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WmReportingService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#7f21a38af83df0634f8e70ce83dc6c92">channelInvQuery</a></td><td>渠道库存查询</td><td>channelInvQuery(STRUCT  queryChannelReq)</td></tr>
+<tr><td><a href="#32180435ad75c7c4d6a4f78dd4055056">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#3ca288ecb43245dc39dca7ed4e54eda1">invCheckReportAck</a></td><td>库存盘点结果确认接口</td><td>invCheckReportAck(STRING  customerCode, LIST  ackResultList)</td></tr>
+<tr><td><a href="#f40f765fe8f07abb2ff6fdd62af5ec0a">invCheckReportQuery</a></td><td>库存盘点结果查询</td><td>invCheckReportQuery(STRING  customerCode, INTEGER  pageNum, INTEGER  pageSize)</td></tr>
+<tr><td><a href="#e0fd1f2a95d746d1ff530316657ce9e6">queryInvOutQuantitySkuSum</a></td><td>出库SKU汇总查询</td><td>queryInvOutQuantitySkuSum(STRING  vendorCode, STRING  startDate, STRING  endDate, STRING  warehouseCode, STRING  itemCode)</td></tr>
+<tr><td><a href="#8666a391f04241dc095603e2510f1915">queryPurchaseSalesInventory</a></td><td>进销存报表查询</td><td>queryPurchaseSalesInventory(STRUCT  query)</td></tr>
+<tr><td><a href="#1a9c37598f06bfc9de3286471dae7e79">queryRealtimeInventory</a></td><td>实时库存报表查询</td><td>queryRealtimeInventory(STRUCT  query)</td></tr>
+<tr><td><a href="#12ef7d9861b8a03f537d3e4b15cb83c3">queryWms119Inventory</a></td><td>wms119库存报表查询</td><td>queryWms119Inventory(STRUCT  query)</td></tr>
+<tr><td><a href="#46acd3da861cd51cafde819ac1287dec">stockChangeReportAck</a></td><td>库存异动通知确认接口</td><td>stockChangeReportAck(STRING  customerCode, LIST  ackResultList, STRING  bizType, STRING  virtualClientCode)</td></tr>
+<tr><td><a href="#da4ce038298eb9b8a23f3e6f69651a15">stockChangeReportAckByObj</a></td><td>库存异动通知确认接口</td><td>stockChangeReportAckByObj(STRUCT  stockChangeReportAckReq)</td></tr>
+<tr><td><a href="#48528b4d85d7ad74dd2bc325765cd2eb">stockChangeReportQuery</a></td><td>库存异动查询</td><td>stockChangeReportQuery(STRING  customerCode, INTEGER  pageNum, INTEGER  pageSize, STRING  bizType, STRING  virtualClientCode)</td></tr>
+<tr><td><a href="#e7c5cdf6fa11a6029af707a6590143e5">stockChangeReportQueryByObj</a></td><td>库存异动查询</td><td>stockChangeReportQueryByObj(STRUCT  stockChangeReportReq)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#178d032ae3910fb5e8104e6211f6eecf">com.pjbest.wop.wm.service.StockChangeReportAckReq</a></td><td>库存异动确认查询对象号</td></tr>
+<tr><td><a href="#af085ccbf8e61dc0f0c1a9b9a9e040d9">com.pjbest.wop.wm.service.StockChangeReportReq</a></td><td>库存异动查询对象号</td></tr>
+<tr><td><a href="#e9116c030a3bc02a3eb851d63030048a">com.pjbest.wop.wm.service.StockchangeReportAck</a></td><td>库存异动Ack号</td></tr>
+<tr><td><a href="#2708cc30bb00f5ff7c130626e062997b">com.pjbest.wop.wm.service.StockchangeReportRes</a></td><td>库存异动Res号</td></tr>
+<tr><td><a href="#1cacf45fa714884f90408abcd280d332">com.pjbest.wop.wm.service.StockchangeReportSnList</a></td><td>库存异动Item号</td></tr>
+<tr><td><a href="#d6a7267ff7a184894acdba910b4de6f4">com.pjbest.wop.wm.service.StockchangeReportItem</a></td><td>库存异动Item号</td></tr>
+<tr><td><a href="#dd302a8511aade8207ec1a255c4f1ea8">com.pjbest.wop.wm.service.StockchangeReportPriceAdjustment</a></td><td>库存异动PriceAdjustment号</td></tr>
+<tr><td><a href="#22c749ae308ded8b60e1edb144a7a72a">com.pjbest.wop.wm.service.StockchangeReportBatch</a></td><td>库存异动batch号</td></tr>
+<tr><td><a href="#7bcbd5486bda94b250b28c2bdef3e783">com.pjbest.wop.wm.service.InvCheckDetail</a></td><td>库存盘点结果号</td></tr>
+<tr><td><a href="#86b366d2a387dec4e71755cda8369317">com.pjbest.wop.wm.service.InvCheckReportAckResult</a></td><td>库存盘点确认结果号</td></tr>
+<tr><td><a href="#c95d1353550247640f5a0de3e81349bb">com.pjbest.wop.wm.service.InvCheckAckResponse</a></td><td>库存盘点结果返回号</td></tr>
+<tr><td><a href="#7a54ab67c7640a82745feebd094fd0a3">com.pjbest.wop.wm.service.InvCheckResponse</a></td><td>库存盘点结果号</td></tr>
+<tr><td><a href="#1dab33d8f99eb546d3aa7809b80e7b17">com.pjbest.wop.wm.service.Wms119InventoryRequest</a></td><td>wms119库存查询请求号</td></tr>
+<tr><td><a href="#503a3f11b9fa9c2b939baac432307833">com.pjbest.wop.wm.service.InventorySkuSumResponse</a></td><td>出库SKU汇总返回实体号</td></tr>
+<tr><td><a href="#b88baeaf9159f6a995f9b9789efbca52">com.pjbest.wop.wm.service.ChannelInvReq</a></td><td>渠道库存查询条件号</td></tr>
+<tr><td><a href="#3a13ee1706a26bb3a684755dbda1e327">com.pjbest.wop.wm.service.ChannelInvItem</a></td><td>号</td></tr>
+<tr><td><a href="#2699d5e0e41d7706335366038b342185">com.pjbest.wop.wm.service.ChannelInvResponse</a></td><td>进销存报表查询结果号</td></tr>
+<tr><td><a href="#aa3a0fa2d96b1c9668120bfd3a5b7a7c">com.pjbest.wop.wm.service.PurchaseSalesRecord</a></td><td>进销存记录号</td></tr>
+<tr><td><a href="#7d9b60c35167ceef178a0ba2f5a557f8">com.pjbest.wop.wm.service.RealtimeInventoryInfo</a></td><td>实时库存信息号</td></tr>
+<tr><td><a href="#a729b9f8bd33c1a8e692e9591f2b2709">com.pjbest.wop.wm.service.PurchaseSalesResponse</a></td><td>进销存报表查询结果号</td></tr>
+<tr><td><a href="#19c0f72a59ccad386ed8a248c6c889d0">com.pjbest.wop.wm.service.RealtimeInventoryResponse</a></td><td>实时库存查询结果号</td></tr>
+<tr><td><a href="#01dc815f68862e86b191092511585ec9">com.pjbest.wop.wm.service.PurchaseSalesRequest</a></td><td>进销存报表查询请求号</td></tr>
+<tr><td><a href="#04d336975db2df01bc15ddcec758d30c">com.pjbest.wop.wm.service.RealtimeInventoryRequest</a></td><td>实时库存查询请求号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="7f21a38af83df0634f8e70ce83dc6c92" class="xwdiv">方法描述:渠道库存查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>channelInvQuery</td><td>渠道库存查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>queryChannelReq</td><td><a href="#b88baeaf9159f6a995f9b9789efbca52">com.pjbest.wop.wm.service.ChannelInvReq</a></td><td>是</td><td></td><td></td><td>查询条件</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#2699d5e0e41d7706335366038b342185">com.pjbest.wop.wm.service.ChannelInvResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="32180435ad75c7c4d6a4f78dd4055056" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="3ca288ecb43245dc39dca7ed4e54eda1" class="xwdiv">方法描述:库存盘点结果确认接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>invCheckReportAck</td><td>库存盘点结果确认接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>ackResultList</td><td>LIST&lt;<a href="#86b366d2a387dec4e71755cda8369317">com.pjbest.wop.wm.service.InvCheckReportAckResult</a>&gt;</td><td>是</td><td></td><td></td><td>流水确认结果</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#c95d1353550247640f5a0de3e81349bb">com.pjbest.wop.wm.service.InvCheckAckResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="f40f765fe8f07abb2ff6fdd62af5ec0a" class="xwdiv">方法描述:库存盘点结果查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>invCheckReportQuery</td><td>库存盘点结果查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页数量</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#7a54ab67c7640a82745feebd094fd0a3">com.pjbest.wop.wm.service.InvCheckResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="e0fd1f2a95d746d1ff530316657ce9e6" class="xwdiv">方法描述:出库SKU汇总查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>queryInvOutQuantitySkuSum</td><td>出库SKU汇总查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>startDate</td><td>STRING</td><td>是</td><td></td><td></td><td>开始时间,格式为：yyyy-mm-dd </td></tr>
+<tr><td>endDate</td><td>STRING</td><td>是</td><td></td><td></td><td>结束时间,格式为：yyyy-mm-dd </td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#503a3f11b9fa9c2b939baac432307833">com.pjbest.wop.wm.service.InventorySkuSumResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="8666a391f04241dc095603e2510f1915" class="xwdiv">方法描述:进销存报表查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>queryPurchaseSalesInventory</td><td>进销存报表查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>query</td><td><a href="#01dc815f68862e86b191092511585ec9">com.pjbest.wop.wm.service.PurchaseSalesRequest</a></td><td>是</td><td></td><td></td><td>查询条件</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#a729b9f8bd33c1a8e692e9591f2b2709">com.pjbest.wop.wm.service.PurchaseSalesResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="1a9c37598f06bfc9de3286471dae7e79" class="xwdiv">方法描述:实时库存报表查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>queryRealtimeInventory</td><td>实时库存报表查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>query</td><td><a href="#04d336975db2df01bc15ddcec758d30c">com.pjbest.wop.wm.service.RealtimeInventoryRequest</a></td><td>是</td><td></td><td></td><td>查询条件</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#19c0f72a59ccad386ed8a248c6c889d0">com.pjbest.wop.wm.service.RealtimeInventoryResponse</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="12ef7d9861b8a03f537d3e4b15cb83c3" class="xwdiv">方法描述:wms119库存报表查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>queryWms119Inventory</td><td>wms119库存报表查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>query</td><td><a href="#1dab33d8f99eb546d3aa7809b80e7b17">com.pjbest.wop.wm.service.Wms119InventoryRequest</a></td><td>是</td><td></td><td></td><td>查询条件</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>STRING</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="46acd3da861cd51cafde819ac1287dec" class="xwdiv">方法描述:库存异动通知确认接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>stockChangeReportAck</td><td>库存异动通知确认接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>ackResultList</td><td>LIST&lt;<a href="#e9116c030a3bc02a3eb851d63030048a">com.pjbest.wop.wm.service.StockchangeReportAck</a>&gt;</td><td>是</td><td></td><td></td><td>流水确认结果</td></tr>
+<tr><td>bizType</td><td>STRING</td><td>否</td><td></td><td></td><td>库存异动业务类型</td></tr>
+<tr><td>virtualClientCode</td><td>STRING</td><td>否</td><td></td><td></td><td>虚拟货主客户编码</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#e9116c030a3bc02a3eb851d63030048a">com.pjbest.wop.wm.service.StockchangeReportAck</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="da4ce038298eb9b8a23f3e6f69651a15" class="xwdiv">方法描述:库存异动通知确认接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>stockChangeReportAckByObj</td><td>库存异动通知确认接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>stockChangeReportAckReq</td><td><a href="#178d032ae3910fb5e8104e6211f6eecf">com.pjbest.wop.wm.service.StockChangeReportAckReq</a></td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#e9116c030a3bc02a3eb851d63030048a">com.pjbest.wop.wm.service.StockchangeReportAck</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="48528b4d85d7ad74dd2bc325765cd2eb" class="xwdiv">方法描述:库存异动查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>stockChangeReportQuery</td><td>库存异动查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>每页数量</td></tr>
+<tr><td>bizType</td><td>STRING</td><td>否</td><td></td><td></td><td>库存异动业务类型</td></tr>
+<tr><td>virtualClientCode</td><td>STRING</td><td>否</td><td></td><td></td><td>虚拟货主客户编码</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#2708cc30bb00f5ff7c130626e062997b">com.pjbest.wop.wm.service.StockchangeReportRes</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="e7c5cdf6fa11a6029af707a6590143e5" class="xwdiv">方法描述:库存异动查询</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#88bca98935eed98966ddfd287a07b5b4">com.pjbest.wop.wm.service.WmReportingService</a></td><td>1.0.0</td><td>stockChangeReportQueryByObj</td><td>库存异动查询</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>stockChangeReportReq</td><td><a href="#af085ccbf8e61dc0f0c1a9b9a9e040d9">com.pjbest.wop.wm.service.StockChangeReportReq</a></td><td>是</td><td></td><td></td><td>库存异动查询请求参数</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#2708cc30bb00f5ff7c130626e062997b">com.pjbest.wop.wm.service.StockchangeReportRes</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="178d032ae3910fb5e8104e6211f6eecf" class="xwdiv">构造体描述:库存异动确认查询对象</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockChangeReportAckReq</td><td>库存异动确认查询对象</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>WOP货主编码</td></tr>
+<tr><td>stockchangeReportAcks</td><td>LIST&lt;<a href="#e9116c030a3bc02a3eb851d63030048a">com.pjbest.wop.wm.service.StockchangeReportAck</a>&gt;</td><td>否</td><td></td><td></td><td>库存异动确认明细对象</td></tr>
+<tr><td>bizType</td><td>STRING</td><td>否</td><td></td><td></td><td>单据类型</td></tr>
+<tr><td>virtualClientCode</td><td>STRING</td><td>否</td><td></td><td></td><td>虚拟货主客户编码</td></tr>
+</table>
+</div>
+</div>
+<div id="af085ccbf8e61dc0f0c1a9b9a9e040d9" class="xwdiv">构造体描述:库存异动查询对象</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockChangeReportReq</td><td>库存异动查询对象</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>WOP货主编码</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>分页数</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>分页数量</td></tr>
+<tr><td>bizType</td><td>STRING</td><td>否</td><td></td><td></td><td>处理类型</td></tr>
+<tr><td>virtualClientCode</td><td>STRING</td><td>否</td><td></td><td></td><td>虚拟</td></tr>
+</table>
+</div>
+</div>
+<div id="e9116c030a3bc02a3eb851d63030048a" class="xwdiv">构造体描述:库存异动Ack</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockchangeReportAck</td><td>库存异动Ack</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>orderType</td><td>STRING</td><td>否</td><td></td><td></td><td>单据类型(JYCK=一般交易出库单;HHCK=换货出库;BFCK=补发出库;PTCK=普通出库单;DBCK=调拨出库;B2BRK=B2B入 库;B2BCK=B2B出库;QTCK=其他出库;SCRK=生产入库;LYRK=领用入库;CCRK=残次品入库;CGRK=采购入库;DBRK= 调拨入库;QTRK= 其他入 库;XTRK= 销退入库;HHRK= 换货入库;CNJG= 仓内加工单)</td></tr>
+<tr><td>bizId</td><td>STRING</td><td>否</td><td></td><td></td><td>单据ID</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果信息</td></tr>
+<tr><td>detailOutBizCodeList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>明细outBizCode集合</td></tr>
+<tr><td>virtualClientCode</td><td>STRING</td><td>否</td><td></td><td></td><td>虚拟货主客户编码</td></tr>
+</table>
+</div>
+</div>
+<div id="2708cc30bb00f5ff7c130626e062997b" class="xwdiv">构造体描述:库存异动Res</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockchangeReportRes</td><td>库存异动Res</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>currentPage</td><td>STRING</td><td>否</td><td></td><td></td><td>currentPage</td></tr>
+<tr><td>totalPage</td><td>STRING</td><td>否</td><td></td><td></td><td>totalPage</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>warehouseCode</td></tr>
+<tr><td>virtualClientCode</td><td>STRING</td><td>否</td><td></td><td></td><td>虚拟货主客户编码</td></tr>
+<tr><td>extendProps</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>extendProps</td></tr>
+<tr><td>items</td><td>LIST&lt;<a href="#d6a7267ff7a184894acdba910b4de6f4">com.pjbest.wop.wm.service.StockchangeReportItem</a>&gt;</td><td>否</td><td></td><td></td><td>items</td></tr>
+<tr><td>orderCode</td><td>STRING</td><td>否</td><td></td><td></td><td>orderCode</td></tr>
+<tr><td>orderType</td><td>STRING</td><td>否</td><td></td><td></td><td>orderType</td></tr>
+<tr><td>ownerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>ownerCode</td></tr>
+<tr><td>pageSize</td><td>STRING</td><td>否</td><td></td><td></td><td>pageSize</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>remark</td></tr>
+<tr><td>snList</td><td>LIST&lt;<a href="#1cacf45fa714884f90408abcd280d332">com.pjbest.wop.wm.service.StockchangeReportSnList</a>&gt;</td><td>否</td><td></td><td></td><td>snList</td></tr>
+</table>
+</div>
+</div>
+<div id="1cacf45fa714884f90408abcd280d332" class="xwdiv">构造体描述:库存异动Item</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockchangeReportSnList</td><td>库存异动Item</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>sn</td><td>STRING</td><td>否</td><td></td><td></td><td>sn</td></tr>
+</table>
+</div>
+</div>
+<div id="d6a7267ff7a184894acdba910b4de6f4" class="xwdiv">构造体描述:库存异动Item</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockchangeReportItem</td><td>库存异动Item</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>actualAmount</td><td>STRING</td><td>否</td><td></td><td></td><td>actualAmount</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>brandCode</td></tr>
+<tr><td>brandName</td><td>STRING</td><td>否</td><td></td><td></td><td>brandName</td></tr>
+<tr><td>categoryId</td><td>STRING</td><td>否</td><td></td><td></td><td>categoryId</td></tr>
+<tr><td>categoryName</td><td>STRING</td><td>否</td><td></td><td></td><td>categoryName</td></tr>
+<tr><td>changeTime</td><td>STRING</td><td>否</td><td></td><td></td><td>changeTime</td></tr>
+<tr><td>channelCode</td><td>STRING</td><td>否</td><td></td><td></td><td>channelCode</td></tr>
+<tr><td>color</td><td>STRING</td><td>否</td><td></td><td></td><td>color</td></tr>
+<tr><td>costPrice</td><td>STRING</td><td>否</td><td></td><td></td><td>costPrice</td></tr>
+<tr><td>defectiveQty</td><td>STRING</td><td>否</td><td></td><td></td><td>defectiveQty</td></tr>
+<tr><td>diffQuantity</td><td>STRING</td><td>否</td><td></td><td></td><td>diffQuantity</td></tr>
+<tr><td>actualQty</td><td>STRING</td><td>否</td><td></td><td></td><td>actualQty</td></tr>
+<tr><td>discount</td><td>STRING</td><td>否</td><td></td><td></td><td>discount</td></tr>
+<tr><td>discountPrice</td><td>STRING</td><td>否</td><td></td><td></td><td>discountPrice</td></tr>
+<tr><td>englishName</td><td>STRING</td><td>否</td><td></td><td></td><td>englishName</td></tr>
+<tr><td>exCode</td><td>STRING</td><td>否</td><td></td><td></td><td>exCode</td></tr>
+<tr><td>expireDate</td><td>STRING</td><td>否</td><td></td><td></td><td>expireDate</td></tr>
+<tr><td>extCode</td><td>STRING</td><td>否</td><td></td><td></td><td>extCode</td></tr>
+<tr><td>goodsCode</td><td>STRING</td><td>否</td><td></td><td></td><td>goodsCode</td></tr>
+<tr><td>grossWeight</td><td>STRING</td><td>否</td><td></td><td></td><td>grossWeight</td></tr>
+<tr><td>height</td><td>STRING</td><td>否</td><td></td><td></td><td>height</td></tr>
+<tr><td>inventoryType</td><td>STRING</td><td>否</td><td></td><td></td><td>inventoryType</td></tr>
+<tr><td>adventLifecycle</td><td>STRING</td><td>否</td><td></td><td></td><td>adventLifecycle</td></tr>
+<tr><td>isAreaSale</td><td>STRING</td><td>否</td><td></td><td></td><td>isAreaSale</td></tr>
+<tr><td>isBatchMgmt</td><td>STRING</td><td>否</td><td></td><td></td><td>isBatchMgmt</td></tr>
+<tr><td>isFragile</td><td>STRING</td><td>否</td><td></td><td></td><td>isFragile</td></tr>
+<tr><td>isHazardous</td><td>STRING</td><td>否</td><td></td><td></td><td>isHazardous</td></tr>
+<tr><td>isLocked</td><td>STRING</td><td>否</td><td></td><td></td><td>isLocked</td></tr>
+<tr><td>isSNMgmt</td><td>STRING</td><td>否</td><td></td><td></td><td>isSNMgmt</td></tr>
+<tr><td>isShelfLifeMgmt</td><td>STRING</td><td>否</td><td></td><td></td><td>isShelfLifeMgmt</td></tr>
+<tr><td>isSku</td><td>STRING</td><td>否</td><td></td><td></td><td>isSku</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>itemCode</td></tr>
+<tr><td>itemId</td><td>STRING</td><td>否</td><td></td><td></td><td>itemId</td></tr>
+<tr><td>amount</td><td>STRING</td><td>否</td><td></td><td></td><td>amount</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>itemName</td></tr>
+<tr><td>itemType</td><td>STRING</td><td>否</td><td></td><td></td><td>itemType</td></tr>
+<tr><td>lackQty</td><td>STRING</td><td>否</td><td></td><td></td><td>lackQty</td></tr>
+<tr><td>latestUpdateTime</td><td>STRING</td><td>否</td><td></td><td></td><td>latestUpdateTime</td></tr>
+<tr><td>length</td><td>STRING</td><td>否</td><td></td><td></td><td>length</td></tr>
+<tr><td>lockQuantity</td><td>STRING</td><td>否</td><td></td><td></td><td>lockQuantity</td></tr>
+<tr><td>lockupLifecycle</td><td>STRING</td><td>否</td><td></td><td></td><td>lockupLifecycle</td></tr>
+<tr><td>netWeight</td><td>STRING</td><td>否</td><td></td><td></td><td>netWeight</td></tr>
+<tr><td>normalQty</td><td>STRING</td><td>否</td><td></td><td></td><td>normalQty</td></tr>
+<tr><td>orderCode</td><td>STRING</td><td>否</td><td></td><td></td><td>orderCode</td></tr>
+<tr><td>approvalNumber</td><td>STRING</td><td>否</td><td></td><td></td><td>approvalNumber</td></tr>
+<tr><td>orderLineNo</td><td>STRING</td><td>否</td><td></td><td></td><td>orderLineNo</td></tr>
+<tr><td>orderType</td><td>STRING</td><td>否</td><td></td><td></td><td>单据类型(JYCK=一般交易出库单;HHCK=换货出库;BFCK=补发出库;PTCK=普通出库单;DBCK=调拨出库;B2BRK=B2B入 库;B2BCK=B2B出库;QTCK=其他出库;SCRK=生产入库;LYRK=领用入库;CCRK=残次品入库;CGRK=采购入库;DBRK= 调拨入库;QTRK= 其他入 库;XTRK= 销退入库;HHRK= 换货入库;CNJG= 仓内加工单)</td></tr>
+<tr><td>originAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>originAddress</td></tr>
+<tr><td>originCode</td><td>STRING</td><td>否</td><td></td><td></td><td>originCode</td></tr>
+<tr><td>outBizCode</td><td>STRING</td><td>否</td><td></td><td></td><td>外部业务编码(消息ID;用于去重;用来保证因为网络等原因导致重复传输;请求不会被重复处理) 逻辑:单据类型+itemId</td></tr>
+<tr><td>ownerCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>packCode</td><td>STRING</td><td>否</td><td></td><td></td><td>packCode</td></tr>
+<tr><td>packageMaterial</td><td>STRING</td><td>否</td><td></td><td></td><td>packageMaterial</td></tr>
+<tr><td>paperQty</td><td>STRING</td><td>否</td><td></td><td></td><td>paperQty</td></tr>
+<tr><td>pcs</td><td>STRING</td><td>否</td><td></td><td></td><td>pcs</td></tr>
+<tr><td>barCode</td><td>STRING</td><td>否</td><td></td><td></td><td>barCode</td></tr>
+<tr><td>planQty</td><td>STRING</td><td>否</td><td></td><td></td><td>planQty</td></tr>
+<tr><td>price</td><td>STRING</td><td>否</td><td></td><td></td><td>price</td></tr>
+<tr><td>priceAdjustment</td><td><a href="#dd302a8511aade8207ec1a255c4f1ea8">com.pjbest.wop.wm.service.StockchangeReportPriceAdjustment</a></td><td>否</td><td></td><td></td><td>priceAdjustment</td></tr>
+<tr><td>pricingCategory</td><td>STRING</td><td>否</td><td></td><td></td><td>pricingCategory</td></tr>
+<tr><td>produceCode</td><td>STRING</td><td>否</td><td></td><td></td><td>produceCode</td></tr>
+<tr><td>productCode</td><td>STRING</td><td>否</td><td></td><td></td><td>productCode</td></tr>
+<tr><td>productDate</td><td>STRING</td><td>否</td><td></td><td></td><td>productDate</td></tr>
+<tr><td>purchasePrice</td><td>STRING</td><td>否</td><td></td><td></td><td>purchasePrice</td></tr>
+<tr><td>quantity</td><td>LONG</td><td>否</td><td></td><td></td><td>quantity</td></tr>
+<tr><td>reason</td><td>STRING</td><td>否</td><td></td><td></td><td>reason</td></tr>
+<tr><td>batchCode</td><td>STRING</td><td>否</td><td></td><td></td><td>batchCode</td></tr>
+<tr><td>receiveQty</td><td>STRING</td><td>否</td><td></td><td></td><td>receiveQty</td></tr>
+<tr><td>referencePrice</td><td>STRING</td><td>否</td><td></td><td></td><td>referencePrice</td></tr>
+<tr><td>rejectLifecycle</td><td>STRING</td><td>否</td><td></td><td></td><td>rejectLifecycle</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>remark</td></tr>
+<tr><td>retailPrice</td><td>STRING</td><td>否</td><td></td><td></td><td>retailPrice</td></tr>
+<tr><td>safetyStock</td><td>STRING</td><td>否</td><td></td><td></td><td>safetyStock</td></tr>
+<tr><td>seasonCode</td><td>STRING</td><td>否</td><td></td><td></td><td>seasonCode</td></tr>
+<tr><td>seasonName</td><td>STRING</td><td>否</td><td></td><td></td><td>seasonName</td></tr>
+<tr><td>shelfLife</td><td>STRING</td><td>否</td><td></td><td></td><td>shelfLife</td></tr>
+<tr><td>shortName</td><td>STRING</td><td>否</td><td></td><td></td><td>shortName</td></tr>
+<tr><td>batchRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>batchRemark</td></tr>
+<tr><td>size</td><td>STRING</td><td>否</td><td></td><td></td><td>size</td></tr>
+<tr><td>skuProperty</td><td>STRING</td><td>否</td><td></td><td></td><td>skuProperty</td></tr>
+<tr><td>sn</td><td>STRING</td><td>否</td><td></td><td></td><td>sn</td></tr>
+<tr><td>snCode</td><td>STRING</td><td>否</td><td></td><td></td><td>snCode</td></tr>
+<tr><td>sourceOrderCode</td><td>STRING</td><td>否</td><td></td><td></td><td>sourceOrderCode</td></tr>
+<tr><td>standardPrice</td><td>STRING</td><td>否</td><td></td><td></td><td>standardPrice</td></tr>
+<tr><td>stockStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>stockStatus</td></tr>
+<tr><td>stockUnit</td><td>STRING</td><td>否</td><td></td><td></td><td>stockUnit</td></tr>
+<tr><td>subSourceOrderCode</td><td>STRING</td><td>否</td><td></td><td></td><td>subSourceOrderCode</td></tr>
+<tr><td>supplierCode</td><td>STRING</td><td>否</td><td></td><td></td><td>supplierCode</td></tr>
+<tr><td>batchs</td><td>LIST&lt;<a href="#22c749ae308ded8b60e1edb144a7a72a">com.pjbest.wop.wm.service.StockchangeReportBatch</a>&gt;</td><td>否</td><td></td><td></td><td>batchs</td></tr>
+<tr><td>supplierName</td><td>STRING</td><td>否</td><td></td><td></td><td>supplierName</td></tr>
+<tr><td>tagPrice</td><td>STRING</td><td>否</td><td></td><td></td><td>tagPrice</td></tr>
+<tr><td>tareWeight</td><td>STRING</td><td>否</td><td></td><td></td><td>tareWeight</td></tr>
+<tr><td>tempRequirement</td><td>STRING</td><td>否</td><td></td><td></td><td>tempRequirement</td></tr>
+<tr><td>title</td><td>STRING</td><td>否</td><td></td><td></td><td>title</td></tr>
+<tr><td>unit</td><td>STRING</td><td>否</td><td></td><td></td><td>unit</td></tr>
+<tr><td>volume</td><td>STRING</td><td>否</td><td></td><td></td><td>volume</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>warehouseCode</td></tr>
+<tr><td>width</td><td>STRING</td><td>否</td><td></td><td></td><td>width</td></tr>
+</table>
+</div>
+</div>
+<div id="dd302a8511aade8207ec1a255c4f1ea8" class="xwdiv">构造体描述:库存异动PriceAdjustment</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockchangeReportPriceAdjustment</td><td>库存异动PriceAdjustment</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>discount</td><td>STRING</td><td>否</td><td></td><td></td><td>discount</td></tr>
+<tr><td>endDate</td><td>STRING</td><td>否</td><td></td><td></td><td>endDate</td></tr>
+<tr><td>standardPrice</td><td>STRING</td><td>否</td><td></td><td></td><td>standardPrice</td></tr>
+<tr><td>startDate</td><td>STRING</td><td>否</td><td></td><td></td><td>startDate</td></tr>
+<tr><td>type</td><td>STRING</td><td>否</td><td></td><td></td><td>type</td></tr>
+</table>
+</div>
+</div>
+<div id="22c749ae308ded8b60e1edb144a7a72a" class="xwdiv">构造体描述:库存异动batch</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.StockchangeReportBatch</td><td>库存异动batch</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>batchCode</td><td>STRING</td><td>否</td><td></td><td></td><td>batchCode</td></tr>
+<tr><td>expireDate</td><td>STRING</td><td>否</td><td></td><td></td><td>expireDate</td></tr>
+<tr><td>inventoryType</td><td>STRING</td><td>否</td><td></td><td></td><td>inventoryType</td></tr>
+<tr><td>produceCode</td><td>STRING</td><td>否</td><td></td><td></td><td>produceCode</td></tr>
+<tr><td>productDate</td><td>STRING</td><td>否</td><td></td><td></td><td>productDate</td></tr>
+<tr><td>quantity</td><td>LONG</td><td>否</td><td></td><td></td><td>quantity</td></tr>
+</table>
+</div>
+</div>
+<div id="7bcbd5486bda94b250b28c2bdef3e783" class="xwdiv">构造体描述:库存盘点结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InvCheckDetail</td><td>库存盘点结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>transactionId</td><td>STRING</td><td>否</td><td></td><td></td><td>唯一标识</td></tr>
+<tr><td>saleStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>售卖状态 0:可用 1:不可用</td></tr>
+<tr><td>quantity</td><td>INTEGER</td><td>是</td><td></td><td></td><td>商品数量</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>orderType</td><td>STRING</td><td>否</td><td></td><td></td><td>单据类型</td></tr>
+<tr><td>vipPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品PO号</td></tr>
+<tr><td>opTime</td><td>STRING</td><td>否</td><td></td><td></td><td>发生时间(YYYY-MM-DD HH:MM:SS)</td></tr>
+<tr><td>khCode</td><td>STRING</td><td>否</td><td></td><td></td><td>客户代码</td></tr>
+<tr><td>crmCustCode</td><td>STRING</td><td>否</td><td></td><td></td><td>货主编码</td></tr>
+<tr><td>pjWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品物流仓库编码</td></tr>
+<tr><td>qmWarehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>奇门仓库编码</td></tr>
+<tr><td>orderSn</td><td>STRING</td><td>否</td><td></td><td></td><td>单号</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>actionCode</td><td>STRING</td><td>否</td><td></td><td></td><td>业务编码 盘亏:332 盘盈:340</td></tr>
+<tr><td>opType</td><td>STRING</td><td>否</td><td></td><td></td><td>操作类型 0:未定义 1:占用  2:释放  3:取消  4:调整</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级 100:正常</td></tr>
+</table>
+</div>
+</div>
+<div id="86b366d2a387dec4e71755cda8369317" class="xwdiv">构造体描述:库存盘点确认结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InvCheckReportAckResult</td><td>库存盘点确认结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>transactionId</td><td>STRING</td><td>是</td><td></td><td></td><td>唯一标识</td></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="c95d1353550247640f5a0de3e81349bb" class="xwdiv">构造体描述:库存盘点结果返回</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InvCheckAckResponse</td><td>库存盘点结果返回</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功,500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功,500：失败</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="7a54ab67c7640a82745feebd094fd0a3" class="xwdiv">构造体描述:库存盘点结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InvCheckResponse</td><td>库存盘点结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>dataList</td><td>LIST&lt;<a href="#7bcbd5486bda94b250b28c2bdef3e783">com.pjbest.wop.wm.service.InvCheckDetail</a>&gt;</td><td>否</td><td></td><td></td><td>返回明细数据列表</td></tr>
+</table>
+</div>
+</div>
+<div id="1dab33d8f99eb546d3aa7809b80e7b17" class="xwdiv">构造体描述:wms119库存查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.Wms119InventoryRequest</td><td>wms119库存查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>ds</td><td>STRING</td><td>否</td><td></td><td></td><td>ds枚举，例:scwms-PJ_GZSC-沙驰WM业务</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品条码</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库凭证号</td></tr>
+<tr><td>status</td><td>STRING</td><td>否</td><td></td><td></td><td>售卖状态</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>type</td><td>STRING</td><td>否</td><td></td><td></td><td>例如：3PL</td></tr>
+<tr><td>companyCode</td><td>STRING</td><td>否</td><td></td><td></td><td>例如：*</td></tr>
+</table>
+</div>
+</div>
+<div id="503a3f11b9fa9c2b939baac432307833" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.InventorySkuSumResponse</td><td>出库SKU汇总返回实体</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>inventoryOutQuantitySum</td><td>INTEGER</td><td>否</td><td></td><td></td><td>出库数量汇总</td></tr>
+</table>
+</div>
+</div>
+<div id="b88baeaf9159f6a995f9b9789efbca52" class="xwdiv">构造体描述:渠道库存查询条件</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ChannelInvReq</td><td>渠道库存查询条件</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>pageNo</td><td>INTEGER</td><td>是</td><td></td><td>1</td><td>当前页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td>100</td><td>分页数量</td></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>itemSn</td><td>STRING</td><td>否</td><td></td><td></td><td>货号</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>channel</td><td>BYTE</td><td>否</td><td></td><td></td><td>渠道编码</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>saleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>售卖状态 0:可用 1:不可用</td></tr>
+<tr><td>isMoreThanZero</td><td>BOOLEAN</td><td>否</td><td></td><td></td><td>是否只返回大于0的库存</td></tr>
+</table>
+</div>
+</div>
+<div id="3a13ee1706a26bb3a684755dbda1e327" class="xwdiv">构造体描述:null</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ChannelInvItem</td><td>null</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>holdQty</td><td>LONG</td><td>否</td><td></td><td></td><td>预占库存数</td></tr>
+<tr><td>onTheWayQty</td><td>LONG</td><td>否</td><td></td><td></td><td>在途库存数</td></tr>
+<tr><td>safeQty</td><td>LONG</td><td>否</td><td></td><td></td><td>安全库存数</td></tr>
+<tr><td>usableQty</td><td>LONG</td><td>否</td><td></td><td></td><td>可用库存数</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>channel</td><td>BYTE</td><td>否</td><td></td><td></td><td>渠道编码</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>itemSn</td><td>STRING</td><td>否</td><td></td><td></td><td>货号</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+<tr><td>saleStatus</td><td>BYTE</td><td>否</td><td></td><td></td><td>售卖状态 0:可用 1:不可用</td></tr>
+<tr><td>invQty</td><td>LONG</td><td>否</td><td></td><td></td><td>内当前库存数</td></tr>
+</table>
+</div>
+</div>
+<div id="2699d5e0e41d7706335366038b342185" class="xwdiv">构造体描述:进销存报表查询结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ChannelInvResponse</td><td>进销存报表查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalSize</td><td>INTEGER</td><td>否</td><td></td><td></td><td>记录数</td></tr>
+<tr><td>resultList</td><td>LIST&lt;<a href="#3a13ee1706a26bb3a684755dbda1e327">com.pjbest.wop.wm.service.ChannelInvItem</a>&gt;</td><td>否</td><td></td><td></td><td>数据列表</td></tr>
+</table>
+</div>
+</div>
+<div id="aa3a0fa2d96b1c9668120bfd3a5b7a7c" class="xwdiv">构造体描述:进销存记录</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PurchaseSalesRecord</td><td>进销存记录</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>distributionModel</td><td>STRING</td><td>否</td><td></td><td></td><td>经销模式</td></tr>
+<tr><td>inventoryDate</td><td>STRING</td><td>否</td><td></td><td></td><td>库存日期</td></tr>
+<tr><td>beginningInventoryQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>期初库存数量</td></tr>
+<tr><td>inventoryInQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>入库数量</td></tr>
+<tr><td>inventoryOutQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>销售出库数量</td></tr>
+<tr><td>returnToVenderQunatity</td><td>LONG</td><td>否</td><td></td><td></td><td>退供数量</td></tr>
+<tr><td>allocatedInventoryInQunatity</td><td>LONG</td><td>否</td><td></td><td></td><td>调拨入库数量</td></tr>
+<tr><td>allocatedInventoryOutQunatity</td><td>LONG</td><td>否</td><td></td><td></td><td>调拨出库数量</td></tr>
+<tr><td>inventoryProfitQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>盘点盘盈数量</td></tr>
+<tr><td>inventoryLossesQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>盘点盘亏数量</td></tr>
+<tr><td>returnFromCustomerReceivedQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>客退收货数量</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>subscribedQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>认购数量</td></tr>
+<tr><td>qualityInventoryQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>正品库存数量</td></tr>
+<tr><td>defectiveInventoryQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>残次品库存数量</td></tr>
+<tr><td>endingInventoryQuantity</td><td>LONG</td><td>否</td><td></td><td></td><td>期末库存数量</td></tr>
+<tr><td>payCategory</td><td>STRING</td><td>否</td><td></td><td></td><td>收费品类</td></tr>
+<tr><td>warehouseName</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库名称</td></tr>
+<tr><td>queryType</td><td>STRING</td><td>否</td><td></td><td></td><td>查询类型</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库凭证</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>brandName</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌名称</td></tr>
+</table>
+</div>
+</div>
+<div id="7d9b60c35167ceef178a0ba2f5a557f8" class="xwdiv">构造体描述:实时库存信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.RealtimeInventoryInfo</td><td>实时库存信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>locationClassCode</td><td>STRING</td><td>否</td><td></td><td></td><td>售卖状态</td></tr>
+<tr><td>receivedDate</td><td>STRING</td><td>否</td><td></td><td></td><td>null</td></tr>
+<tr><td>onHandQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>库存数量</td></tr>
+<tr><td>allocatedQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>订单占用数</td></tr>
+<tr><td>frozenQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>冻结库存数</td></tr>
+<tr><td>availableQuantity</td><td>INTEGER</td><td>否</td><td></td><td></td><td>可用数量</td></tr>
+<tr><td>startOnRacksTime</td><td>STRING</td><td>否</td><td></td><td></td><td>上架时间</td></tr>
+<tr><td>poNoAge</td><td>LONG</td><td>否</td><td></td><td></td><td>库龄</td></tr>
+<tr><td>vendorItem</td><td>STRING</td><td>否</td><td></td><td></td><td>货号</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库凭证号</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>itemName</td><td>STRING</td><td>否</td><td></td><td></td><td>商品名称</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>brandName</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌名称</td></tr>
+<tr><td>inventorytype</td><td>STRING</td><td>否</td><td></td><td></td><td>库存类型</td></tr>
+<tr><td>inventoryQuality</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级</td></tr>
+</table>
+</div>
+</div>
+<div id="a729b9f8bd33c1a8e692e9591f2b2709" class="xwdiv">构造体描述:进销存报表查询结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PurchaseSalesResponse</td><td>进销存报表查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalSize</td><td>INTEGER</td><td>否</td><td></td><td></td><td>记录总数</td></tr>
+<tr><td>resultList</td><td>LIST&lt;<a href="#aa3a0fa2d96b1c9668120bfd3a5b7a7c">com.pjbest.wop.wm.service.PurchaseSalesRecord</a>&gt;</td><td>否</td><td></td><td></td><td>数据列表</td></tr>
+</table>
+</div>
+</div>
+<div id="19c0f72a59ccad386ed8a248c6c889d0" class="xwdiv">构造体描述:实时库存查询结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.RealtimeInventoryResponse</td><td>实时库存查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalSize</td><td>INTEGER</td><td>否</td><td></td><td></td><td>记录总数</td></tr>
+<tr><td>resultList</td><td>LIST&lt;<a href="#7d9b60c35167ceef178a0ba2f5a557f8">com.pjbest.wop.wm.service.RealtimeInventoryInfo</a>&gt;</td><td>否</td><td></td><td></td><td>数据列表</td></tr>
+</table>
+</div>
+</div>
+<div id="01dc815f68862e86b191092511585ec9" class="xwdiv">构造体描述:进销存报表查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PurchaseSalesRequest</td><td>进销存报表查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>pageNo</td><td>INTEGER</td><td>是</td><td></td><td>1</td><td>当前页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td>100</td><td>分页数量</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库凭证</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>payCategory</td><td>STRING</td><td>否</td><td></td><td></td><td>收费品类</td></tr>
+<tr><td>dateFrom</td><td>STRING</td><td>是</td><td></td><td></td><td>库存开始日期（格式：yyyy-MM-dd）</td></tr>
+<tr><td>dateTo</td><td>STRING</td><td>是</td><td></td><td></td><td>库存结束日期（格式：yyyy-MM-dd）</td></tr>
+<tr><td>queryType</td><td>STRING</td><td>是</td><td></td><td></td><td>查询维度（1:商品+PO、 2:商品、3:PO、4:供应商）</td></tr>
+</table>
+</div>
+</div>
+<div id="04d336975db2df01bc15ddcec758d30c" class="xwdiv">构造体描述:实时库存查询请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.RealtimeInventoryRequest</td><td>实时库存查询请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td>100</td><td>分页数量</td></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库凭证</td></tr>
+<tr><td>queryType</td><td>STRING</td><td>是</td><td></td><td></td><td>查询维度（1:商品+PO、 2:商品、3:PO）</td></tr>
+<tr><td>brandCode</td><td>STRING</td><td>否</td><td></td><td></td><td>品牌编码</td></tr>
+<tr><td>locationClassCode</td><td>STRING</td><td>否</td><td></td><td></td><td>售卖状态（0:可用、1:不可用）</td></tr>
+<tr><td>inventoryQuality</td><td>STRING</td><td>否</td><td></td><td></td><td>货品等级，对应WOP的商品属性（10:正常、21:一级残次、22:二级残次、23:三级残次）</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>pageNo</td><td>INTEGER</td><td>是</td><td></td><td>1</td><td>当前页码</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+</div></center></body></html>

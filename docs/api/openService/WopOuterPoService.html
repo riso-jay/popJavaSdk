@@ -1,0 +1,999 @@
+<html><head><title>唯品物流WOP开放文档</title><style type="text/css"><!--.xwtable {width: 800px;border-collapse: collapse;border: 1px solid #ccc;}.xwtable th{line-height:20px;font-size: 12px;color: #333333;text-align: center;background: #dbdbdb;;border: 1px solid #ccc; font-weight:bold;}.xwtable tbody tr {background: #fff;font-size: 12px;color: #666666;}.xwtable tbody tr.alt-row {background: #f2f7fc;}.xwtable td{line-height:20px;text-align: left;padding:4px 10px 3px 10px;height: 18px;border: 1px solid #ccc;}.xwdiv{line-height:30px;text-align: left;padding:20px 10px 0px 0px;height: 30px;font-weight: bold;}.xwtablediv{text-align: left;padding:5px 10px 0px 0px;}.xwsubtitlediv{line-height:20px;text-align: left;padding:5px 0px 0px 0px;height: 20px;}--></style></head><body><center><div style="width:800px;text-align:left;"><img style='height: 50;' src='../../../static/assets/img/icon/logo.svg'></div>
+<hr></hr><div style="width:800px;"><div class="xwdiv"><a href='index'>API目录首页</a>&nbsp;&nbsp;&nbsp;&nbsp;=>&nbsp;&nbsp;&nbsp;&nbsp;com.pjbest.wop.wm.service.WopOuterPoService</div>
+<div class="xwdiv">标题:WOP入库单PO服务</div>
+<div id="3c6d6ba59085806c3830cd0265cbf956" class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名</th><th>版本号</th></tr>
+<tr><td>com.pjbest.wop.wm.service.WopOuterPoService</td><td>1.0.0号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>方法名</th><th>简述</th><th>方法定义</th></tr>
+<tr><td><a href="#0fa23f3829b74ac2843e3e1bceb05b0b">cancelPo</a></td><td>取消PO单接口</td><td>cancelPo(STRING  customerCode, STRING  poNo, STRING  systemSource)</td></tr>
+<tr><td><a href="#b9f0479fcd09666fabe1990bef1688d1">cleanPoDetail</a></td><td>清空PO单明细接口</td><td>cleanPoDetail(STRING  customerCode, STRING  poNo)</td></tr>
+<tr><td><a href="#c3e77337a70feb90e549e824e282f8cb">closePo</a></td><td>关闭PO单接口</td><td>closePo(STRUCT  closePoReq)</td></tr>
+<tr><td><a href="#c02c0d9a210f1ba2ffb33599bd9707b4">createPo</a></td><td>创建PO单表头接口</td><td>createPo(STRING  customerCode, STRUCT  poInfo, STRING  systemSource)</td></tr>
+<tr><td><a href="#7af77efd991d803ad851735dd72c49d9">createPoWithDetail</a></td><td>创建PO单并自动提交接口</td><td>createPoWithDetail(STRING  customerCode, STRUCT  poInfo, LIST  impPoDetailList)</td></tr>
+<tr><td><a href="#1af438e3e8d51d689e8873a201dfaf36">editPo</a></td><td>修改PO单表头接口</td><td>editPo(STRING  customerCode, STRING  poNo, STRUCT  poInfo)</td></tr>
+<tr><td><a href="#17ac25cbb2d90beda9bea952c3de0888">getDeliveryResult</a></td><td>获取PO单收货明细接口</td><td>getDeliveryResult(STRING  customerCode, STRING  poNo, INTEGER  pageNum, INTEGER  pageSize)</td></tr>
+<tr><td><a href="#9c7983574a9764e84d32f78766d31590">getPoDetailList</a></td><td>PO单明细查询接口</td><td>getPoDetailList(STRING  customerCode, STRING  poNo, INTEGER  pageNum, INTEGER  pageSize, LIST  poNoList)</td></tr>
+<tr><td><a href="#a1b94eb7654c586e4a128954a0869b07">getPoNoByClientPoNo</a></td><td>通过客记PO获取系统PO号接口</td><td>getPoNoByClientPoNo(STRING  customerCode, STRING  clientPoNo)</td></tr>
+<tr><td><a href="#fb016652cf249c2612a7b8d1afdab6cc">getReceiptResult</a></td><td>入库结果查询接口</td><td>getReceiptResult(STRING  customerCode, STRING  systemSource, STRING  poNo, INTEGER  pageNum, INTEGER  pageSize, LIST  transactionIdList)</td></tr>
+<tr><td><a href="#f21481e84dbd9138eb41763ee8d703f1">healthCheck</a></td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td><td>healthCheck()</td></tr>
+<tr><td><a href="#ecabcd98befd5ede28dd06f70291ab58">importPoDetail</a></td><td>导入PO单明细接口</td><td>importPoDetail(STRING  customerCode, STRING  poNo, LIST  impPoDetailList, STRING  systemSource)</td></tr>
+<tr><td><a href="#23c9109ec6542b000e5f703b0dae7339">queryPo</a></td><td>PO查询接口</td><td>queryPo(STRING  customerCode, STRING  poNos)</td></tr>
+<tr><td><a href="#09f97e29ca8d3424e5b300cc1bb4cdf3">queryPoBySystemPoNo</a></td><td>根据系统PO查PO单接口</td><td>queryPoBySystemPoNo(STRUCT  req)</td></tr>
+<tr><td><a href="#0cdea9841c642a460a09a419296b7517">searchPoList</a></td><td>PO单查询接口</td><td>searchPoList(STRING  customerCode, STRUCT  con, INTEGER  pageNum, INTEGER  pageSize, STRING  systemSource)</td></tr>
+<tr><td><a href="#b465b43fefd1311c2fef97d94d3ac498">submitPo</a></td><td>提交PO单接口</td><td>submitPo(STRING  customerCode, STRING  poNo, STRING  systemSource)</td></tr>
+</table>
+</div>
+<div class="xwdiv">结构体列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>数据结构</th><th>简述</th></tr>
+<tr><td><a href="#242dbdf905ab732105a1521adfac28c2">com.pjbest.wop.wm.service.QueryPoBySystemPoNoRespone</a></td><td>根据系统PO查PO单接口响应号</td></tr>
+<tr><td><a href="#d569c3234465c5604ddc3d79ddfe3514">com.pjbest.wop.wm.service.QueryPoBySystemPoNoRequest</a></td><td>根据系统PO查PO单接口请求号</td></tr>
+<tr><td><a href="#606ce46e643ca66f3fecbbc7a8d1bf0f">com.pjbest.wop.wm.service.ClosePoRespone</a></td><td>关闭PO接口响应号</td></tr>
+<tr><td><a href="#1afb9ae5acdd2898860ea6616a9a97c8">com.pjbest.wop.wm.service.ClosePoRequest</a></td><td>关闭PO接口请求参数号</td></tr>
+<tr><td><a href="#f2871b9f9db72aa62674ae51a3e11383">com.pjbest.wop.wm.service.QueryPoBoxItemResult</a></td><td>按PO商品箱明细结果号</td></tr>
+<tr><td><a href="#ae5c5ab4253f15813499a5bd7cf3ba74">com.pjbest.wop.wm.service.QueryPoItemResult</a></td><td>按PO商品明细结果号</td></tr>
+<tr><td><a href="#41df5180c66870d1816fe41bf6035a41">com.pjbest.wop.wm.service.QueryPoResult</a></td><td>按PO查询结果号</td></tr>
+<tr><td><a href="#266cd5aeb5c85b3412aee02119b03a47">com.pjbest.wop.wm.service.SearchReceiptResult</a></td><td>获取入库明细结果号</td></tr>
+<tr><td><a href="#e46a548291367c72682d320f1046f5d7">com.pjbest.wop.wm.service.SearchPoDetailResult</a></td><td>获取PO单明细结果号</td></tr>
+<tr><td><a href="#ddd2d482b2df2022ac453f5938a59100">com.pjbest.wop.wm.service.SearchPoResult</a></td><td>查询PO单结果号</td></tr>
+<tr><td><a href="#be3ba2d2d2a04b020b7a79aa5ec6bbde">com.pjbest.wop.wm.service.SearchDeliveryResult</a></td><td>获取PO单收货明细结果号</td></tr>
+<tr><td><a href="#126de852b75d8ff7a6b4a17fbe4d4907">com.pjbest.wop.wm.service.OperationResult</a></td><td>操作返回结果号</td></tr>
+<tr><td><a href="#4f57b0781d825018075bb7e555734c52">com.pjbest.wop.wm.service.CreatePoResult</a></td><td>创建PO返回结果号</td></tr>
+<tr><td><a href="#b0f972ab7d558357d179fdab288fdab7">com.pjbest.wop.wm.service.PoDeliveryResult</a></td><td>PO收货明细号</td></tr>
+<tr><td><a href="#1a73e3c13cf330a3f333850d5e4d5990">com.pjbest.wop.wm.service.PoQueryCondition</a></td><td>PO查询条件号</td></tr>
+<tr><td><a href="#d4d739574294d3dfb28ed2e98e11e238">com.pjbest.wop.wm.service.ReceiptDetail</a></td><td>入库结果PO明细信息号</td></tr>
+<tr><td><a href="#ec513247ebec80d32d991d502cd93451">com.pjbest.wop.wm.service.PoDetail</a></td><td>PO明细信息号</td></tr>
+<tr><td><a href="#43a3c84fe398806c5a159e22e5891ada">com.pjbest.wop.wm.service.ImpPoDetail</a></td><td>导入PO明细对象号</td></tr>
+<tr><td><a href="#a6181aa6497988800bd8c7f917456a46">com.pjbest.wop.wm.service.PoInfo</a></td><td>PO信息号</td></tr>
+<tr><td><a href="#7e78b174f857bb17de71b341fe9c0d76">com.pjbest.wop.wm.service.CreatePoInfo</a></td><td>创建PO信息号</td></tr>
+<tr><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>包含服务状态和详细信息号</td></tr>
+<tr><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>健康状态，包含状态码和描述号</td></tr>
+</table>
+</div>
+<div class="xwdiv">枚举列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举名称</th><th>简述</th></tr>
+<tr><td><a href="#af24651a7a20d8e0f7bb8b2ac60dd235">com.pjbest.wop.wm.service.PoStatus</a></td><td>PO状态号</td></tr>
+</table>
+</div>
+<div class="xwdiv">方法明细列表</div>
+<div id="0fa23f3829b74ac2843e3e1bceb05b0b" class="xwdiv">方法描述:取消PO单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>cancelPo</td><td>取消PO单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>systemSource</td><td>STRING</td><td>否</td><td></td><td></td><td>来源系统</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#126de852b75d8ff7a6b4a17fbe4d4907">com.pjbest.wop.wm.service.OperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="b9f0479fcd09666fabe1990bef1688d1" class="xwdiv">方法描述:清空PO单明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>cleanPoDetail</td><td>清空PO单明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#126de852b75d8ff7a6b4a17fbe4d4907">com.pjbest.wop.wm.service.OperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="c3e77337a70feb90e549e824e282f8cb" class="xwdiv">方法描述:关闭PO单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>closePo</td><td>关闭PO单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>closePoReq</td><td><a href="#1afb9ae5acdd2898860ea6616a9a97c8">com.pjbest.wop.wm.service.ClosePoRequest</a></td><td>是</td><td></td><td></td><td>关闭PO单请求参数</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#606ce46e643ca66f3fecbbc7a8d1bf0f">com.pjbest.wop.wm.service.ClosePoRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="c02c0d9a210f1ba2ffb33599bd9707b4" class="xwdiv">方法描述:创建PO单表头接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>createPo</td><td>创建PO单表头接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poInfo</td><td><a href="#7e78b174f857bb17de71b341fe9c0d76">com.pjbest.wop.wm.service.CreatePoInfo</a></td><td>是</td><td></td><td></td><td>PO信息</td></tr>
+<tr><td>systemSource</td><td>STRING</td><td>否</td><td></td><td></td><td>来源系统</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#4f57b0781d825018075bb7e555734c52">com.pjbest.wop.wm.service.CreatePoResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="7af77efd991d803ad851735dd72c49d9" class="xwdiv">方法描述:创建PO单并自动提交接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>createPoWithDetail</td><td>创建PO单并自动提交接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poInfo</td><td><a href="#7e78b174f857bb17de71b341fe9c0d76">com.pjbest.wop.wm.service.CreatePoInfo</a></td><td>是</td><td></td><td></td><td>PO信息</td></tr>
+<tr><td>impPoDetailList</td><td>LIST&lt;<a href="#43a3c84fe398806c5a159e22e5891ada">com.pjbest.wop.wm.service.ImpPoDetail</a>&gt;</td><td>是</td><td></td><td></td><td>PO明细信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#4f57b0781d825018075bb7e555734c52">com.pjbest.wop.wm.service.CreatePoResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="1af438e3e8d51d689e8873a201dfaf36" class="xwdiv">方法描述:修改PO单表头接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>editPo</td><td>修改PO单表头接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>poInfo</td><td><a href="#7e78b174f857bb17de71b341fe9c0d76">com.pjbest.wop.wm.service.CreatePoInfo</a></td><td>是</td><td></td><td></td><td>PO信息</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#126de852b75d8ff7a6b4a17fbe4d4907">com.pjbest.wop.wm.service.OperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="17ac25cbb2d90beda9bea952c3de0888" class="xwdiv">方法描述:获取PO单收货明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>getDeliveryResult</td><td>获取PO单收货明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页面大小</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#be3ba2d2d2a04b020b7a79aa5ec6bbde">com.pjbest.wop.wm.service.SearchDeliveryResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="9c7983574a9764e84d32f78766d31590" class="xwdiv">方法描述:PO单明细查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>getPoDetailList</td><td>PO单明细查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页面大小</td></tr>
+<tr><td>poNoList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>PO单集合</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#e46a548291367c72682d320f1046f5d7">com.pjbest.wop.wm.service.SearchPoDetailResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="a1b94eb7654c586e4a128954a0869b07" class="xwdiv">方法描述:通过客记PO获取系统PO号接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>getPoNoByClientPoNo</td><td>通过客记PO获取系统PO号接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>STRING</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="fb016652cf249c2612a7b8d1afdab6cc" class="xwdiv">方法描述:入库结果查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>getReceiptResult</td><td>入库结果查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>systemSource</td><td>STRING</td><td>是</td><td></td><td></td><td>来源系统</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页面大小</td></tr>
+<tr><td>transactionIdList</td><td>LIST&lt;STRING&gt;</td><td>否</td><td></td><td></td><td>接口主表ID列表</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#266cd5aeb5c85b3412aee02119b03a47">com.pjbest.wop.wm.service.SearchReceiptResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="f21481e84dbd9138eb41763ee8d703f1" class="xwdiv">方法描述:服务健康度检查</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>healthCheck</td><td>osp-idlc默认生成此接口方法，建议服务开发者实现此接口，用于osp-monitor等工具检测该服务的健康情况。</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#55664e81ff88d12dcbfd09cf5aa2c52c">com.vip.hermes.core.health.CheckResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="ecabcd98befd5ede28dd06f70291ab58" class="xwdiv">方法描述:导入PO单明细接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>importPoDetail</td><td>导入PO单明细接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>impPoDetailList</td><td>LIST&lt;<a href="#43a3c84fe398806c5a159e22e5891ada">com.pjbest.wop.wm.service.ImpPoDetail</a>&gt;</td><td>是</td><td></td><td></td><td>PO明细信息</td></tr>
+<tr><td>systemSource</td><td>STRING</td><td>否</td><td></td><td></td><td>来源系统</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#126de852b75d8ff7a6b4a17fbe4d4907">com.pjbest.wop.wm.service.OperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="23c9109ec6542b000e5f703b0dae7339" class="xwdiv">方法描述:PO查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>queryPo</td><td>PO查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNos</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号(多个中间以英文逗号分隔，限定100个 )</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td>LIST&lt;<a href="#41df5180c66870d1816fe41bf6035a41">com.pjbest.wop.wm.service.QueryPoResult</a>&gt;</td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="09f97e29ca8d3424e5b300cc1bb4cdf3" class="xwdiv">方法描述:根据系统PO查PO单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>queryPoBySystemPoNo</td><td>根据系统PO查PO单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>req</td><td><a href="#d569c3234465c5604ddc3d79ddfe3514">com.pjbest.wop.wm.service.QueryPoBySystemPoNoRequest</a></td><td>是</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#242dbdf905ab732105a1521adfac28c2">com.pjbest.wop.wm.service.QueryPoBySystemPoNoRespone</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="0cdea9841c642a460a09a419296b7517" class="xwdiv">方法描述:PO单查询接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>searchPoList</td><td>PO单查询接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>con</td><td><a href="#1a73e3c13cf330a3f333850d5e4d5990">com.pjbest.wop.wm.service.PoQueryCondition</a></td><td>是</td><td></td><td></td><td>查询条件</td></tr>
+<tr><td>pageNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页码</td></tr>
+<tr><td>pageSize</td><td>INTEGER</td><td>是</td><td></td><td></td><td>页面大小</td></tr>
+<tr><td>systemSource</td><td>STRING</td><td>否</td><td></td><td></td><td>来源系统</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#ddd2d482b2df2022ac453f5938a59100">com.pjbest.wop.wm.service.SearchPoResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div id="b465b43fefd1311c2fef97d94d3ac498" class="xwdiv">方法描述:提交PO单接口</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>服务名称</th><th>版本号</th><th>方法名</th><th>描述</th></tr>
+<tr><td><a href="#3c6d6ba59085806c3830cd0265cbf956">com.pjbest.wop.wm.service.WopOuterPoService</a></td><td>1.0.0</td><td>submitPo</td><td>提交PO单接口</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">请求参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>systemSource</td><td>STRING</td><td>否</td><td></td><td></td><td>来源系统</td></tr>
+</table>
+</div>
+<div class="xwsubtitlediv">返回参数列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>success</td><td><a href="#126de852b75d8ff7a6b4a17fbe4d4907">com.pjbest.wop.wm.service.OperationResult</a></td><td>否</td><td></td><td></td><td>null</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">构造体明细列表</div>
+<div id="242dbdf905ab732105a1521adfac28c2" class="xwdiv">构造体描述:根据系统PO查PO单接口响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryPoBySystemPoNoRespone</td><td>根据系统PO查PO单接口响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：异常</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功，500：异常</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+<tr><td>poInfo</td><td><a href="#a6181aa6497988800bd8c7f917456a46">com.pjbest.wop.wm.service.PoInfo</a></td><td>否</td><td></td><td></td><td>PO</td></tr>
+</table>
+</div>
+</div>
+<div id="d569c3234465c5604ddc3d79ddfe3514" class="xwdiv">构造体描述:根据系统PO查PO单接口请求</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryPoBySystemPoNoRequest</td><td>根据系统PO查PO单接口请求</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>systemPoNo</td><td>STRING</td><td>是</td><td></td><td></td><td>WOP系统PO号</td></tr>
+</table>
+</div>
+</div>
+<div id="606ce46e643ca66f3fecbbc7a8d1bf0f" class="xwdiv">构造体描述:关闭PO接口响应</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ClosePoRespone</td><td>关闭PO接口响应</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>resultCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果编码 200：成功，500：失败</td></tr>
+<tr><td>resultSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>结果子编码 200：成功，201：PO已关闭过，500：关闭失败，501：PO不存在</td></tr>
+<tr><td>resultMsg</td><td>STRING</td><td>否</td><td></td><td></td><td>结果备注</td></tr>
+</table>
+</div>
+</div>
+<div id="1afb9ae5acdd2898860ea6616a9a97c8" class="xwdiv">构造体描述:关闭PO接口请求参数</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ClosePoRequest</td><td>关闭PO接口请求参数</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>customerCode</td><td>STRING</td><td>是</td><td></td><td></td><td>客户编码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>是</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>actualReceiveQty</td><td>INTEGER</td><td>否</td><td></td><td>-1</td><td>PO实收数量</td></tr>
+</table>
+</div>
+</div>
+<div id="f2871b9f9db72aa62674ae51a3e11383" class="xwdiv">构造体描述:PO商品箱明细结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryPoBoxItemResult</td><td>按PO商品箱明细结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>boxNo</td><td>STRING</td><td>否</td><td></td><td></td><td>箱号 </td></tr>
+<tr><td>realInstoreQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>箱内商品实际入库数量</td></tr>
+<tr><td>orgQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>申请入库数量</td></tr>
+</table>
+</div>
+</div>
+<div id="ae5c5ab4253f15813499a5bd7cf3ba74" class="xwdiv">构造体描述:PO商品明细结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryPoItemResult</td><td>按PO商品明细结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>否</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>orgQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>申请入库数量</td></tr>
+<tr><td>iqcQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>实际入库数量 </td></tr>
+<tr><td>shelvesQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>上架数量</td></tr>
+</table>
+</div>
+</div>
+<div id="41df5180c66870d1816fe41bf6035a41" class="xwdiv">构造体描述:按PO查询结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.QueryPoResult</td><td>按PO查询结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>开放平台采购入库单号</td></tr>
+<tr><td>poItemlist</td><td>LIST&lt;<a href="#ae5c5ab4253f15813499a5bd7cf3ba74">com.pjbest.wop.wm.service.QueryPoItemResult</a>&gt;</td><td>否</td><td></td><td></td><td>入库商品明细列表</td></tr>
+<tr><td>poBoxItemlist</td><td>LIST&lt;<a href="#f2871b9f9db72aa62674ae51a3e11383">com.pjbest.wop.wm.service.QueryPoBoxItemResult</a>&gt;</td><td>否</td><td></td><td></td><td>入库箱明细列表</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>storageStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>入库状态(2：已确认 3：待确认 4：有差异已确认)</td></tr>
+<tr><td>poOrderStatus</td><td>STRING</td><td>否</td><td></td><td></td><td>采购入库单状态(20：等待入库  91：取消入库 70：确认入库)</td></tr>
+<tr><td>createdByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>采购入库单创建人</td></tr>
+<tr><td>createdDtmLoc</td><td>DATE</td><td>否</td><td></td><td></td><td>采购入库单生成时间</td></tr>
+<tr><td>operTime</td><td>DATE</td><td>否</td><td></td><td></td><td>入库确认时间</td></tr>
+<tr><td>resultCode</td><td>STRING</td><td>否</td><td></td><td></td><td>处理结果(1正常，其它为异常 默认为1)</td></tr>
+<tr><td>msg</td><td>STRING</td><td>否</td><td></td><td></td><td>失败消息</td></tr>
+</table>
+</div>
+</div>
+<div id="266cd5aeb5c85b3412aee02119b03a47" class="xwdiv">构造体描述:获取入库明细结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchReceiptResult</td><td>获取入库明细结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总的记录数</td></tr>
+<tr><td>receiptDetailList</td><td>LIST&lt;<a href="#d4d739574294d3dfb28ed2e98e11e238">com.pjbest.wop.wm.service.ReceiptDetail</a>&gt;</td><td>否</td><td></td><td></td><td>当前页面入库明细记录</td></tr>
+</table>
+</div>
+</div>
+<div id="e46a548291367c72682d320f1046f5d7" class="xwdiv">构造体描述:获取PO单明细结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchPoDetailResult</td><td>获取PO单明细结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总的记录数</td></tr>
+<tr><td>poDetailList</td><td>LIST&lt;<a href="#ec513247ebec80d32d991d502cd93451">com.pjbest.wop.wm.service.PoDetail</a>&gt;</td><td>否</td><td></td><td></td><td>当前页面PO明细记录</td></tr>
+</table>
+</div>
+</div>
+<div id="ddd2d482b2df2022ac453f5938a59100" class="xwdiv">构造体描述:查询PO单结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchPoResult</td><td>查询PO单结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总的记录数</td></tr>
+<tr><td>poList</td><td>LIST&lt;<a href="#a6181aa6497988800bd8c7f917456a46">com.pjbest.wop.wm.service.PoInfo</a>&gt;</td><td>否</td><td></td><td></td><td>当前页面PO单记录</td></tr>
+</table>
+</div>
+</div>
+<div id="be3ba2d2d2a04b020b7a79aa5ec6bbde" class="xwdiv">构造体描述:获取PO单收货明细结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.SearchDeliveryResult</td><td>获取PO单收货明细结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>totalNum</td><td>INTEGER</td><td>是</td><td></td><td></td><td>总的记录数</td></tr>
+<tr><td>resultList</td><td>LIST&lt;<a href="#b0f972ab7d558357d179fdab288fdab7">com.pjbest.wop.wm.service.PoDeliveryResult</a>&gt;</td><td>否</td><td></td><td></td><td>当前页面收货明细记录</td></tr>
+</table>
+</div>
+</div>
+<div id="126de852b75d8ff7a6b4a17fbe4d4907" class="xwdiv">构造体描述:操作返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.OperationResult</td><td>操作返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td>STRING</td><td>是</td><td></td><td></td><td>操作结果  Y:成功 N:失败</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注（失败必填）</td></tr>
+<tr><td>statusSubCode</td><td>INTEGER</td><td>是</td><td></td><td></td><td>操作结果子编码 200：成功，201：PO已取消过，500：失败，501：PO不存在</td></tr>
+</table>
+</div>
+</div>
+<div id="4f57b0781d825018075bb7e555734c52" class="xwdiv">构造体描述:创建PO返回结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreatePoResult</td><td>创建PO返回结果</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td>STRING</td><td>是</td><td></td><td></td><td>操作结果  Y:成功 N:失败</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>PO编号 创建成功时不为空，其他情况为空</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注（失败必填）</td></tr>
+<tr><td>errorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>错误码(501:PO已存在)</td></tr>
+</table>
+</div>
+</div>
+<div id="b0f972ab7d558357d179fdab288fdab7" class="xwdiv">构造体描述:PO收货明细</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PoDeliveryResult</td><td>PO收货明细</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品编码</td></tr>
+<tr><td>packingQty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>装箱数量</td></tr>
+<tr><td>iqcQty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>IQC数量</td></tr>
+<tr><td>shelvesQty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>上架数量</td></tr>
+<tr><td>orgQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>原始数量</td></tr>
+<tr><td>difQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>差异数量</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>申请数量</td></tr>
+</table>
+</div>
+</div>
+<div id="1a73e3c13cf330a3f333850d5e4d5990" class="xwdiv">构造体描述:PO查询条件</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PoQueryCondition</td><td>PO查询条件</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>PO编号</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>客户入库凭证</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>收货仓</td></tr>
+<tr><td>status</td><td><a href="#af24651a7a20d8e0f7bb8b2ac60dd235">com.pjbest.wop.wm.service.PoStatus</a></td><td>否</td><td></td><td></td><td>PO状态</td></tr>
+<tr><td>createdDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期开始日期 (例：2017-08-08 08:08:08)；poNo和clientPoNo为空时，创建日期范围和更新日期范围必填一个；</td></tr>
+<tr><td>createdDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>创建日期结束日期 (例：2017-08-09 09:09:09)；poNo和clientPoNo为空时，创建日期范围和更新日期范围必填一个；</td></tr>
+<tr><td>vipReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品会退供单号</td></tr>
+<tr><td>updatedDtmLocFrom</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期开始时间 (例：2017-08-08 08:08:08)；poNo和clientPoNo为空时，创建日期范围和更新日期范围必填一个；</td></tr>
+<tr><td>updatedDtmLocTo</td><td>STRING</td><td>否</td><td></td><td></td><td>更新日期结束时间 (例：2017-08-09 09:09:09)；poNo和clientPoNo为空时，创建日期范围和更新日期范围必填一个；</td></tr>
+</table>
+</div>
+</div>
+<div id="d4d739574294d3dfb28ed2e98e11e238" class="xwdiv">构造体描述:入库结果明细信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ReceiptDetail</td><td>入库结果PO明细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>transactionId</td><td>LONG</td><td>是</td><td></td><td></td><td>接口主表id</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>逻辑仓码</td></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品条形码</td></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品云仓入库单号</td></tr>
+<tr><td>grade</td><td>STRING</td><td>否</td><td></td><td></td><td>残次等级，100-良品，210-残次</td></tr>
+<tr><td>shelvesQty</td><td>LONG</td><td>否</td><td></td><td></td><td>上架数量</td></tr>
+<tr><td>shelvesTime</td><td>DATE</td><td>否</td><td></td><td></td><td>上架时间</td></tr>
+</table>
+</div>
+</div>
+<div id="ec513247ebec80d32d991d502cd93451" class="xwdiv">构造体描述:PO明细信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PoDetail</td><td>PO明细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品条形码</td></tr>
+<tr><td>orgQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>原始数量</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>boxNo</td><td>STRING</td><td>否</td><td></td><td></td><td>箱号</td></tr>
+<tr><td>serialNos</td><td>STRING</td><td>否</td><td></td><td></td><td>序列号段</td></tr>
+<tr><td>barCodeType</td><td>STRING</td><td>否</td><td></td><td></td><td>代贴条码(1申请贴码、2商家自贴、3仓库补贴)</td></tr>
+<tr><td>orgSystemPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>原系统PO</td></tr>
+<tr><td>orgClientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>原客户PO</td></tr>
+<tr><td>vipPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品PO</td></tr>
+<tr><td>vipBoxNo</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品直通车退供箱号</td></tr>
+<tr><td>systemPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>云仓入库单号</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>计划入库件数</td></tr>
+<tr><td>volumeQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>箱数</td></tr>
+<tr><td>tagPrice</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>吊牌价</td></tr>
+<tr><td>purchaseUnitPrice</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>采购单价</td></tr>
+<tr><td>packingQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>装箱数量</td></tr>
+<tr><td>iqcQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>IQC数量</td></tr>
+<tr><td>shelvesQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>上架数量</td></tr>
+</table>
+</div>
+</div>
+<div id="43a3c84fe398806c5a159e22e5891ada" class="xwdiv">构造体描述:导入PO明细对象</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.ImpPoDetail</td><td>导入PO明细对象</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>itemCode</td><td>STRING</td><td>是</td><td></td><td></td><td>商品条形码</td></tr>
+<tr><td>transactionId</td><td>STRING</td><td>否</td><td></td><td></td><td>流水号ID</td></tr>
+<tr><td>qty</td><td>INTEGER</td><td>是</td><td></td><td></td><td>计划入库件数</td></tr>
+<tr><td>tagPrice</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>吊牌价</td></tr>
+<tr><td>purchaseUnitPrice</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>采购单价</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>boxNo</td><td>STRING</td><td>否</td><td></td><td></td><td>箱号</td></tr>
+<tr><td>serialNos</td><td>STRING</td><td>否</td><td></td><td></td><td>序列号段</td></tr>
+<tr><td>barCodeType</td><td>STRING</td><td>否</td><td></td><td></td><td>代贴条码(1申请贴码、2商家自贴、3仓库补贴)</td></tr>
+<tr><td>orgClientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>原客户PO</td></tr>
+</table>
+</div>
+</div>
+<div id="a6181aa6497988800bd8c7f917456a46" class="xwdiv">构造体描述:PO信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PoInfo</td><td>PO信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>poNo</td><td>STRING</td><td>否</td><td></td><td></td><td>PO编码</td></tr>
+<tr><td>receiverTel</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货人电话</td></tr>
+<tr><td>receiverMobie</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货人手机</td></tr>
+<tr><td>receiverCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货国家</td></tr>
+<tr><td>receiverStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货省</td></tr>
+<tr><td>receiverStateCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货省名称</td></tr>
+<tr><td>receiverCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货市</td></tr>
+<tr><td>receiverCityCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货市编码</td></tr>
+<tr><td>receiverDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货区</td></tr>
+<tr><td>receiverDistrictCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货区编码</td></tr>
+<tr><td>receiverDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货详细地址</td></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>否</td><td></td><td></td><td>客户PO</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>warehouseName</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库名称</td></tr>
+<tr><td>channel</td><td>BYTE</td><td>否</td><td></td><td></td><td>默认销售渠道 0:待定 1:唯品会 2:非唯品会 3:乐蜂</td></tr>
+<tr><td>returnContacter</td><td>STRING</td><td>否</td><td></td><td></td><td>退货联系人</td></tr>
+<tr><td>returnContacterTel</td><td>STRING</td><td>否</td><td></td><td></td><td>退货联系人电话</td></tr>
+<tr><td>returnContacterMobile</td><td>STRING</td><td>否</td><td></td><td></td><td>退货联系人手机</td></tr>
+<tr><td>returnCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>退货国家</td></tr>
+<tr><td>returnStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货省名称</td></tr>
+<tr><td>returnStateCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货省编码</td></tr>
+<tr><td>returnCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货市名称</td></tr>
+<tr><td>type</td><td>STRING</td><td>否</td><td></td><td></td><td>经销类型</td></tr>
+<tr><td>returnCityCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货市编码</td></tr>
+<tr><td>returnDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>退货地区编码</td></tr>
+<tr><td>returnDistrictCode</td><td>STRING</td><td>否</td><td></td><td></td><td>退货地区名称</td></tr>
+<tr><td>returnDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>退货详细地址</td></tr>
+<tr><td>email</td><td>STRING</td><td>否</td><td></td><td></td><td>邮箱</td></tr>
+<tr><td>isNeedFaceCount</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否当面清点， 0:不需要 1:需要</td></tr>
+<tr><td>totalWeight</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>总重量</td></tr>
+<tr><td>totalVolume</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>总体积</td></tr>
+<tr><td>weight</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>重量</td></tr>
+<tr><td>volume</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>体积</td></tr>
+<tr><td>status</td><td>BYTE</td><td>否</td><td></td><td></td><td>状态</td></tr>
+<tr><td>reservationBegindt</td><td>LONG</td><td>否</td><td></td><td></td><td>入库预约启始时间</td></tr>
+<tr><td>reservationEnddt</td><td>LONG</td><td>否</td><td></td><td></td><td>入库预约结束时间</td></tr>
+<tr><td>reservationNo</td><td>STRING</td><td>否</td><td></td><td></td><td>入库预约号</td></tr>
+<tr><td>reservationUser</td><td>STRING</td><td>否</td><td></td><td></td><td>入库预约人</td></tr>
+<tr><td>isReservated</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否已预约 0-未预约-1-已预约</td></tr>
+<tr><td>packingStatus</td><td>SHORT</td><td>否</td><td></td><td></td><td>装箱状态 0：未装箱；1：装箱忠；2：装箱完成</td></tr>
+<tr><td>totalQty</td><td>LONG</td><td>否</td><td></td><td></td><td>总件数</td></tr>
+<tr><td>totalTagPrice</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>总吊牌价</td></tr>
+<tr><td>totalPackingQty</td><td>INTEGER</td><td>否</td><td></td><td></td><td>装箱数量</td></tr>
+<tr><td>authUser</td><td>STRING</td><td>否</td><td></td><td></td><td>审核人名称</td></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>否</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>authTime</td><td>LONG</td><td>否</td><td></td><td></td><td>审核时间</td></tr>
+<tr><td>authContactor</td><td>STRING</td><td>否</td><td></td><td></td><td>审核人联系人名称</td></tr>
+<tr><td>startOnRacksTime</td><td>STRING</td><td>否</td><td></td><td></td><td>PO上架时间</td></tr>
+<tr><td>flowRemark</td><td>STRING</td><td>否</td><td></td><td></td><td>流程备注</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>createdByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>创建人</td></tr>
+<tr><td>createdDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>创建时间</td></tr>
+<tr><td>updatedByUser</td><td>STRING</td><td>否</td><td></td><td></td><td>修改人</td></tr>
+<tr><td>updatedDtmLoc</td><td>LONG</td><td>否</td><td></td><td></td><td>修改者当地时间</td></tr>
+<tr><td>boxFlag</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否按箱收货（0：否；1：是；默认为0）</td></tr>
+<tr><td>buyer</td><td>STRING</td><td>否</td><td></td><td></td><td>采购员</td></tr>
+<tr><td>isBatchStorage</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否允许分批入库（0：否，1：是，默认为1）</td></tr>
+<tr><td>warehousingTime</td><td>LONG</td><td>是</td><td></td><td></td><td>开始入库时间</td></tr>
+<tr><td>deliveryTime</td><td>LONG</td><td>否</td><td></td><td></td><td>发货时间 (例：2017-08-08 08:08:08)</td></tr>
+<tr><td>expectArriveTime</td><td>LONG</td><td>否</td><td></td><td></td><td>预计到货时间 (例：2017-08-08 08:08:08)</td></tr>
+<tr><td>deliveryContacter</td><td>STRING</td><td>否</td><td></td><td></td><td>发货联系人</td></tr>
+<tr><td>deliveryContacterTel</td><td>STRING</td><td>否</td><td></td><td></td><td>发货联系人电话</td></tr>
+<tr><td>deliveryContacterMobile</td><td>STRING</td><td>否</td><td></td><td></td><td>发货联系人手机</td></tr>
+<tr><td>deliveryStoreCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货门店编码</td></tr>
+<tr><td>deliveryStoreName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货门店名称</td></tr>
+<tr><td>deliveryCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>发货国家</td></tr>
+<tr><td>saleArea</td><td>STRING</td><td>否</td><td></td><td></td><td>销售区域</td></tr>
+<tr><td>deliveryStateCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货省份编码</td></tr>
+<tr><td>deliveryStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货省份名称</td></tr>
+<tr><td>deliveryCityCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货城市编码</td></tr>
+<tr><td>deliveryCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货城市名称</td></tr>
+<tr><td>deliveryDistrictCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货区域编码</td></tr>
+<tr><td>deliveryDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货区域名称</td></tr>
+<tr><td>deliveryDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>发货地址</td></tr>
+<tr><td>operTime</td><td>LONG</td><td>否</td><td></td><td></td><td>关闭PO操作时间/入库完成时间</td></tr>
+<tr><td>transactionSource</td><td>STRING</td><td>否</td><td></td><td></td><td>业务来源</td></tr>
+<tr><td>zipCode</td><td>STRING</td><td>否</td><td></td><td></td><td>邮政编码</td></tr>
+<tr><td>returnNo</td><td>STRING</td><td>否</td><td></td><td></td><td>直通车退货单号</td></tr>
+<tr><td>firstIqcTime</td><td>LONG</td><td>否</td><td></td><td></td><td>开始入库时间</td></tr>
+<tr><td>receiptClosedTime</td><td>LONG</td><td>否</td><td></td><td></td><td>关闭入库单时间</td></tr>
+<tr><td>vipReturnSn</td><td>STRING</td><td>否</td><td></td><td></td><td>唯品会退供单号</td></tr>
+<tr><td>receiver</td><td>STRING</td><td>否</td><td></td><td></td><td>仓库收货人</td></tr>
+</table>
+</div>
+</div>
+<div id="7e78b174f857bb17de71b341fe9c0d76" class="xwdiv">构造体描述:创建PO信息</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.CreatePoInfo</td><td>创建PO信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>clientPoNo</td><td>STRING</td><td>是</td><td></td><td></td><td>客户PO</td></tr>
+<tr><td>returnCityName</td><td>STRING</td><td>是</td><td></td><td></td><td>退货市名称</td></tr>
+<tr><td>returnDistrictName</td><td>STRING</td><td>是</td><td></td><td></td><td>退货地区编码</td></tr>
+<tr><td>returnDetailAddress</td><td>STRING</td><td>是</td><td></td><td></td><td>退货详细地址</td></tr>
+<tr><td>email</td><td>STRING</td><td>是</td><td></td><td></td><td>邮箱</td></tr>
+<tr><td>channel</td><td>BYTE</td><td>否</td><td></td><td></td><td>销售渠道 0:待定 1:唯品会 2:非唯品会 默认（0:待定）</td></tr>
+<tr><td>isNeedFaceCount</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否当面清点， 0:不需要 1:需要</td></tr>
+<tr><td>weight</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>重量</td></tr>
+<tr><td>volume</td><td>DOUBLE</td><td>否</td><td></td><td></td><td>体积</td></tr>
+<tr><td>remark</td><td>STRING</td><td>否</td><td></td><td></td><td>备注</td></tr>
+<tr><td>createdByUser</td><td>STRING</td><td>是</td><td></td><td></td><td>创建人</td></tr>
+<tr><td>vendorCode</td><td>STRING</td><td>是</td><td></td><td></td><td>供应商编码</td></tr>
+<tr><td>boxFlag</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否按箱收货（0：否；1：是；默认为0）</td></tr>
+<tr><td>isBatchStorage</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否允许分批入库（0：否，1：是，默认为1）</td></tr>
+<tr><td>isWhaleWarehouse</td><td>BYTE</td><td>否</td><td></td><td></td><td>是否鲸仓[0:VIPSHOP 1:VIPMAXX]</td></tr>
+<tr><td>type</td><td>STRING</td><td>否</td><td></td><td></td><td>po类型:3PL：3PL采购入库;TRANS_MDFC：店返仓入库</td></tr>
+<tr><td>deliveryTime</td><td>STRING</td><td>否</td><td></td><td></td><td>发货时间 (例：2017-08-08 08:08:08)</td></tr>
+<tr><td>expectArriveTime</td><td>STRING</td><td>否</td><td></td><td></td><td>预计到货时间 (例：2017-08-08 08:08:08)</td></tr>
+<tr><td>deliveryContacter</td><td>STRING</td><td>否</td><td></td><td></td><td>发货联系人</td></tr>
+<tr><td>deliveryContacterTel</td><td>STRING</td><td>否</td><td></td><td></td><td>发货联系人电话</td></tr>
+<tr><td>deliveryContacterMobile</td><td>STRING</td><td>否</td><td></td><td></td><td>发货联系人手机</td></tr>
+<tr><td>deliveryStoreCode</td><td>STRING</td><td>否</td><td></td><td></td><td>发货门店编码</td></tr>
+<tr><td>warehouseCode</td><td>STRING</td><td>是</td><td></td><td></td><td>仓库编码</td></tr>
+<tr><td>deliveryStoreName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货门店名称</td></tr>
+<tr><td>deliveryCountry</td><td>STRING</td><td>否</td><td></td><td></td><td>发货国家</td></tr>
+<tr><td>deliveryStateName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货省份名称</td></tr>
+<tr><td>deliveryCityName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货城市名称</td></tr>
+<tr><td>deliveryDistrictName</td><td>STRING</td><td>否</td><td></td><td></td><td>发货区域</td></tr>
+<tr><td>deliveryDetailAddress</td><td>STRING</td><td>否</td><td></td><td></td><td>发货地址</td></tr>
+<tr><td>transactionSource</td><td>STRING</td><td>否</td><td></td><td></td><td>业务来源</td></tr>
+<tr><td>buyer</td><td>STRING</td><td>否</td><td></td><td></td><td>采购员</td></tr>
+<tr><td>returnContacter</td><td>STRING</td><td>是</td><td></td><td></td><td>退货联系人</td></tr>
+<tr><td>returnContacterTel</td><td>STRING</td><td>是</td><td></td><td></td><td>退货联系人电话</td></tr>
+<tr><td>returnContacterMobile</td><td>STRING</td><td>是</td><td></td><td></td><td>退货联系人手机</td></tr>
+<tr><td>returnCountry</td><td>STRING</td><td>是</td><td></td><td></td><td>退货国家</td></tr>
+<tr><td>returnStateName</td><td>STRING</td><td>是</td><td></td><td></td><td>退货省名称</td></tr>
+</table>
+</div>
+</div>
+<div id="55664e81ff88d12dcbfd09cf5aa2c52c" class="xwdiv">构造体描述:检查结果</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.CheckResult</td><td>包含服务状态和详细信息</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>status</td><td><a href="#35aa4e81766c45058887435414383deb">com.vip.hermes.core.health.Status</a></td><td>否</td><td></td><td></td><td>服务状态</td></tr>
+<tr><td>details</td><td>MAP&lt;STRING,STRING&gt;</td><td>否</td><td></td><td></td><td>详细信息</td></tr>
+</table>
+</div>
+</div>
+<div id="35aa4e81766c45058887435414383deb" class="xwdiv">构造体描述:健康状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>结构体类名</th><th>描述</th></tr>
+<tr><td>com.vip.hermes.core.health.Status</td><td>健康状态，包含状态码和描述</td></tr>
+</table>
+</div>
+<div class="xwtablediv"><div class="xwsubtitlediv">字段列表</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>名称</th><th>类型</th><th>是否必须</th><th>示例值</th><th>默认值</th><th>描述</th></tr>
+<tr><td>code</td><td>STRING</td><td>否</td><td></td><td></td><td>状态码</td></tr>
+<tr><td>description</td><td>STRING</td><td>否</td><td></td><td></td><td>描述</td></tr>
+</table>
+</div>
+</div>
+<div class="xwdiv">枚举明细列表</div>
+<div id="af24651a7a20d8e0f7bb8b2ac60dd235" class="xwdiv">枚举描述:PO状态</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>枚举类名</th><th>描述</th></tr>
+<tr><td>com.pjbest.wop.wm.service.PoStatus</td><td>PO状态</td></tr>
+</table>
+</div>
+<div class="xwtablediv">
+<table class="xwtable">
+<tr><th>文档</th><th>值</th><th>描述</th></tr>
+<tr><td>New</td><td>0</td><td>新增</td></tr>
+<tr><td>Pass</td><td>1</td><td>已审批</td></tr>
+<tr><td>Already_cancel</td><td>2</td><td>取消 </td></tr>
+<tr><td>Ready_to_approval</td><td>3</td><td>审批中 </td></tr>
+<tr><td>Ready_to_cancel</td><td>4</td><td>取消中 </td></tr>
+<tr><td>not_pass</td><td>7</td><td>审核不通过 </td></tr>
+<tr><td>finish</td><td>9</td><td>入库完成 </td></tr>
+<tr><td>batch_finish</td><td>10</td><td>已关闭入库单</td></tr>
+</table>
+</div>
+</div></center></body></html>
